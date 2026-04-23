@@ -7,6 +7,8 @@ import articles from "../data/articles.json";
 import PublicationAd from "../components/ads/PublicationAd.astro";
 import publications from "../data/publications.json";
 const data = articles.find((a) => a.slug === "conocimientos");
+const formatDate = (date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
+const today = formatDate(new Date());
 const headerBiddingPublication = publications.find(
   (p) => p.slug === "header-bidding",
 );
@@ -44,7 +46,7 @@ const headerBiddingPublication = publications.find(
         </h1>
 
         <div class="article-meta">
-          <span class="date">31 de Octubre, 2025</span>
+          <span class="date">{today}</span>
           <span class="separator">|</span>
           <span class="author">{data.author}</span>
         </div>

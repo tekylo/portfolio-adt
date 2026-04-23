@@ -5,6 +5,8 @@ import NewspaperHeader from "../components/NewspaperHeader.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import articles from "../data/articles.json";
 const data = articles.find((a) => a.slug === "cursos");
+const formatDate = (date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
+const today = formatDate(new Date());
 
 const courseSections = [
   {
@@ -133,7 +135,7 @@ const courseSections = [
         </h1>
 
         <div class="article-meta">
-          <span class="date">31 de Octubre, 2025</span>
+          <span class="date">{today}</span>
           <span class="separator">|</span>
           <span class="author">{data.author}</span>
         </div>

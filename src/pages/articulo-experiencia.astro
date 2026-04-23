@@ -7,6 +7,8 @@ import articles from "../data/articles.json";
 import TestimonialAd from "../components/ads/TestimonialAd.astro";
 import recommendations from "../data/recommendations.json";
 const data = articles.find((a) => a.slug === "experiencia");
+const formatDate = (date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
+const today = formatDate(new Date());
 const ilocadTestimonial = recommendations.find((r) => r.slug === "ilocad");
 const fibgarTestimonial = recommendations.find((r) => r.slug === "fibgar");
 
@@ -171,7 +173,7 @@ const experiences = [
         </h1>
 
         <div class="article-meta">
-          <span class="date">31 de Octubre, 2025</span>
+          <span class="date">{today}</span>
           <span class="separator">|</span>
           <span class="author">{data.author}</span>
         </div>

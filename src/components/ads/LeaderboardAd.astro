@@ -33,34 +33,27 @@ const {
 </div>
 
 <style>
-  :root {
-    --ad-bg: var(--bg-secondary, #232946);
-    --ad-accent: var(--accent-primary, #eebd3d);
-    --ad-text: #fff;
-    --ad-border: #121629;
-    --ad-radius: 0;
-    --ad-shadow: 0 4px 18px rgba(35, 41, 70, 0.18);
-    --ad-box: 0 2px 8px rgba(35, 41, 70, 0.12);
-    --ad-box-hover: 0 4px 16px rgba(35, 41, 70, 0.18);
-    --ad-bg-light: #f3f4f6;
-    --ad-border-light: #e5e7eb;
-    --ad-text-dark: #222;
-    --ad-text-muted: #444;
-  }
-
   .leaderboard-ad {
     width: 728px;
     height: 90px;
-    background: var(--ad-bg);
+    background: var(--bg-secondary);
     position: relative;
     overflow: hidden;
-    box-shadow: var(--ad-shadow);
-    margin: 1.5rem auto;
+    box-shadow: var(--shadow-sm);
+    margin: var(--space-6) auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--ad-border);
-    border-radius: var(--ad-radius);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition:
+      border-color var(--transition-base) var(--ease-default),
+      box-shadow var(--transition-base) var(--ease-default);
+  }
+
+  .leaderboard-ad:hover {
+    border-color: var(--border-default);
+    box-shadow: var(--shadow-md);
   }
 
   .ad-label {
@@ -93,30 +86,31 @@ const {
   }
 
   .title-section {
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
     text-align: left;
     background: transparent;
-    padding: 0.2rem 0.7rem;
-    border-radius: var(--ad-radius);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
     box-shadow: none;
-    color: var(--ad-bg-light);
+    color: var(--text-primary);
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
     font-weight: 800;
-    margin: 0 0 0.2rem 0;
+    margin: 0 0 var(--space-1) 0;
     line-height: 1.1;
     letter-spacing: 0.5px;
-    color: var(--ad-text);
+    color: var(--text-primary);
   }
 
   .subtitle {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     font-weight: 600;
     margin: 0;
     letter-spacing: 0.3px;
-    color: var(--ad-text);
+    color: var(--text-secondary);
   }
 
   .cta-section {
@@ -127,23 +121,34 @@ const {
     margin-top: 0.2rem;
   }
 
-  .cta-button {
-    background: var(--ad-bg);
-    color: var(--ad-accent);
-    border: 2px solid var(--ad-accent);
-    border-radius: var(--ad-radius);
-    padding: 0.6rem 1.2rem;
+.cta-button {
+    background: transparent;
+    color: var(--accent-primary);
+    border: 2px solid var(--accent-primary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-5);
     font-weight: 700;
-    font-size: 0.95rem;
-    box-shadow: var(--ad-box);
-    transition: all 0.3s cubic-bezier(0.4, 0.8, 0.4, 1);
+    font-size: var(--text-sm);
+    box-shadow: var(--shadow-sm);
+    transition:
+      background-color var(--transition-base) var(--ease-default),
+      color var(--transition-base) var(--ease-default),
+      box-shadow var(--transition-base) var(--ease-default),
+      transform var(--transition-base) var(--ease-default);
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-2);
     white-space: nowrap;
     letter-spacing: 0.5px;
     cursor: pointer;
+  }
+
+  .cta-button:hover {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    box-shadow: var(--shadow-md);
+    transform: scale(1.05);
   }
 
   .cta-button:hover {

@@ -31,10 +31,11 @@ import ThemeToggle from "./ThemeToggle.astro";
 <style>
   .newspaper-header {
     max-width: 1200px;
-    border-bottom: 3px double var(--accent-primary);
+    border-bottom: 2px solid var(--accent-primary);
     width: 100%;
     transition:
       border-color var(--transition-base) var(--ease-default);
+    padding-bottom: var(--space-2);
   }
 
   .newspaper-banner {
@@ -49,8 +50,7 @@ import ThemeToggle from "./ThemeToggle.astro";
     font-size: var(--text-xs);
     margin-bottom: var(--space-2);
     padding: var(--space-1) 0;
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-default);
     font-family: var(--font-body);
   }
 
@@ -79,7 +79,6 @@ import ThemeToggle from "./ThemeToggle.astro";
     margin: var(--space-4) 0 var(--space-2) 0;
     letter-spacing: 2px;
     color: var(--text-primary);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     transition: color var(--transition-base) var(--ease-default);
   }
 
@@ -97,15 +96,11 @@ import ThemeToggle from "./ThemeToggle.astro";
   }
 
   .divider {
-    height: 2px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      var(--accent-primary),
-      transparent
-    );
+    height: 3px;
+    background: var(--accent-primary);
     margin: var(--space-4) auto;
-    max-width: 600px;
+    max-width: 500px;
+    border-radius: 2px;
     transition: background var(--transition-base) var(--ease-default);
   }
 

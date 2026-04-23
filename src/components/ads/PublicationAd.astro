@@ -65,15 +65,15 @@ const themeClass =
   }
 
   .publication-theme-dark {
-    background: radial-gradient(circle at top left, rgba(225, 188, 38, 0.2), transparent 55%),
-      linear-gradient(135deg, #312e81, #0f172a);
+    background: radial-gradient(circle at top left, rgba(var(--accent-primary-rgb, 212, 160, 23), 0.2), transparent 55%),
+      linear-gradient(135deg, var(--bg-secondary, #312e81), var(--bg-tertiary, #0f172a));
     color: rgba(255, 255, 255, 0.9);
   }
 
   .publication-theme-light {
-    background: linear-gradient(135deg, #faf3d4, #fdfaf2);
-    color: #1f2937;
-    box-shadow: 0 10px 30px rgba(31, 41, 55, 0.15);
+    background: linear-gradient(135deg, var(--bg-secondary, #faf3d4), var(--bg-primary, #fdfaf2));
+    color: var(--text-primary);
+    box-shadow: 0 10px 30px rgba(var(--text-primary-rgb, 31, 41, 55), 0.15);
   }
 
   .label {
@@ -91,8 +91,8 @@ const themeClass =
   }
 
   .publication-theme-light .label {
-    background: rgba(31, 41, 55, 0.15);
-    color: #1f2937;
+    background: rgba(var(--text-primary-rgb, 31, 41, 55), 0.15);
+    color: var(--text-primary);
   }
 
   .content {
@@ -128,15 +128,15 @@ const themeClass =
   }
 
   .publication-theme-dark .cta {
-    background: rgba(225, 188, 38, 0.2);
-    color: #f8f3c6;
-    border: 1px solid rgba(225, 188, 38, 0.4);
+    background: rgba(var(--accent-primary-rgb, 212, 160, 23), 0.2);
+    color: var(--accent-hover, #f8f3c6);
+    border: 1px solid rgba(var(--accent-primary-rgb, 212, 160, 23), 0.4);
   }
 
   .publication-theme-light .cta {
-    background: rgba(31, 41, 55, 0.08);
-    color: #1f2937;
-    border: 1px solid rgba(31, 41, 55, 0.2);
+    background: rgba(var(--text-primary-rgb, 31, 41, 55), 0.08);
+    color: var(--text-primary);
+    border: 1px solid rgba(var(--text-primary-rgb, 31, 41, 55), 0.2);
   }
 
   .cta:hover {
@@ -144,14 +144,14 @@ const themeClass =
   }
 
   .publication-theme-dark .cta:hover {
-    background: rgba(225, 188, 38, 0.3);
-    border-color: rgba(225, 188, 38, 0.55);
-    box-shadow: 0 8px 20px rgba(225, 188, 38, 0.25);
+    background: rgba(var(--accent-primary-rgb, 212, 160, 23), 0.3);
+    border-color: rgba(var(--accent-primary-rgb, 212, 160, 23), 0.55);
+    box-shadow: 0 8px 20px rgba(var(--accent-primary-rgb, 212, 160, 23), 0.25);
   }
 
   .publication-theme-light .cta:hover {
-    background: rgba(31, 41, 55, 0.12);
-    border-color: rgba(31, 41, 55, 0.3);
+    background: rgba(var(--text-primary-rgb, 31, 41, 55), 0.12);
+    border-color: rgba(var(--text-primary-rgb, 31, 41, 55), 0.3);
   }
 
   @media (max-width: 768px) {

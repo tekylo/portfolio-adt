@@ -1,0 +1,370 @@
+---
+// Componente genérico y reutilizable para crear anuncios
+export interface Props {
+  // Dimensiones
+  width?: string;
+  height?: string;
+
+  // Contenido
+  title: string;
+  subtitle?: string;
+  description?: string;
+
+  // Estilo visual
+  variant?:
+    | "gradient-blue"
+    | "gradient-purple"
+    | "gradient-gold"
+    | "gradient-green"
+    | "custom";
+  customGradient?: string;
+
+  // CTA (Call to Action)
+  ctaText?: string;
+  ctaLink?: string;
+
+  // Elementos visuales
+  showIcon?: boolean;
+  iconType?: "code" | "mail" | "star" | "check" | "rocket" | "custom";
+  customIcon?: string;
+
+  // Tags/Badges
+  tags?: string[];
+  badge?: string;
+
+  // Layout
+  layout?: "vertical" | "horizontal";
+  textAlign?: "left" | "center" | "right";
+}
+
+const {
+  width = "300px",
+  height = "250px",
+  title,
+  subtitle,
+  description,
+  variant = "gradient-blue",
+  customGradient,
+  ctaText,
+  ctaLink = "#",
+  showIcon = true,
+  iconType = "star",
+  customIcon,
+  tags = [],
+  badge = "Anuncio",
+  layout = "vertical",
+  textAlign = "center",
+} = Astro.props;
+
+// Gradientes predefinidos usando la nueva paleta
+const gradients = {
+  "gradient-blue": "linear-gradient(135deg, #6366f1, #4f46e5)",
+  "gradient-purple": "linear-gradient(135deg, #8b5cf6, #7c3aed)",
+  "gradient-gold": "linear-gradient(135deg, #f3d34d, #d4a017)",
+  "gradient-green": "linear-gradient(135deg, #10b981, #059669)",
+  custom: customGradient || "linear-gradient(135deg, #6366f1, #4f46e5)",
+};
+
+const gradient = gradients[variant];
+
+// Iconos SVG predefinidos
+const icons: Record<string, string> = {
+  code: '<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>',
+  mail: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>',
+  star: '<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>',
+  check:
+    '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>',
+  rocket:
+    '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>',
+};
+
+const iconSvg = customIcon || icons[iconType] || icons.star;
+---
+
+<div
+  class={`ad-card layout-${layout} text-${textAlign}`}
+  style={`width: ${width}; height: ${height}; background: ${gradient};`}
+>
+  {badge && <div class="ad-badge">{badge}</div>}
+
+  <div class="ad-card-content">
+    {
+      showIcon && (
+        <div class="ad-icon">
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            set:html={iconSvg}
+          />
+        </div>
+      )
+    }
+
+    <div class="ad-text">
+      <h3 class="ad-title">{title}</h3>
+      {subtitle && <p class="ad-subtitle">{subtitle}</p>}
+      {description && <p class="ad-description">{description}</p>}
+    </div>
+
+    {
+      tags.length > 0 && (
+        <div class="ad-tags">
+          {tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )
+    }
+
+    {
+      ctaText && (
+        <a href={ctaLink} class="ad-cta">
+          {ctaText}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .ad-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+  }
+
+  .ad-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .ad-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+  }
+
+  .ad-card-content {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .layout-vertical .ad-card-content {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .layout-horizontal .ad-card-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .ad-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .ad-card:hover .ad-icon {
+    transform: scale(1.1);
+  }
+
+  .layout-horizontal .ad-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ad-text {
+    flex: 1;
+  }
+
+  .text-left .ad-text {
+    text-align: left;
+  }
+
+  .text-center .ad-text {
+    text-align: center;
+  }
+
+  .text-right .ad-text {
+    text-align: right;
+  }
+
+  .ad-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+
+  .layout-horizontal .ad-title {
+    font-size: 1.3rem;
+  }
+
+  .ad-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+  }
+
+  .ad-description {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .ad-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .layout-horizontal .ad-tags {
+    justify-content: flex-start;
+  }
+
+  .text-left .ad-tags {
+    justify-content: flex-start;
+  }
+
+  .text-right .ad-tags {
+    justify-content: flex-end;
+  }
+
+  .tag {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 0.35rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .ad-cta {
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ad-cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 0, 0, 0.1),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .ad-cta:hover::before {
+    left: 100%;
+  }
+
+  .ad-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .ad-cta svg {
+    transition: transform 0.3s ease;
+  }
+
+  .ad-cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .ad-card {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 200px;
+    }
+
+    .layout-horizontal .ad-card-content {
+      flex-direction: column;
+    }
+
+    .ad-card-content {
+      padding: 1.25rem;
+    }
+
+    .ad-title {
+      font-size: 1.3rem;
+    }
+
+    .ad-subtitle {
+      font-size: 0.9rem;
+    }
+
+    .ad-description {
+      font-size: 0.85rem;
+    }
+
+    .ad-cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

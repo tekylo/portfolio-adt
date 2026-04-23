@@ -1,0 +1,108 @@
+---
+// Menú de navegación estilo El País
+const navItems = [
+  { label: "SOBRE MÍ", href: "/articulo-sobre-mi" },
+  { label: "EDUCACIÓN", href: "/articulo-educacion" },
+  { label: "EXPERIENCIA", href: "/articulo-experiencia" },
+  { label: "PROYECTOS", href: "/articulo-proyectos" },
+  { label: "CURSOS", href: "/articulo-cursos" },
+  { label: "CONOCIMIENTOS", href: "/articulo-conocimientos" },
+];
+---
+
+<nav class="nav-menu">
+  <div class="nav-container">
+    <ul class="nav-list">
+      {
+        navItems.map((item) => (
+          <li class="nav-item">
+            <a href={item.href} class="nav-link">
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .nav-menu {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    border-bottom: 1px solid var(--border-medium);
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-item {
+    flex-shrink: 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 1rem 1.25rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.3px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: #eebd3d;
+    border-bottom-color: #eebd3d;
+    background: var(--bg-tertiary);
+  }
+
+  .nav-link:active,
+  .nav-link.active {
+    color: var(--accent-primary);
+    border-bottom-color: var(--accent-primary);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-container {
+      padding: 0 0.5rem;
+    }
+
+    .nav-link {
+      padding: 0.875rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-link {
+      padding: 0.75rem 0.75rem;
+      font-size: 0.75rem;
+    }
+  }
+</style>

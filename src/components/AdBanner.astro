@@ -1,0 +1,150 @@
+<div class="ad-banner">
+  <div class="ad-footer">
+    <span class="ad-label">Anuncio</span>
+  </div>
+  <h2>¿Tienes alguna duda?</h2>
+  <h3>¡No dudes en contactarme!</h3>
+  <!-- <img src="/path_to_ad_image.jpg" alt="Ad Tech Lead" /> -->
+  <p>
+    Tanto si necesitas una consulta rápida como una estrategia completa, estaré
+    encantado de ayudarte.
+  </p>
+  <ul>
+    <li>Optimización de campañas publicitarias.</li>
+    <li>Implementación de tecnologías AdTech</li>
+    <li>Asesoría sobre el uso de Google Ad Manager y otras plataformas.</li>
+  </ul>
+  <div class="contact-info">
+    <h4>Contacto</h4>
+    <p>📧 Email: lopezmolinaja@gmail.com</p>
+    <p>☎️ Teléfono: 687 873 208</p>
+    <button
+      class="btn"
+      onclick="window.location.href='mailto:lopezmolinaja@gmail.com';"
+    >
+      Contactar por Email
+    </button>
+    <button class="btn" onclick="window.location.href='tel:+34 687 873 208';">
+      Llamar por Teléfono
+    </button>
+  </div>
+</div>
+
+<style>
+  .ad-banner {
+    width: 300px;
+    height: 600px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+  }
+  h3 {
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  ul {
+    text-align: left;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+  li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .contact-info {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-top: auto;
+  }
+  .btn {
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  .btn:hover {
+    background-color: #ffed4a;
+  }
+  .ad-footer {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    text-align: right;
+  }
+  .ad-label {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .ad-banner {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      min-height: 400px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+
+    li {
+      font-size: 0.85rem;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ad-banner {
+      min-height: 350px;
+      padding: 0.75rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+    }
+  }
+</style>

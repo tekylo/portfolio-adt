@@ -1,0 +1,290 @@
+---
+const {
+  title = "¿Hablamos de tu proyecto?",
+  highlight = "Consultoría AdTech a medida",
+  perks = [
+    "Implementaciones de Google Ad Manager y Header Bidding",
+    "Optimización de revenue para medios premium",
+    "Integraciones programáticas y Tag Management",
+  ],
+  email = "lopezmolinaja@gmail.com",
+  phone = "+34 687 873 208",
+} = Astro.props;
+
+const sanitizedPhone = phone.replace(/\s+/g, "");
+---
+
+<div class="contact-skyscraper">
+  <div class="ad-label">ANUNCIO</div>
+
+  <div class="inner">
+    <div class="headline">
+      <h3>{title}</h3>
+    </div>
+
+    <p class="highlight">{highlight}</p>
+
+    <ul class="perks">
+      {
+        perks.map((perk) => (
+          <li>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span>{perk}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="contact-card">
+      <span class="label">Contacto directo</span>
+      <a class="contact-link" href={`mailto:${email}`}>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        {email}
+      </a>
+      <a class="contact-link" href={`tel:${sanitizedPhone}`}>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 11.1 19.1 19.8 19.8 0 0 1 2.07 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.7 12.7 0 0 0 .7 2.8 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.28a2 2 0 0 1 2.11-.45 12.7 12.7 0 0 0 2.8.7A2 2 0 0 1 22 16.92z"
+          ></path>
+        </svg>
+        {phone}
+      </a>
+    </div>
+
+    <a class="cta" href={`mailto:${email}`}>
+      Reservar una llamada
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<style>
+  .contact-skyscraper {
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+    min-height: 600px;
+    background: var(--ad-bg, #232946);
+    box-shadow: 0 4px 18px var(--ad-shadow, rgba(35, 41, 70, 0.18));
+    border: 1px solid var(--ad-border, #121629);
+    padding: 1.5rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    color: var(--text-primary);
+  }
+
+  .contact-skyscraper:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 48px rgba(225, 188, 38, 0.35);
+  }
+
+  .ad-label {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    height: 100%;
+  }
+
+  .headline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+  }
+
+  .upper {
+    font-size: 0.65rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    opacity: 0.85;
+    font-weight: 700;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.55rem;
+    line-height: 1.3;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #f3f4f6;
+  }
+
+  .highlight {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #f3f4f6;
+  }
+
+  .perks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .perks li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #f3f4f6;
+  }
+
+  .perks li svg {
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+    color: #eebd3d !important;
+  }
+
+  .contact-card {
+    background: rgba(255, 255, 255, 0.22);
+    padding: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(225, 188, 38, 0.3);
+  }
+
+  .label {
+    color: #e8eaed !important;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+    font-weight: 600;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #e8eaed !important;
+  }
+
+  .contact-link:hover {
+    color: var(--accent-secondary);
+  }
+
+  .contact-link svg {
+    color: #eebd3d;
+  }
+
+  .cta {
+    margin-top: auto;
+    align-self: stretch;
+    border-radius: 8px;
+    padding: 0.8rem 1.6rem;
+    background: #232946;
+    color: #eebd3d;
+    border: 2px solid #eebd3d;
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    box-shadow: 0 2px 8px rgba(35, 41, 70, 0.12);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0.8, 0.4, 1);
+  }
+
+  .cta svg {
+    color: #e8eaed;
+  }
+
+  .cta:hover {
+    background: #eebd3d;
+    color: #232946;
+    box-shadow: 0 4px 16px rgba(35, 41, 70, 0.18);
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 1100px) {
+    :root {
+      --ad-bg: #232946;
+      --ad-accent: #eebd3d;
+      --ad-text: #fff;
+      --ad-border: #121629;
+      --ad-radius: 8px;
+      --ad-shadow: 0 4px 18px rgba(35,41,70,0.18);
+      --ad-box: 0 2px 8px rgba(35,41,70,0.12);
+      --ad-box-hover: 0 4px 16px rgba(35,41,70,0.18);
+      --ad-bg-light: #f3f4f6;
+      --ad-border-light: #e5e7eb;
+      --ad-text-dark: #222;
+      --ad-text-muted: #444;
+    }
+
+    .contact-skyscraper {
+      width: 100%;
+      max-width: 300px;
+      box-sizing: border-box;
+      min-height: 600px;
+      background: var(--ad-bg);
+      border: 2px solid var(--ad-border);
+      border-radius: 0;
+      padding: 1.5rem;
+      box-shadow: var(--ad-shadow);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: var(--ad-text);
+    }

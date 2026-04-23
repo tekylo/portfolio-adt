@@ -1,0 +1,91 @@
+---
+// Componente de migas de pan
+export interface Props {
+  items: Array<{ label: string; href?: string }>;
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list">
+    {
+      items.map((item, index) => (
+        <li class="breadcrumb-item">
+          {item.href ? (
+            <a href={item.href} class="breadcrumb-link">
+              {item.label}
+            </a>
+          ) : (
+            <span class="breadcrumb-current">{item.label}</span>
+          )}
+          {index < items.length - 1 && (
+            <span class="breadcrumb-separator">›</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .breadcrumbs {
+    padding: 1.5rem 0 1rem 0;
+    border-bottom: 2px solid var(--accent-primary);
+    margin-bottom: 0;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .breadcrumb-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-weight: 500;
+  }
+
+  .breadcrumb-link:hover {
+    color: var(--accent-primary);
+    text-decoration: underline;
+  }
+
+  .breadcrumb-current {
+    color: var(--accent-primary);
+    font-weight: 600;
+  }
+
+  .breadcrumb-separator {
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 768px) {
+    .breadcrumbs {
+      padding: 1rem 0 0.75rem 0;
+    }
+
+    .breadcrumb-item {
+      font-size: 0.85rem;
+    }
+
+    .breadcrumb-separator {
+      font-size: 1.1rem;
+    }
+  }
+</style>

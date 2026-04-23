@@ -1,0 +1,158 @@
+José Antonio
+López Molina
+ADTECH EN WEMASS
+CONTACTO
+lopezmolinaja@gmail.com
++34687873208
+Madrid, España
+MIS ENLACES
+tekylo
+tekylo
+jos%C3%A9-antoniol%C3%B3pez-molina-9881a8aa
+jose-antonio
+gitlab.com/TeKyLo
+mnf.red/e7845acf-750d-4b5ca6c1-aeda0eec44d1
+Idiomas
+Inglés
+INTERMEDIO
+Español
+NATIVO/BILINGÜE
+Presentación
+Desde pequeño me apasionaba el mundo de la informática, y ahora tengo la suerte de dedicarme a lo
+que disfruto: el apasionante universo de la publicidad digital. Como responsable del E2E de los
+proyectos publicitarios de mi grupo, gestiono desde el desarrollo de formatos innovadores hasta
+integraciones programáticas y soluciones ad-hoc. Mi trabajo combina la coordinación con equipos de
+operaciones, ventas y diseño, con el objetivo de crear sinergias y optimizar procesos para obtener
+resultados fluidos y efectivos. 💻📊
+Mis habilidades
+Capacidad de autogestión
+Aprendizaje Continuo
+Liderazgo
+Mis buenas prácticas
+Siempre en busca de nuevas tecnologías y herramientas para mantenerme a la vanguardia. En mi tiempo
+libre disfruto desarrollando páginas web a medida e integrando soluciones publicitarias, aplicando
+buenas prácticas como estándares de código, TDD y técnicas de WPO para garantizar rendimiento y
+calidad. En mi día a día profesional, lidero proyectos aplicando metodologías ágiles (Scrum y Kanban), lo
+que me permite organizar el trabajo de forma eficiente, fomentar la colaboración entre equipos y
+garantizar la entrega continua de soluciones innovadoras en el ámbito de la publicidad digital.
+Tecnologías y herramientas
+CONTROLO DE
+AngularJS / AWS / AWS Lambda / Bitbucket / C++ / Confluence / CSS / Docker / Flask / Git /
+Gitflow / Github / GitHub Actions / GitLab / Google AdManager / HTML / Java / JavaScript /
+Jenkins / Jira / jQuery / Linux / Monday / MongoDB / MySQL / NodeJS / Notion / PHP /
+PostgreSQL / Postman / Python / R / React / SQL / TypeScript / Unity3D / WordPress
+10/31/25, 7:02 PM José Antonio López Molina · CV
+https://www.getmanfred.com/profile-preview/pdf?print=true&includeMailContactInfo=true&includePhoneContactInfo=true 1/5
+Wemass
+may 2025 — HOY (6 meses)
+Responsable del E2E de los proyectos publicitarios del grupo, desde desarrollo de formatos, como integraciones programáticas, cookieless,
+entre otros. Interlocución y coordinación con los equipos de operaciones, ventas y diseño con el objetivo de crear sinergias y llegar a soluciones
+que permitan el trabajo más fluido entre ellas. Depuración de Deals y otros tipos de compraventa programática. Integración, despliegue y/o
+solución de situaciones complejas en el entorno de publicidad digital: Plantillas publicitarias multi site; Integraciones de header bidding (en
+cliente o server side); Implementaciones de openRTB; Migración de adservers, entre otros. Desarrollar soluciones ad-hoc para necesidades
+específicas, así como evolutivos y mejoras en los proyectos ya implementados.
+TECNOLOGÍAS Y HERRAMIENTAS
+PHP / Go / JavaScript / NodeJS / TypeScript / Kibana / S3 / Google AdManager
+Arkeero
+jul 2023 — HOY (2 años y 4 meses)
+Responsable del E2E de los proyectos publicitarios del grupo, desde desarrollo de formatos, como integraciones programáticas, cookieless,
+entre otros. Interlocución y coordinación con los equipos de operaciones, ventas y diseño con el objetivo de crear sinergias y llegar a soluciones
+que permitan el trabajo más fluido entre ellas. Depuración de Deals y otros tipos de compraventa programática. Integración, despliegue y/o
+solución de situaciones complejas en el entorno de publicidad digital: Plantillas publicitarias multi site; Integraciones de header bidding (en
+cliente o server side); Implementaciones de openRTB; Migración de adservers, entre otros. Desarrollar soluciones ad-hoc para necesidades
+específicas, así como evolutivos y mejoras en los proyectos ya implementados.
+TECNOLOGÍAS Y HERRAMIENTAS
+JavaScript / NodeJS / React / MongoDB / TypeScript / Google AdManager
+Vocento
+abr 2022 — jul 2023 (1 año y 4 meses)
+Experto en las arquitecturas y lenguajes de programación. Coach y guía para el equipo de desarrollo. Soporte a Team/Project Leader y Delivery
+Manager en los trabajos de refinado y entendimiento funcional. Lidera los trabajos de análisis técnico. Propone mejoras al software y procesos
+de desarrollo. Promociona la calidad y seguridad del código generado. Asegura que el equipo genere documentación de calidad sobre las
+soluciones software que desarrolla.
+TECNOLOGÍAS Y HERRAMIENTAS
+Symfony / JavaScript / NodeJS / React / MySQL / MongoDB / Google AdManager
+EXPERIENCIA/CARRERA
+AdTech
+AdTech Lead
+Arquitecto de Soluciones de Publicidad
+10/31/25, 7:02 PM José Antonio López Molina · CV
+https://www.getmanfred.com/profile-preview/pdf?print=true&includeMailContactInfo=true&includePhoneContactInfo=true 2/5
+Meytel
+abr 2018 — abr 2022 (4 años y 1 mes)
+Senior Developer Team Leader de publicidad del grupo Vocento. Back-end Framework Symfony 2.7 – 3.4. Front-end React Librería de
+publicidad en JS - ES6. Desarrollo PHP 7.2, HTML, JavaScript, ES6, JQuery, MySQL, mongoDB. Desarrollo aplicaciones y plugins web en
+WordPress. Maquetación en CSS, amp. Control de versiones Bitbucket, GIT, SVN. Metodología SCRUM, Git Flow, Jenkis, Clean Code, Testing.
+Resolución de incidencias JIRAS.
+TECNOLOGÍAS Y HERRAMIENTAS
+Symfony / JavaScript / MySQL / MongoDB / WordPress / Google AdManager
+Pulsar Technologies, S.A.
+nov 2017 — abr 2018 (6 meses)
+Desarrollo aplicación web con framework propio para NetApp. Desarrollo PHP 5.6, HTML, JavaScript, Angular 5, MySQL. Desarrollo Base de
+Datos. Resolución de incidencias en inglés con Redmine
+TECNOLOGÍAS Y HERRAMIENTAS
+Symfony / MySQL
+Quantion Tecnologías de Telecomunicación
+jul 2016 — ene 2017 (7 meses)
+Desarrollo AngularJS Desarrollo de ATM para los hospitales Sanitas La Moraleja y Sanitas La zarzuela de Madrid. Desarrollo de sistema
+multimedia en Hotel Ciudad de Úbeda y Hotel Anibal de Linares. Desarrollo de software para interconexión con equipos. Desarrollo API REST
+Desarrollo Base de Datos
+TECNOLOGÍAS Y HERRAMIENTAS
+AngularJS
+ILOCAD - Baltasar Garzón Abogados
+jul 2015 — ago 2015 (2 meses)
+Actualización de la página web en Joomla Actualización y mantenimiento de los equipos informáticos Mantenimiento de servidor
+Mantenimiento de seguridad informática
+TECNOLOGÍAS Y HERRAMIENTAS
+WordPress
+Full Stack Developer
+Full-stack Developer
+Desarrollador de software
+Técnico Informático
+10/31/25, 7:02 PM José Antonio López Molina · CV
+https://www.getmanfred.com/profile-preview/pdf?print=true&includeMailContactInfo=true&includePhoneContactInfo=true 3/5
+FIBGAR
+ago 2014
+Desarrollo de páginas webs en Wordpress Actualización de la página web de la Fundación Actualización y mantenimiento de los equipos
+informáticos Mantenimiento del servidor y cuentas corporativas Soporte en un proyecto de videojuego para app móvil (IPhone y Android)
+TECNOLOGÍAS Y HERRAMIENTAS
+WordPress
+Grados
+Universidad de Jaén
+ene 2012 — ene 2017 (5 años y 1 mes)
+Certificados
+Curso React + Redux
+Emitido por: Fictizia
+ago 2019 — oct 2019 (3 meses)
+Curso Magento 2
+Emitido por: TrainingIT
+sept 2019 — oct 2019 (2 meses)
+Certificación New Relic Certified Performance Pro
+Emitido por: New Relic University
+sept 2019 — sept 2019
+Curso Mongo DB + Node.js
+Emitido por: TrainingIT
+jul 2019 — jul 2019
+Técnico Informático
+EDUCACIÓN/GRADOS
+Grado Ingeniería informática
+10/31/25, 7:02 PM José Antonio López Molina · CV
+https://www.getmanfred.com/profile-preview/pdf?print=true&includeMailContactInfo=true&includePhoneContactInfo=true 4/5
+Git + GitHub
+Emitido por: Udemy
+nov 2018 — nov 2018
+2 más certificados en mi perfil online
+Carta recomendación Ilocad
+Carta recomendación Fibgar
+Header Bidding: Subastas en la sombra
+PERO, ESPERA...
+HAY INCLUSO MÁS EN MI PERFIL.
+Esto es una versión corta de mi perfil, pero hay disponible una más larga en la que puedes ver datos más interesantes y
+relevantes.
+Haz click aquí o escanea el código QR
+DESTACADOS/RECOMPENSAS
+ago 2015
+ago 2014
+DESTACADOS/PUBLICACIONES
+feb 2021
+10/31/25, 7:02 PM José Antonio López Molina · CV
+https://www.getmanfred.com/profile-preview/pdf?print=true&includeMailContactInfo=true&includePhoneContactInfo=true 5/5

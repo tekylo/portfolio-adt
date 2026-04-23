@@ -1,0 +1,141 @@
+---
+// Componente tipo artículo de periódico
+export interface Props {
+  title: string;
+  subtitle?: string;
+  author?: string;
+  date?: string;
+  category?: string;
+}
+
+const {
+  title,
+  subtitle = "",
+  author = "Redacción",
+  date = "Octubre 2025",
+  category = "TECNOLOGÍA",
+} = Astro.props;
+---
+
+<article class="newspaper-article">
+  <div class="article-header">
+    <span class="category">{category}</span>
+    <div class="date-author">
+      <span class="date">{date}</span>
+      {author && <span class="author">Por {author}</span>}
+    </div>
+  </div>
+
+  <h2 class="article-title">{title}</h2>
+  {subtitle && <h3 class="article-subtitle">{subtitle}</h3>}
+
+  <div class="article-content">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .newspaper-article {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid #e1bc26;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .category {
+    background-color: #e1bc26;
+    color: #1a1a1a;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: system-ui, sans-serif;
+  }
+
+  .date-author {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: system-ui, sans-serif;
+  }
+
+  .article-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 1rem 0 0.5rem 0;
+    color: #ffffff;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .article-subtitle {
+    font-size: 1.3rem;
+    font-weight: normal;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.4;
+  }
+
+  .article-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    columns: 2;
+    column-gap: 2rem;
+    text-align: justify;
+  }
+
+  .article-content :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  .article-content :global(p:first-letter) {
+    font-size: 3.5rem;
+    font-weight: bold;
+    float: left;
+    line-height: 3rem;
+    padding-right: 0.5rem;
+    color: #e1bc26;
+  }
+
+  .article-content :global(strong) {
+    color: #e1bc26;
+    font-weight: bold;
+  }
+
+  .article-content :global(em) {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 768px) {
+    .newspaper-article {
+      padding: 1.5rem;
+    }
+
+    .article-title {
+      font-size: 1.8rem;
+    }
+
+    .article-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .article-content {
+      columns: 1;
+      font-size: 1rem;
+    }
+  }
+</style>

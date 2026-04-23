@@ -1,0 +1,129 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+// Cabecera estilo periódico
+---
+
+<header class="newspaper-header">
+  <div class="newspaper-banner">
+    <div class="banner-top">
+      <span class="date">
+        {
+          new Date().toLocaleDateString("es-ES", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }
+      </span>
+      <ThemeToggle />
+    </div>
+    <a href="/" class="title-link">
+      <h1 class="newspaper-title">EL DIARIO ADTECH</h1>
+    </a>
+    <p class="newspaper-slogan">
+      Innovación Publicitaria · Tecnología Digital · Soluciones Programáticas
+    </p>
+    <div class="divider"></div>
+  </div>
+</header>
+
+<style>
+  .newspaper-header {
+    max-width: 1200px;
+    border-bottom: 3px double var(--accent-primary);
+    width: 100%;
+  }
+
+  .newspaper-banner {
+    text-align: center;
+  }
+
+  .banner-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    font-family: system-ui, sans-serif;
+  }
+
+  .date {
+    color: var(--text-secondary);
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+  }
+
+  .title-link {
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .title-link:hover {
+    transform: scale(1.02);
+  }
+
+  .newspaper-title {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 1rem 0 0.5rem 0;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: color 0.2s ease;
+  }
+
+  .title-link:hover .newspaper-title {
+    color: var(--accent-primary);
+  }
+
+  .newspaper-slogan {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    letter-spacing: 0.5px;
+  }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--accent-primary),
+      transparent
+    );
+    margin: 1rem auto;
+    max-width: 600px;
+  }
+
+  @media (max-width: 768px) {
+    .newspaper-header {
+      padding: 0.75rem 1rem;
+    }
+
+    .banner-top {
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.7rem;
+      gap: 0.6rem;
+    }
+
+    .newspaper-title {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .newspaper-slogan {
+      font-size: 0.85rem;
+    }
+  }
+</style>

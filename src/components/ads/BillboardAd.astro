@@ -1,0 +1,326 @@
+---
+// Formato IAB Billboard: 970x250
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  features?: string[];
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const {
+  title = "José Antonio López Molina",
+  subtitle = "AdTech Expert",
+  features = [
+    "8+ años en publicidad digital",
+    "Experiencia profesional con Xandr, Google Ad Manager y Equativ",
+    "Header Bidding y Programática avanzada",
+    "Wemass, Vocento, Arkeero, Axel Springer, Emprendedores",
+  ],
+  ctaText = "Descargar mi CV",
+  ctaLink = "/José Antonio López Molina · CV.pdf",
+} = Astro.props;
+---
+
+<div class="billboard-ad">
+  <div class="ad-label">ANUNCIO</div>
+  <div class="billboard-content">
+    <div class="text-section">
+      <div class="title-section">
+        <h2>{title}</h2>
+        <p class="subtitle">{subtitle}</p>
+      </div>
+      <div class="features-grid">
+        {
+          features.map((feature, idx) => (
+            <div
+              class="feature-item"
+              style={`animation-delay: ${0.2 + idx * 0.15}s`}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              <span>{feature}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="cta-section">
+      <a href={ctaLink} class="cta-button" download>
+        {ctaText}
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <polyline points="5 12 12 19 19 12"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  :root {
+    --ad-bg: #232946;
+    --ad-accent: #eebd3d;
+    --ad-text: #fff;
+    --ad-border: #121629;
+    --ad-radius: 8px;
+    --ad-shadow: 0 4px 18px rgba(35, 41, 70, 0.18);
+    --ad-box: 0 2px 8px rgba(35, 41, 70, 0.12);
+    --ad-box-hover: 0 4px 16px rgba(35, 41, 70, 0.18);
+    --ad-bg-light: #f3f4f6;
+    --ad-border-light: #e5e7eb;
+    --ad-text-dark: #222;
+    --ad-text-muted: #444;
+  }
+
+  .billboard-ad {
+    width: 970px;
+    height: 250px;
+    background: var(--ad-bg);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--ad-shadow);
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ad-border);
+  }
+
+  .ad-label {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.45);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+  }
+  :root {
+    --ad-bg: #232946;
+    --ad-border: #121629;
+    --ad-shadow: rgba(35, 41, 70, 0.18);
+    --ad-label-bg: #232946;
+    --ad-label-text: #eebd3d;
+    --ad-label-border: #eebd3d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ad-bg: #121629;
+      --ad-border: #232946;
+      --ad-shadow: rgba(35, 41, 70, 0.32);
+      --ad-label-bg: #232946;
+      --ad-label-text: #eebd3d;
+      --ad-label-border: #eebd3d;
+    }
+  }
+
+  .billboard-content {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    padding: 2rem 2.5rem;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+  }
+  /* Líneas irregulares decorativas */
+  .billboard-content::before,
+  .billboard-content::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 2px;
+    background: #d1d5db;
+    opacity: 0.7;
+    z-index: 1;
+  }
+  .billboard-content::before {
+    top: 40px;
+    left: 60px;
+    transform: rotate(-8deg);
+  }
+  .billboard-content::after {
+    bottom: 40px;
+    right: 60px;
+    transform: rotate(12deg);
+  }
+
+  .text-section {
+    flex: 1;
+  }
+
+  .title-section {
+    margin-bottom: 1.2rem;
+    text-align: left;
+    background: transparent;
+    padding: 0.7rem 1.2rem;
+    border-radius: var(--ad-radius);
+    box-shadow: none;
+    color: var(--ad-bg-light);
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.4rem 0;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.3px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ad-text-dark);
+    font-size: 0.97rem;
+    font-weight: 500;
+    background: var(--ad-bg-light);
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--ad-border-light);
+    box-shadow: none;
+    border-radius: 0;
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: featureIn 1.2s cubic-bezier(0.4, 0.8, 0.4, 1) forwards;
+  }
+
+  @keyframes featureIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    60% {
+      opacity: 0.7;
+      transform: translateX(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .feature-item svg {
+    color: var(--ad-accent);
+    flex-shrink: 0;
+  }
+
+  .cta-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+
+  .cta-button {
+    background: var(--ad-bg);
+    color: var(--ad-accent);
+    border: 2px solid var(--ad-accent);
+    border-radius: var(--ad-radius);
+    padding: 0.8rem 1.6rem;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: var(--ad-box);
+    transition: all 0.3s cubic-bezier(0.4, 0.8, 0.4, 1);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+
+  .cta-button:hover {
+    background: var(--ad-accent);
+    color: var(--ad-bg);
+    box-shadow: var(--ad-box-hover);
+    transform: scale(1.05);
+  }
+
+  .cta-button svg {
+    transition: transform 0.3s ease;
+    color: #e8eaed !important;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.2s cubic-bezier(0.4, 0.8, 0.4, 1);
+    border-bottom: 2px solid #e8eaed;
+    padding-bottom: 2px;
+    border-radius: 2px;
+    font-size: 1.01rem;
+    letter-spacing: 0.2px;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+  }
+  .cta-button:hover svg {
+    transform: translateY(2px);
+    color: #fffbe6;
+    border-bottom: 2px solid #fffbe6;
+  }
+
+  @media (max-width: 1024px) {
+    .billboard-ad {
+      width: 100%;
+      min-height: 250px;
+      height: auto;
+      border-radius: 0;
+      border-width: 1px;
+    }
+    .billboard-content {
+      flex-direction: column;
+      padding: 1.2rem;
+      gap: 1rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+    }
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    .cta-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

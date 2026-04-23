@@ -1,0 +1,25 @@
+---
+const technologies = ['React', 'Node.js', 'PHP', 'JavaScript', 'HTML'];
+---
+
+<div class="tech-stack">
+	{technologies.map(tech => (
+		<div class="tech-item">{tech}</div>
+	))}
+</div>
+
+<style>
+	.tech-stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+	}
+	.tech-item {
+		background-color: rgba(255, 255, 255, 0.2);
+		color: white;
+		padding: 0.2rem 0.5rem;
+		border-radius: 1rem;
+		font-size: 0.8rem;
+	}
+</style>

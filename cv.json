@@ -1,0 +1,1149 @@
+{
+  "$schema": "https://raw.githubusercontent.com/getmanfred/mac/v0.5/schema/schema.json",
+  "settings": {
+    "language": "ES",
+    "MACVersion": "0.5"
+  },
+  "aboutMe": {
+    "profile": {
+      "name": "José Antonio",
+      "surnames": "López Molina",
+      "title": "AdTech en Wemass",
+      "description": "Desde pequeño me apasionaba el mundo de la informática, y ahora tengo la suerte de dedicarme a lo que disfruto: el apasionante universo de la publicidad digital. Como responsable del E2E de los proyectos publicitarios de mi grupo, gestiono desde el desarrollo de formatos innovadores hasta integraciones programáticas y soluciones ad-hoc. Mi trabajo combina la coordinación con equipos de operaciones, ventas y diseño, con el objetivo de crear sinergias y optimizar procesos para obtener resultados fluidos y efectivos. 💻📊",
+      "avatar": {
+        "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/06/02/9709838b-a2bd-41fa-a876-a2f9b10442b7_screenshot-from-2025.png",
+        "alt": "Screenshot from 2025-06-02 09-06-35.png"
+      },
+      "location": {
+        "notes": "Autocompleted using Google Maps API (id: ChIJgTwKgJcpQg0RaSKMYcHeNsQ)",
+        "country": "España",
+        "region": "Comunidad de Madrid",
+        "municipality": "Madrid"
+      }
+    },
+    "relevantLinks": [
+      {
+        "type": "linkedin",
+        "URL": "https://www.linkedin.com/in/jos%C3%A9-antonio-l%C3%B3pez-molina-9881a8aa"
+      },
+      {
+        "type": "github",
+        "URL": "https://github.com/tekylo"
+      },
+      {
+        "type": "twitter",
+        "URL": "https://twitter.com/tekylo"
+      },
+      {
+        "type": "stackoverflow",
+        "URL": "https://stackoverflow.com/users/7821148/jose-antonio"
+      },
+      {
+        "type": "other",
+        "URL": "https://gitlab.com/TeKyLo",
+        "description": "gitlab"
+      }
+    ]
+  },
+  "experience": {
+    "jobs": [
+      {
+        "organization": {
+          "name": "Wemass",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/06/02/ee2aaea8-3635-47e0-9da9-326bc37a0157_wfondosclaros.png",
+            "alt": "W+fondosclaros.png"
+          },
+          "URL": "https://wemass.com/"
+        },
+        "roles": [
+          {
+            "name": "AdTech",
+            "startDate": "2025-05-01",
+            "challenges": [
+              {
+                "description": "Responsable del E2E de los proyectos publicitarios del grupo, desde desarrollo de formatos, como integraciones programáticas, cookieless, entre otros.  Interlocución y coordinación con los equipos de operaciones, ventas y diseño con el objetivo de crear sinergias y llegar a soluciones que permitan el trabajo más fluido entre ellas. Depuración de Deals y otros tipos de compraventa programática.  Integración, despliegue y/o solución de situaciones complejas en el entorno de publicidad digital: Plantillas publicitarias multi site; Integraciones de header bidding (en cliente o server side); Implementaciones de openRTB; Migración de adservers, entre otros. Desarrollar soluciones ad-hoc para necesidades específicas, así como evolutivos y mejoras en los proyectos ya implementados."
+              }
+            ],
+            "competences": [
+              {
+                "name": "Go",
+                "type": "technology"
+              },
+              {
+                "name": "Google AdManager",
+                "type": "technology"
+              },
+              {
+                "name": "JavaScript",
+                "type": "technology"
+              },
+              {
+                "name": "Kibana",
+                "type": "technology"
+              },
+              {
+                "name": "NodeJS",
+                "type": "technology"
+              },
+              {
+                "name": "PHP",
+                "type": "technology"
+              },
+              {
+                "name": "S3",
+                "type": "technology"
+              },
+              {
+                "name": "TypeScript",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "Arkeero",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/2c680c62-dba7-45d1-aecb-1710cafb2ba1_download.jpeg",
+            "alt": "download.jpeg"
+          },
+          "URL": "https://arkeero.com/"
+        },
+        "roles": [
+          {
+            "name": "AdTech Lead",
+            "startDate": "2023-07-01",
+            "challenges": [
+              {
+                "description": "Responsable del E2E de los proyectos publicitarios del grupo, desde desarrollo de formatos, como integraciones programáticas, cookieless, entre otros.  Interlocución y coordinación con los equipos de operaciones, ventas y diseño con el objetivo de crear sinergias y llegar a soluciones que permitan el trabajo más fluido entre ellas. Depuración de Deals y otros tipos de compraventa programática.  Integración, despliegue y/o solución de situaciones complejas en el entorno de publicidad digital: Plantillas publicitarias multi site; Integraciones de header bidding (en cliente o server side); Implementaciones de openRTB; Migración de adservers, entre otros. Desarrollar soluciones ad-hoc para necesidades específicas, así como evolutivos y mejoras en los proyectos ya implementados."
+              }
+            ],
+            "competences": [
+              {
+                "name": "Google AdManager",
+                "type": "technology"
+              },
+              {
+                "name": "JavaScript",
+                "type": "technology"
+              },
+              {
+                "name": "MongoDB",
+                "type": "technology"
+              },
+              {
+                "name": "NodeJS",
+                "type": "technology"
+              },
+              {
+                "name": "React",
+                "type": "technology"
+              },
+              {
+                "name": "TypeScript",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "Vocento",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/8e0a5200-bc6f-4c21-ae7f-f8332c8e5e0c_download-(4).png",
+            "alt": "download (4).png"
+          },
+          "URL": "https://www.vocento.com/"
+        },
+        "roles": [
+          {
+            "name": "Arquitecto de Soluciones de Publicidad",
+            "startDate": "2022-04-01",
+            "finishDate": "2023-07-01",
+            "challenges": [
+              {
+                "description": "Experto en las arquitecturas y lenguajes de programación. Coach y guía para el equipo de desarrollo. Soporte a Team/Project Leader y Delivery Manager en los trabajos de refinado y entendimiento funcional. Lidera los trabajos de análisis técnico. Propone mejoras al software y procesos de desarrollo. Promociona la calidad y seguridad del código generado. Asegura que el equipo genere documentación de calidad sobre las soluciones software que desarrolla."
+              }
+            ],
+            "competences": [
+              {
+                "name": "Google AdManager",
+                "type": "technology"
+              },
+              {
+                "name": "JavaScript",
+                "type": "technology"
+              },
+              {
+                "name": "MongoDB",
+                "type": "technology"
+              },
+              {
+                "name": "MySQL",
+                "type": "technology"
+              },
+              {
+                "name": "NodeJS",
+                "type": "technology"
+              },
+              {
+                "name": "React",
+                "type": "technology"
+              },
+              {
+                "name": "Symfony",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "Meytel",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/734061a5-a373-4c79-ab81-42f958fe326f_meytel.png",
+            "alt": "Meytel.3591a24f.png"
+          },
+          "URL": "https://www.meytel.net/"
+        },
+        "roles": [
+          {
+            "name": "Full Stack Developer",
+            "startDate": "2018-04-01",
+            "finishDate": "2022-04-01",
+            "challenges": [
+              {
+                "description": "Senior Developer Team Leader de publicidad del grupo Vocento.  Back-end Framework Symfony 2.7 – 3.4. Front-end React Librería de publicidad en JS - ES6. Desarrollo PHP 7.2, HTML, JavaScript, ES6, JQuery, MySQL, mongoDB. Desarrollo aplicaciones y plugins web en WordPress. Maquetación en CSS, amp. Control de versiones Bitbucket, GIT, SVN. Metodología SCRUM, Git Flow, Jenkis, Clean Code, Testing. Resolución de incidencias JIRAS."
+              }
+            ],
+            "competences": [
+              {
+                "name": "Google AdManager",
+                "type": "technology"
+              },
+              {
+                "name": "JavaScript",
+                "type": "technology"
+              },
+              {
+                "name": "MongoDB",
+                "type": "technology"
+              },
+              {
+                "name": "MySQL",
+                "type": "technology"
+              },
+              {
+                "name": "Symfony",
+                "type": "technology"
+              },
+              {
+                "name": "WordPress",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "Pulsar Technologies, S.A.",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/5911571b-d6af-4bd8-9f62-adb79c0e77c7_pulsar.png",
+            "alt": "pulsar.4cd1c435.png"
+          },
+          "URL": "https://pulsartec.es/en/specialists-in-technology-solutions/"
+        },
+        "roles": [
+          {
+            "name": "Full-stack Developer",
+            "startDate": "2017-11-01",
+            "finishDate": "2018-04-01",
+            "challenges": [
+              {
+                "description": "Desarrollo aplicación web con framework propio para NetApp. Desarrollo PHP 5.6, HTML, JavaScript, Angular 5, MySQL. Desarrollo Base de Datos. Resolución de incidencias en inglés con Redmine"
+              }
+            ],
+            "competences": [
+              {
+                "name": "MySQL",
+                "type": "technology"
+              },
+              {
+                "name": "Symfony",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "Quantion Tecnologías de Telecomunicación",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/43b03116-3617-40bd-9e3e-3bad5d187c89_download-(5).png",
+            "alt": "download (5).png"
+          },
+          "URL": "https://www.quantion.es/"
+        },
+        "roles": [
+          {
+            "name": "Desarrollador de software",
+            "startDate": "2016-07-01",
+            "finishDate": "2017-01-01",
+            "challenges": [
+              {
+                "description": "Desarrollo AngularJS Desarrollo de ATM para los hospitales Sanitas La Moraleja y Sanitas La zarzuela de Madrid. Desarrollo de sistema multimedia en Hotel Ciudad de Úbeda y Hotel Anibal de Linares. Desarrollo de software para interconexión con equipos. Desarrollo API REST Desarrollo Base de Datos"
+              }
+            ],
+            "competences": [
+              {
+                "name": "AngularJS",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "ILOCAD - Baltasar Garzón Abogados",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/5e146d33-ee61-4777-aff5-8b011b263c57_ilocad.png",
+            "alt": "ilocad.90c0d8b7.png"
+          },
+          "URL": "https://www.ilocad.info/"
+        },
+        "roles": [
+          {
+            "name": "Técnico Informático",
+            "startDate": "2015-07-01",
+            "finishDate": "2015-08-01",
+            "challenges": [
+              {
+                "description": "Actualización de la página web en Joomla Actualización y mantenimiento de los equipos informáticos Mantenimiento de servidor Mantenimiento de seguridad informática"
+              }
+            ],
+            "competences": [
+              {
+                "name": "WordPress",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "FIBGAR",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/6084926b-aafb-4e55-ab63-0ba2c0f809c3_fibgar.png",
+            "alt": "fibgar.fcbe1d6b.png"
+          },
+          "URL": "https://fibgar.es/"
+        },
+        "roles": [
+          {
+            "name": "Técnico Informático",
+            "startDate": "2014-08-01",
+            "finishDate": "2014-08-01",
+            "challenges": [
+              {
+                "description": "Desarrollo de páginas webs en Wordpress Actualización de la página web de la Fundación Actualización y mantenimiento de los equipos informáticos Mantenimiento del servidor y cuentas corporativas Soporte en un proyecto de videojuego para app móvil (IPhone y Android)"
+              }
+            ],
+            "competences": [
+              {
+                "name": "WordPress",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "details": {
+          "name": "Integrar publicidad AxelSpringer",
+          "description": "Creación de librería de publicidad para el grupo AxelSpringer",
+          "URL": "https://www.axelspringer.com/en/",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/9546f246-abea-4e57-80b3-3c8f613898db_download-(3).png",
+            "alt": "download (3).png"
+          }
+        },
+        "type": "sideProject",
+        "roles": [
+          {
+            "name": "Developer",
+            "startDate": "2021-08-01",
+            "competences": [
+              {
+                "name": "Google AdManager",
+                "type": "technology"
+              },
+              {
+                "name": "JavaScript",
+                "type": "technology"
+              }
+            ],
+            "finishDate": "2021-11-01"
+          }
+        ]
+      },
+      {
+        "details": {
+          "name": "Web Colegio Pablo VI",
+          "description": "Desarrollador de la página web oficial del Colegio Pablo VI, un proyecto diseñado a medida para reflejar los valores educativos y brindar una experiencia intuitiva tanto para estudiantes como para padres. Implementé un diseño responsivo, optimización para motores de búsqueda (SEO) y funcionalidades específicas para gestionar contenido dinámico. Un ejemplo de cómo combinar tecnología y creatividad para satisfacer las necesidades de la comunidad educativa.",
+          "URL": "https://www.pablovi.es/",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/c9fa7318-c1af-47bf-972a-0045ac895f54_download.png",
+            "alt": "download.png"
+          }
+        },
+        "type": "sideProject",
+        "roles": [
+          {
+            "name": "Developer",
+            "startDate": "2020-01-01",
+            "competences": [
+              {
+                "name": "CSS",
+                "type": "technology"
+              },
+              {
+                "name": "HTML",
+                "type": "technology"
+              },
+              {
+                "name": "JavaScript",
+                "type": "technology"
+              }
+            ],
+            "finishDate": "2020-06-01"
+          }
+        ]
+      },
+      {
+        "details": {
+          "name": "Web Clínica Henares",
+          "description": "Desarrollador de la página web de Clínica Henares, un proyecto enfocado en ofrecer a los pacientes una experiencia sencilla y profesional. Implementé un diseño moderno y responsivo, optimización SEO y funcionalidades específicas como la solicitud de citas online. Un trabajo centrado en facilitar la comunicación y reflejar los altos estándares de calidad de la clínica.",
+          "URL": "https://clinicahenares.com/",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/67a2a12c-4791-4aa4-91f5-a05fec31044b_logo-clinica-henares.png",
+            "alt": "logo-clinica-henares-150-122.png"
+          }
+        },
+        "type": "sideProject",
+        "roles": [
+          {
+            "name": "Developer",
+            "startDate": "2019-01-01",
+            "competences": [
+              {
+                "name": "WordPress",
+                "type": "technology"
+              }
+            ],
+            "finishDate": "2019-04-01"
+          }
+        ]
+      },
+      {
+        "details": {
+          "name": "Web TopComparativas",
+          "description": "Desarrollador de la web TopComparativas, una plataforma diseñada para ofrecer análisis y comparativas de productos y servicios. Implementé un diseño moderno y responsive, optimización SEO avanzada y funcionalidades dinámicas para filtrar y clasificar información. El proyecto priorizó la experiencia del usuario, asegurando navegación intuitiva y contenidos atractivos para maximizar la interacción y satisfacción del público.",
+          "URL": "https://www.topcomparativas.com/",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/30bbde12-4e81-49d5-8098-5c3c2e3f3996_top-comparativas.svg",
+            "alt": "top comparativas.svg"
+          }
+        },
+        "type": "sideProject",
+        "roles": [
+          {
+            "name": "Developer",
+            "startDate": "2018-01-01",
+            "competences": [
+              {
+                "name": "WordPress",
+                "type": "technology"
+              }
+            ],
+            "finishDate": "2018-11-01"
+          }
+        ]
+      },
+      {
+        "details": {
+          "name": "Web Centros Médicos",
+          "description": "Desarrollador de la página web de Centros Médicos, un proyecto diseñado para centralizar y simplificar la información y servicios médicos ofrecidos. Implementé un diseño intuitivo y responsive, optimización para motores de búsqueda (SEO) y herramientas interactivas como solicitud de citas y localización de centros. Un enfoque en la accesibilidad y la experiencia del usuario para facilitar el acceso a la atención médica.",
+          "URL": "https://mdhcentros.es/",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/c211b0e7-66a0-4ddb-93f2-23dca0afc9e3_cropped-cropped-crop.png",
+            "alt": "cropped-cropped-cropped-cropped-logo-mdh-centros-medicos-1-1.png"
+          }
+        },
+        "type": "sideProject",
+        "roles": [
+          {
+            "name": "Developer",
+            "startDate": "2018-01-01",
+            "competences": [
+              {
+                "name": "WordPress",
+                "type": "technology"
+              }
+            ],
+            "finishDate": "2018-04-01"
+          }
+        ]
+      },
+      {
+        "details": {
+          "name": "Web Néfele",
+          "description": "El proyecto Néfele consiste en la creación de una plataforma web para la Universidad de Jaén, en la cual se hará un estudio de las predicciones meteorológicas en la provincia de Jaén, mediante algoritmos de regresión.",
+          "URL": "https://simidat-apps.ujaen.es/nefele/#/Nefele",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/8250b71e-9b44-4405-8b9b-8f8c41bd21e2_logo.png",
+            "alt": "logo.png"
+          }
+        },
+        "type": "openSource",
+        "roles": [
+          {
+            "name": "Developer",
+            "startDate": "2017-01-01",
+            "competences": [
+              {
+                "name": "AngularJS",
+                "type": "technology"
+              },
+              {
+                "name": "Python",
+                "type": "technology"
+              },
+              {
+                "name": "R",
+                "type": "technology"
+              }
+            ],
+            "finishDate": "2017-07-01"
+          }
+        ]
+      }
+    ],
+    "publicArtifacts": [
+      {
+        "details": {
+          "name": "Cambio AdServer en Vocento",
+          "URL": "https://www.vocento.com/",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/52d828a1-6d03-4335-9661-abcc7bd10c88_download-(4).png",
+            "alt": "download (4).png"
+          }
+        },
+        "type": "achievement",
+        "publishingDate": "2022-01-01",
+        "relatedCompetences": [
+          {
+            "name": "Google AdManager",
+            "type": "technology"
+          },
+          {
+            "name": "JavaScript",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "details": {
+          "name": "Header Bidding: Subastas en la sombra",
+          "URL": "https://tekylo.medium.com/header-bidding-subastas-en-la-sombra-b1d68b3c368d",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/24ad8739-f650-4dc9-8428-08c3b54e03ec_uazw6gfquec29mxmm55t.jpg",
+            "alt": "uazw6gFQuEC29mxMM55Tpb.jpg"
+          }
+        },
+        "type": "post",
+        "publishingDate": "2021-02-01"
+      },
+      {
+        "details": {
+          "name": "Carta recomendación Ilocad",
+          "URL": "https://www.dropbox.com/scl/fi/wu18ulela2w7pvu6htajy/Certificado-ILOCAD.pdf?rlkey=45qk8xt8mmzcz4218fgz4ui0j&e=1&dl=0",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/39c658b5-25f1-4687-89db-1001303a4ba7_ilocad.png",
+            "alt": "ilocad.90c0d8b7.png"
+          }
+        },
+        "type": "achievement",
+        "publishingDate": "2015-08-01",
+        "relatedCompetences": [
+          {
+            "name": "WordPress",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "details": {
+          "name": "Carta recomendación Fibgar",
+          "URL": "https://www.dropbox.com/scl/fi/wf94ddjpo2wsczx04hlaw/CERTIFICADO-FIBGAR.pdf?rlkey=8blnj6budtosii36tdr2c4vt9&e=1&dl=0",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/4a50018c-c7e5-447e-bee1-852cc38fa8ed_fibgar.png",
+            "alt": "fibgar.fcbe1d6b.png"
+          }
+        },
+        "type": "achievement",
+        "publishingDate": "2014-08-01",
+        "relatedCompetences": [
+          {
+            "name": "WordPress",
+            "type": "technology"
+          }
+        ]
+      }
+    ]
+  },
+  "knowledge": {
+    "languages": [
+      {
+        "name": "EN",
+        "fullName": "Inglés",
+        "level": "Professional working proficiency"
+      },
+      {
+        "name": "ES",
+        "fullName": "Español",
+        "level": "Native or bilingual proficiency"
+      }
+    ],
+    "hardSkills": [
+      {
+        "skill": {
+          "name": "AWS",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "AWS Lambda",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "AngularJS",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Bitbucket",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "C++",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "CSS",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Confluence",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Docker",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Flask",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Git",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "GitHub Actions",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "GitLab",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Gitflow",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Github",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Google AdManager",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "HTML",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Java",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "JavaScript",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Jenkins",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Jira",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Linux",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Monday",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "MongoDB",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "MySQL",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "NodeJS",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Notion",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "PHP",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "PostgreSQL",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Postman",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Python",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "R",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "React",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "SQL",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "TypeScript",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Unity3D",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "WordPress",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "jQuery",
+          "type": "technology"
+        }
+      }
+    ],
+    "studies": [
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Certificación New Relic Certified Performance Pro",
+        "startDate": "2019-09-01",
+        "institution": {
+          "name": "New Relic University",
+          "URL": "https://www.dropbox.com/scl/fi/h0j07cqifw2kcnr2ri335/new-relic.pdf?rlkey=jiprmpk44lgc5twyvs1xm6xsx&e=1&dl=0",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/4528562a-a7ab-4f69-933f-35b333212f24_new-relic.png",
+            "alt": "new relic.9ae9440d.png"
+          }
+        },
+        "finishDate": "2019-09-01",
+        "linkedCompetences": [
+          {
+            "name": "New Relic",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Curso Magento 2",
+        "startDate": "2019-09-01",
+        "institution": {
+          "name": "TrainingIT",
+          "description": "Curso presencial de 40 horas impartido por Training IT.",
+          "URL": "https://www.dropbox.com/scl/fi/3z35tkgena4yhrbzxgmow/Diploma_Magento_Meytel.pdf?rlkey=3fo6vulzgokvmlitjn1zzvnpa&e=1&dl=0",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/da3e314b-bfcc-47e5-967c-e97de5c42c20_magento.svg",
+            "alt": "magento.1d8fe13c.svg"
+          }
+        },
+        "finishDate": "2019-10-01",
+        "linkedCompetences": [
+          {
+            "name": "Magento",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Curso Mongo DB + Node.js",
+        "startDate": "2019-07-01",
+        "institution": {
+          "name": "TrainingIT",
+          "description": "Curso presencial de 20 horas impartido por Training IT en el que se estudio Mongo DB para CRUD, framework de agregación y HA. En la parte de Node.js hicimos uso de ES6, Express, API y Testing.",
+          "URL": "https://www.dropbox.com/scl/fi/rrqkppt57319c0x7y7beh/Certificado_Jose.pdf?rlkey=na4kkqsdndv7xqh11q5adi195&e=1&dl=0",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/2ad14a5d-d269-46df-ac95-550a6e32ca86_node.png",
+            "alt": "node.c2e22c63.png"
+          }
+        },
+        "finishDate": "2019-07-01",
+        "linkedCompetences": [
+          {
+            "name": "MongoDB",
+            "type": "technology"
+          },
+          {
+            "name": "NodeJS",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Curso React + Redux",
+        "startDate": "2019-08-01",
+        "institution": {
+          "name": "Fictizia",
+          "description": "Curso presencial de 30 horas impartido por Fictizia.\n",
+          "URL": "https://www.dropbox.com/scl/fi/01947k0ai8vi6plv07jsz/DIPLOMA-REACT-Jos-Antonio-L-pez-Molina.pdf?rlkey=rucgjkpzwq8jxj3zg8m773dh4&e=1&dl=0",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/b4bc583c-2828-4bf0-83d7-ade8c77d28c0_react-redux.svg",
+            "alt": "react-redux.13dddf81.svg"
+          }
+        },
+        "finishDate": "2019-10-01",
+        "linkedCompetences": [
+          {
+            "name": "React",
+            "type": "technology"
+          },
+          {
+            "name": "Redux",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Curso el Futuro del Desarrollo Web: HTML 5",
+        "startDate": "2012-10-01",
+        "institution": {
+          "name": "Universidad de Albacete",
+          "description": "Curso online de 50 horas impartido por la Escuela Superior Ingeniería Informática.",
+          "URL": "https://www.dropbox.com/scl/fi/t67nlxzgrj4wli92o2aeb/Maquetaci-n-web-HTML-CSS.pdf?rlkey=1qadbbkpsp1jr2zkd0zmz34ac&e=1&dl=0",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/e5dbf589-35e5-4ce5-9700-5a8144fbfa51_download-(6).png",
+            "alt": "download (6).png"
+          }
+        },
+        "finishDate": "2012-10-01",
+        "linkedCompetences": [
+          {
+            "name": "HTML",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Git + GitHub",
+        "startDate": "2018-11-01",
+        "institution": {
+          "name": "Udemy",
+          "description": "Curso online de 7 horas impartido por Udemy.",
+          "URL": "https://www.dropbox.com/scl/fi/3z35tkgena4yhrbzxgmow/Diploma_Magento_Meytel.pdf?rlkey=3fo6vulzgokvmlitjn1zzvnpa&e=1&dl=0",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/cd3681d8-8d38-41d5-8f2f-636338c1ed5c_git.png",
+            "alt": "git.c4522d5f.png"
+          }
+        },
+        "finishDate": "2018-11-01",
+        "linkedCompetences": [
+          {
+            "name": "Git",
+            "type": "technology"
+          },
+          {
+            "name": "Github",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
+        "degreeAchieved": true,
+        "name": "Grado Ingeniería informática",
+        "startDate": "2012-01-01",
+        "institution": {
+          "name": "Universidad de Jaén",
+          "URL": "https://www.linkedin.com/in/jos%C3%A9-antonio-l%C3%B3pez-molina-9881a8aa/details/education/1635488343692/single-media-viewer/?profileId=ACoAABcqUXgBTHZivOBU86nVn-VsFlKGZFZeFkU",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/bcbf213e-25de-4ae1-b48c-753c9df45fd4_logo.png",
+            "alt": "logo.png"
+          }
+        },
+        "finishDate": "2017-01-01"
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Programa de alfabetización informacional",
+        "startDate": "2015-05-01",
+        "institution": {
+          "name": "Universidad de Jaén",
+          "description": "Curso online de 36 horas impartido por la biblioteca de la Universidad de Jaén.",
+          "URL": "https://www.dropbox.com/scl/fi/2f0clyfvua4767nazmsgg/Curso-Biblioteca.pdf?rlkey=pw9refj2qvrdnc9ovpz55h555&e=1&dl=0",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/01/23/dfd931a0-eb9e-4b66-ae8d-a17121912260_logo.png",
+            "alt": "logo.png"
+          }
+        },
+        "finishDate": "2015-05-01"
+      }
+    ],
+    "softSkills": [
+      {
+        "skill": {
+          "name": "Aprendizaje Continuo",
+          "type": "practice"
+        }
+      },
+      {
+        "skill": {
+          "name": "Capacidad de autogestión",
+          "type": "practice"
+        }
+      },
+      {
+        "skill": {
+          "name": "Liderazgo",
+          "type": "practice"
+        }
+      }
+    ]
+  },
+  "careerPreferences": {
+    "contact": {
+      "publicProfiles": [
+        {
+          "URL": "https://www.linkedin.com/in/jos%C3%A9-antonio-l%C3%B3pez-molina-9881a8aa",
+          "type": "linkedin"
+        },
+        {
+          "URL": "https://stackoverflow.com/users/7821148/jose-antonio",
+          "type": "stackoverflow"
+        },
+        {
+          "URL": "https://github.com/tekylo",
+          "type": "github"
+        },
+        {
+          "URL": "https://twitter.com/tekylo",
+          "type": "twitter"
+        }
+      ]
+    },
+    "preferences": {
+      "preferredCompetences": [
+        {
+          "name": "Google AdManager",
+          "type": "technology"
+        },
+        {
+          "name": "JavaScript",
+          "type": "technology"
+        },
+        {
+          "name": "NodeJS",
+          "type": "technology"
+        },
+        {
+          "name": "PostgreSQL",
+          "type": "technology"
+        },
+        {
+          "name": "TypeScript",
+          "type": "technology"
+        }
+      ],
+      "preferredRoles": [
+        "Tech Lead"
+      ]
+    },
+    "status": "searchingActively",
+    "requirements": {
+      "contractTypes": [
+        "permanent",
+        "freelance"
+      ]
+    }
+  },
+  "manfredSpecificData": {
+    "mainStackTechs": [
+      {
+        "name": "Google AdManager",
+        "type": "technology"
+      },
+      {
+        "name": "JavaScript",
+        "type": "technology"
+      },
+      {
+        "name": "NodeJS",
+        "type": "technology"
+      },
+      {
+        "name": "React",
+        "type": "technology"
+      },
+      {
+        "name": "TypeScript",
+        "type": "technology"
+      }
+    ],
+    "goodPractices": "Siempre en busca de nuevas tecnologías y herramientas para mantenerme a la vanguardia. En mi tiempo libre disfruto desarrollando páginas web a medida e integrando soluciones publicitarias, aplicando buenas prácticas como estándares de código, TDD y técnicas de WPO para garantizar rendimiento y calidad. En mi día a día profesional, lidero proyectos aplicando metodologías ágiles (Scrum y Kanban), lo que me permite organizar el trabajo de forma eficiente, fomentar la colaboración entre equipos y garantizar la entrega continua de soluciones innovadoras en el ámbito de la publicidad digital.",
+    "projects": [
+      {
+        "name": "Integrar publicidad AxelSpringer"
+      },
+      {
+        "name": "Web Centros Médicos"
+      },
+      {
+        "name": "Web Clínica Henares"
+      },
+      {
+        "name": "Web Colegio Pablo VI"
+      },
+      {
+        "name": "Web Néfele"
+      },
+      {
+        "name": "Web TopComparativas"
+      }
+    ]
+  }
+}

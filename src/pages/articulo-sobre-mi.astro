@@ -1,0 +1,366 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavMenu from "../components/NavMenu.astro";
+import NewspaperHeader from "../components/NewspaperHeader.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import articles from "../data/articles.json";
+const data = articles.find((a) => a.slug === "sobre-mi");
+---
+
+<Layout title={`${data.title} | El Diario AdTech`}>
+  <div class="container">
+    <NewspaperHeader />
+  </div>
+  <NavMenu />
+
+  <div class="container">
+    <Breadcrumbs
+      items={[{ label: "Portada", href: "/" }, { label: "Perfil Profesional" }]}
+    />
+  </div>
+
+  <div class="container">
+    <div class="article-page">
+      <!-- Imagen destacada con View Transition -->
+      <div class="featured-image">
+        <img
+          src={data.imageUrl}
+          alt={data.title}
+          transition:name="article-/articulo-sobre-mi"
+        />
+        <span class="category-badge">{data.category}</span>
+      </div>
+
+      <!-- Artículo completo -->
+      <article class="full-article">
+        <h1 class="article-title" transition:name="title-#sobre-mi">
+          {data.title}
+        </h1>
+
+        <div class="article-meta">
+          <span class="date">31 de Octubre, 2025</span>
+          <span class="separator">|</span>
+          <span class="author">{data.author}</span>
+        </div>
+
+        <p class="lead">
+          {data.subtitle}
+        </p>
+
+        <div class="article-content">
+          <p>
+            Desde pequeño, José Antonio López Molina, natural de Beas de Segura
+            (Jaén), sintió una curiosidad innata por la informática.
+          </p>
+          <p>
+            <em
+              >“Desde pequeño me apasionaba el mundo de la informática, y ahora
+              tengo la suerte de dedicarme a lo que disfruto: el apasionante
+              universo de la publicidad digital”,</em
+            > confiesa.
+          </p>
+          <p>
+            Nacido en 1988 y residente en la Comunidad de Madrid, José Antonio
+            combina una sólida formación técnica con una mentalidad inquieta y
+            creativa.
+          </p>
+          <p>
+            Aficionado a los conciertos, el deporte y la naturaleza, encuentra
+            en el campo su mejor forma de desconexión.
+          </p>
+          <p>
+            Además, es cinturón azul de Brazilian Jiu-Jitsu (BJJ), disciplina
+            que —como él mismo dice— “enseña a mantener la calma incluso en los
+            entornos más competitivos”.
+          </p>
+          <h2>💼 AdTech en Wemass: conectar tecnología, producto y operaciones</h2>
+          <p>
+            Actualmente forma parte del equipo de <strong>Wemass</strong>, el
+            marketplace de audiencias impulsado por Vocento, Godó y Prisa, donde
+            impulsa el desarrollo de formatos publicitarios innovadores, entre
+            ellos el destacado Skin con tecnología propia.
+          </p>
+          <p>
+            Su trabajo también se centra en la optimización de los flujos de
+            desarrollo y la automatización de despliegues CI/CD, mejorando la
+            eficiencia y escalabilidad del ecosistema técnico.
+          </p>
+          <p>
+            En Wemass, su rol combina la visión técnica con la coordinación entre
+            áreas, garantizando que operaciones, diseño e ingeniería trabajen en
+            perfecta sincronía.
+          </p>
+          <p>
+            <em
+              >“Lo más importante es conectar los equipos y la tecnología para
+              que todo funcione de forma fluida, desde la idea hasta la
+              publicación”,</em
+            > explica.
+          </p>
+          <h2>🧩 Trayectoria profesional y visión tecnológica</h2>
+          <p>
+            Antes de unirse a Wemass, fue AdTech Lead en <strong>Arkeero</strong
+            >, donde trabajó junto a David Berrocal en el desarrollo de una
+            librería publicitaria transversal para todos los publishers del
+            grupo, integrando Prebid.js y gestionando la migración a Xandr.
+          </p>
+          <p>
+            También lideró integraciones programáticas, soluciones cookieless,
+            plantillas multisite y entornos complejos de Header Bidding en
+            cliente y servidor.
+          </p>
+          <p>
+            Previamente, en <strong>Vocento</strong>, desempeñó el puesto de
+            Arquitecto de Soluciones de Publicidad, donde colideró junto a Diego
+            Acosta el cambio de Google Ad Manager a Equativ (Smart AdServer) y su
+            posterior reversión técnica.
+          </p>
+          <p>
+            Durante esa etapa, lideró trabajos de análisis técnico, mejora de
+            software, seguridad del código y mentoría del equipo de desarrollo.
+          </p>
+          <p>
+            <em
+              >“Entender la arquitectura y acompañar a los equipos en su
+              crecimiento técnico fue una etapa clave para mí”,</em
+            > recuerda.
+          </p>
+          <h2>⚙️ Stack y visión del futuro AdTech</h2>
+          <p>
+            Su stack técnico abarca JavaScript, TypeScript, PHP, Go y Node.js,
+            junto con un dominio profundo de Google Ad Manager, Header Bidding,
+            Xandr, AWS y Cloudflare.
+          </p>
+          <p>
+            Esta versatilidad le permite abordar proyectos tanto desde el
+            desarrollo como desde la infraestructura publicitaria.
+          </p>
+          <p>
+            <em
+              >“La inteligencia artificial está abriendo nuevas oportunidades,
+              pero el futuro también pasa por formatos más inmersivos —de vídeo,
+              audio e interacción—. La publicidad debe evolucionar hacia
+              experiencias reales, no solo impactos.”</em
+            >
+          </p>
+          <p>
+            Con una combinación única de conocimiento técnico, creatividad y
+            sensibilidad estratégica, José Antonio López representa a una nueva
+            generación de especialistas AdTech que entienden la tecnología no solo
+            como una herramienta, sino como un puente entre innovación y
+            experiencia.
+          </p>
+        </div>
+
+        <div class="back-link">
+          <a href="/">← Volver a la portada</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .article-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .featured-image {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .category-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .full-article {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    padding: 3rem;
+    border-radius: 8px;
+  }
+
+  .article-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+  }
+
+  .article-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .separator {
+    color: var(--text-muted);
+  }
+
+  .author {
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    font-weight: 500;
+    border-left: 4px solid var(--accent-primary);
+    padding-left: 1.5rem;
+  }
+
+  .article-content {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .article-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin: 2.5rem 0 1.5rem 0;
+    line-height: 1.3;
+  }
+
+  .article-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .article-content em {
+    color: var(--accent-secondary);
+    font-style: italic;
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .back-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+  }
+
+  .back-link a:hover {
+    color: var(--accent-secondary);
+    transform: translateX(-5px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem 0.5rem;
+    }
+
+    .featured-image {
+      height: 300px;
+      border-radius: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .category-badge {
+      top: 15px;
+      left: 15px;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+    }
+
+    .full-article {
+      padding: 2rem 1.5rem;
+    }
+
+    .article-title {
+      font-size: 1.8rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      padding-left: 1rem;
+    }
+
+    .article-content {
+      font-size: 1rem;
+    }
+
+    .article-content h2 {
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .full-article {
+      padding: 1.5rem 1rem;
+    }
+
+    .article-title {
+      font-size: 1.5rem;
+    }
+
+    .lead {
+      font-size: 1rem;
+    }
+
+    .article-content {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .article-content h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

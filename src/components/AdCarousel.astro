@@ -1,0 +1,436 @@
+---
+// Carousel de anuncios rotativos con transiciones suaves
+---
+
+<div class="ad-carousel">
+  <div class="carousel-container">
+    <div class="carousel-track">
+      <!-- Anuncio 1: Habilidades -->
+      <div class="carousel-slide active">
+        <div class="ad-content gradient-1">
+          <div class="ad-label">Anuncio</div>
+          <div class="icon">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h3>Experto en AdTech</h3>
+          <p>Google Ad Manager • Header Bidding • Programática</p>
+          <div class="features">
+            <span>6+ años experiencia</span>
+            <span>Vocento & Axel Springer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anuncio 2: Tecnologías -->
+      <div class="carousel-slide">
+        <div class="ad-content gradient-2">
+          <div class="ad-label">Anuncio</div>
+          <div class="icon">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3>Full Stack Developer</h3>
+          <p>React • Node.js • PHP • TypeScript • MongoDB</p>
+          <div class="features">
+            <span>Clean Code</span>
+            <span>Scrum & Agile</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anuncio 3: Contacto -->
+      <div class="carousel-slide">
+        <div class="ad-content gradient-3">
+          <div class="ad-label">Anuncio</div>
+          <div class="icon">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <h3>¿Trabajamos juntos?</h3>
+          <p>Disponible para proyectos de publicidad digital</p>
+          <div class="features">
+            <a href="mailto:lopezmolinaja@gmail.com" class="cta-link"
+              >Contactar</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+      <button class="indicator active" data-slide="0" aria-label="Slide 1"
+      ></button>
+      <button class="indicator" data-slide="1" aria-label="Slide 2"></button>
+      <button class="indicator" data-slide="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Controles -->
+    <button class="carousel-control prev" aria-label="Anterior">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="carousel-control next" aria-label="Siguiente">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .ad-carousel {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+  }
+
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .carousel-track {
+    position: relative;
+    height: 350px;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    pointer-events: none;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .ad-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .gradient-1 {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+  }
+
+  .gradient-2 {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  }
+
+  .gradient-3 {
+    background: linear-gradient(135deg, #f3d34d, #d4a017);
+  }
+
+  .ad-label {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+  }
+
+  .features {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .features span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  .cta-link {
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .cta-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Indicadores */
+  .carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.75rem;
+    z-index: 10;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .indicator.active {
+    background: #ffffff;
+    border-color: #ffffff;
+    transform: scale(1.2);
+  }
+
+  .indicator:hover {
+    border-color: #ffffff;
+  }
+
+  /* Controles */
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .carousel-control:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .carousel-control.prev {
+    left: 15px;
+  }
+
+  .carousel-control.next {
+    right: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-track {
+      height: 300px;
+    }
+
+    .ad-content {
+      padding: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+
+    .features span {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+    }
+
+    .carousel-control {
+      width: 35px;
+      height: 35px;
+    }
+
+    .carousel-control.prev {
+      left: 10px;
+    }
+
+    .carousel-control.next {
+      right: 10px;
+    }
+  }
+</style>
+
+<script>
+  class AdCarousel {
+    private currentSlide = 0;
+    private slides: NodeListOf<Element>;
+    private indicators: NodeListOf<Element>;
+    private autoplayInterval: number | null = null;
+    private readonly autoplayDelay = 5000; // 5 segundos
+
+    constructor() {
+      this.slides = document.querySelectorAll(".carousel-slide");
+      this.indicators = document.querySelectorAll(".indicator");
+      this.init();
+    }
+
+    init() {
+      // Botones de control
+      const prevBtn = document.querySelector(".carousel-control.prev");
+      const nextBtn = document.querySelector(".carousel-control.next");
+
+      prevBtn?.addEventListener("click", () => this.prevSlide());
+      nextBtn?.addEventListener("click", () => this.nextSlide());
+
+      // Indicadores
+      this.indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => this.goToSlide(index));
+      });
+
+      // Pausar autoplay al hacer hover
+      const container = document.querySelector(".carousel-container");
+      container?.addEventListener("mouseenter", () => this.stopAutoplay());
+      container?.addEventListener("mouseleave", () => this.startAutoplay());
+
+      // Iniciar autoplay
+      this.startAutoplay();
+    }
+
+    goToSlide(index: number) {
+      this.slides[this.currentSlide].classList.remove("active");
+      this.indicators[this.currentSlide].classList.remove("active");
+
+      this.currentSlide = index;
+
+      this.slides[this.currentSlide].classList.add("active");
+      this.indicators[this.currentSlide].classList.add("active");
+    }
+
+    nextSlide() {
+      const next = (this.currentSlide + 1) % this.slides.length;
+      this.goToSlide(next);
+    }
+
+    prevSlide() {
+      const prev =
+        (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+      this.goToSlide(prev);
+    }
+
+    startAutoplay() {
+      this.autoplayInterval = window.setInterval(() => {
+        this.nextSlide();
+      }, this.autoplayDelay);
+    }
+
+    stopAutoplay() {
+      if (this.autoplayInterval) {
+        clearInterval(this.autoplayInterval);
+        this.autoplayInterval = null;
+      }
+    }
+  }
+
+  // Inicializar carousel cuando el DOM esté listo
+  document.addEventListener("DOMContentLoaded", () => {
+    new AdCarousel();
+  });
+</script>

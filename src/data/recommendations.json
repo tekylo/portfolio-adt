@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "ilocad",
+    "name": "Baltasar Garzón",
+    "role": "Founding Partner · ILOCAD",
+    "quote": "José Antonio demostró un alto nivel de responsabilidad técnica y una capacidad excepcional para resolver incidencias críticas con rapidez.",
+    "ctaLabel": "Ver carta de recomendación",
+    "href": "https://www.dropbox.com/scl/fi/wu18ulela2w7pvu6htajy/Certificado-ILOCAD.pdf?rlkey=45qk8xt8mmzcz4218fgz4ui0j&e=1&dl=0",
+    "theme": "dark"
+  },
+  {
+    "slug": "fibgar",
+    "name": "Fundación Internacional Baltasar Garzón (FIBGAR)",
+    "role": "Dirección Técnica",
+    "quote": "Su apoyo en el mantenimiento de servidores y desarrollo web aportó estabilidad y calidad a los proyectos digitales de la fundación.",
+    "ctaLabel": "Ver carta de recomendación",
+    "href": "https://www.dropbox.com/scl/fi/wf94ddjpo2wsczx04hlaw/CERTIFICADO-FIBGAR.pdf?rlkey=8blnj6budtosii36tdr2c4vt9&e=1&dl=0",
+    "theme": "light"
+  }
+]

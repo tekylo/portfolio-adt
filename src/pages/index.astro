@@ -1,0 +1,581 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavMenu from "../components/NavMenu.astro";
+import NewspaperHeader from "../components/NewspaperHeader.astro";
+import NewspaperArticle from "../components/NewspaperArticle.astro";
+import Knowledge from "../components/Knowledge.astro";
+import Projects from "../components/Projects.astro";
+import ExperienceCard from "../components/ExperienceCard.astro";
+import StickyFooterBanner from "../components/StickyFooterBanner.astro";
+import LeaderboardAd from "../components/ads/LeaderboardAd.astro";
+import MediumRectangleAd from "../components/ads/MediumRectangleAd.astro";
+import BillboardAd from "../components/ads/BillboardAd.astro";
+import AdCarousel from "../components/AdCarousel.astro";
+import TechStack from "../components/TechStack.astro";
+import FrontPageArticle from "../components/FrontPageArticle.astro";
+import articles from "../data/articles.json";
+import ContactSkyscraperAd from "../components/ads/ContactSkyscraperAd.astro";
+import TechStackSkinAd from "../components/ads/TechStackSkinAd.astro";
+
+const getArticle = (slug: string) =>
+  articles.find((article) => article.slug === slug);
+
+const experiences = [
+  {
+    companyName: "Wemass",
+    logoUrl: "/images/wemass-logo.png",
+    dateRange: "Marzo 2024 - Actualidad",
+    jobDescription: [
+      "Líder técnico en implementación de soluciones AdTech",
+      "Optimización de revenue para medios premium españoles",
+      "Gestión de Google Ad Manager y Header Bidding",
+    ],
+  },
+  {
+    companyName: "Arkeero",
+    logoUrl: "/images/arkeero-logo.png",
+    dateRange: "Junio 2021 - Marzo 2024",
+    jobDescription: [
+      "Desarrollo de tecnologías publicitarias avanzadas",
+      "Integración de clientes premium (Vocento, Axel Springer)",
+      "Implementación de Header Bidding y optimización de revenue",
+    ],
+  },
+  {
+    companyName: "Vocento",
+    logoUrl: "/images/vocento-logo.png",
+    dateRange: "Mayo 2018 - Mayo 2021",
+    jobDescription: [
+      "Desarrollo Full Stack para portales de noticias",
+      "Optimización de rendimiento frontend",
+      "Colaboración con equipos de producto y diseño",
+    ],
+  },
+];
+
+const articleSobreMi = getArticle("sobre-mi");
+const articleEducacion = getArticle("educacion");
+const articleExperiencia = getArticle("experiencia");
+const articleProyectos = getArticle("proyectos");
+const articleCursos = getArticle("cursos");
+---
+
+<Layout title="José Antonio - AdTech Expert">
+  <!-- Billboard Ad - Encima de todo -->
+  <div class="billboard-wrapper">
+    <BillboardAd />
+  </div>
+  <aside
+    class="skin skin-left"
+    aria-labelledby="stack-skin-title"
+    role="complementary"
+  >
+    <h2 id="stack-skin-title" class="sr-only">Stack Tecnológico</h2>
+    <TechStackSkinAd />
+  </aside>
+  <aside
+    id="contacto"
+    class="skin skin-right"
+    aria-labelledby="contacto-title"
+    role="complementary"
+  >
+    <h2 id="contacto-title" class="sr-only">Contacto</h2>
+    <ContactSkyscraperAd />
+  </aside>
+
+  <div class="page-frame">
+    <div class="main-column">
+      <NewspaperHeader />
+      <NavMenu />
+
+      <div class="container">
+        <!-- PORTADA: Grid de artículos 3 columnas -->
+        <div class="frontpage-grid">
+          <div class="column-1">
+            {
+              articleSobreMi && (
+                <FrontPageArticle
+                  title={articleSobreMi.title}
+                  subtitle={articleSobreMi.subtitle}
+                  category={articleSobreMi.category}
+                  imageUrl={articleSobreMi.imageUrl}
+                  href={articleSobreMi.href}
+                  author={articleSobreMi.author}
+                  size={articleSobreMi.size as "large" | "medium" | "small"}
+                />
+              )
+            }
+          </div>
+          <div class="column-2">
+            {
+              articleEducacion && (
+                <FrontPageArticle
+                  title={articleEducacion.title}
+                  subtitle={articleEducacion.subtitle}
+                  category={articleEducacion.category}
+                  imageUrl={articleEducacion.imageUrl}
+                  href={articleEducacion.href}
+                  author={articleEducacion.author}
+                  size={articleEducacion.size as "large" | "medium" | "small"}
+                />
+              )
+            }
+            {
+              articleExperiencia && (
+                <FrontPageArticle
+                  title={articleExperiencia.title}
+                  subtitle={articleExperiencia.subtitle}
+                  category={articleExperiencia.category}
+                  imageUrl={articleExperiencia.imageUrl}
+                  href={articleExperiencia.href}
+                  author={articleExperiencia.author}
+                  size={articleExperiencia.size as "large" | "medium" | "small"}
+                />
+              )
+            }
+          </div>
+          <div class="column-3">
+            {
+              articleProyectos && (
+                <FrontPageArticle
+                  title={articleProyectos.title}
+                  subtitle={articleProyectos.subtitle}
+                  category={articleProyectos.category}
+                  imageUrl={articleProyectos.imageUrl}
+                  href={articleProyectos.href}
+                  author={articleProyectos.author}
+                  size={articleProyectos.size as "large" | "medium" | "small"}
+                />
+              )
+            }
+            {
+              articleCursos && (
+                <FrontPageArticle
+                  title={articleCursos.title}
+                  subtitle={articleCursos.subtitle}
+                  category={articleCursos.category}
+                  imageUrl={articleCursos.imageUrl}
+                  href={articleCursos.href}
+                  author={articleCursos.author}
+                  size={articleCursos.size as "large" | "medium" | "small"}
+                />
+              )
+            }
+          </div>
+        </div>
+
+        <!-- Leaderboard Ad -->
+        <LeaderboardAd />
+
+        <!-- <StickyFooterBanner /> -->
+
+        <footer>
+          <div class="footer-content">
+            <p>&copy; 2025 José Antonio López - AdTech Expert</p>
+            <div class="social-media-div">
+              <a
+                href="https://github.com/tekylo"
+                class="icon-button github"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-github"></i><span></span></a
+              >
+              <a
+                href="https://www.linkedin.com/in/jos%C3%A9-antonio-lopez-molina-9881a8aa/"
+                class="icon-button linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-linkedin-in"></i><span></span></a
+              >
+              <a
+                href="mailto:lopezmolinaja@gmail.com"
+                class="icon-button google"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-google"></i><span></span></a
+              >
+              <a
+                href="https://gitlab.com/TeKyLo"
+                class="icon-button gitlab"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-gitlab"></i><span></span></a
+              >
+              <a
+                href="https://twitter.com/tekylo"
+                class="icon-button twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-twitter"></i><span></span></a
+              >
+              <a
+                href="https://stackoverflow.com/users/7821148/jose-antonio"
+                class="icon-button stack-overflow"
+                target="_blank"
+                ><i class="fab fa-stack-overflow"></i><span></span></a
+              >
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .page-frame {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+    }
+
+    .main-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: var(--background);
+      width: 100%;
+    }
+
+    .skin {
+      position: fixed;
+      top: clamp(6rem, 7vw, 8.5rem);
+      width: 300px;
+      z-index: 5;
+      display: none;
+    }
+
+    .skin-left {
+      left: max(1.5rem, calc((100vw - 1200px) / 2 - 320px));
+    }
+
+    .skin-right {
+      right: max(1.5rem, calc((100vw - 1200px) / 2 - 320px));
+    }
+
+    @media (min-width: 1600px) {
+      .skin {
+        display: block;
+      }
+    }
+
+    @media (max-width: 1599px) {
+      .skin {
+        display: none;
+      }
+    }
+
+    .billboard-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Grid de portada - 3 columnas */
+    .frontpage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .column-1 {
+      /* Columna completa - 1 artículo grande */
+    }
+
+    .column-2,
+    .column-3 {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    main {
+      padding: 2rem;
+      width: 100%;
+    }
+
+    .content-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 100px; /* Espacio para el menú sticky */
+    }
+
+    .section-title {
+      color: var(--accent-primary);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--accent-primary);
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: 1px;
+    }
+
+    .ad-grid {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .projects-grid {
+      background: rgba(99, 102, 241, 0.05);
+      border: 2px dashed var(--border-medium);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .project-placeholder p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      font-style: italic;
+    }
+
+    footer {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      padding: 2rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-content p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .social-media-div {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .icon-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background: rgba(35, 41, 70, 0.08);
+      color: var(--text-primary);
+      font-size: 1.45rem;
+      transition:
+        background 0.2s,
+        color 0.2s,
+        transform 0.2s;
+      box-shadow: 0 2px 8px rgba(35, 41, 70, 0.08);
+      opacity: 0.85;
+      border: none;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .icon-button:hover {
+      background: var(--ad-accent, #eebd3d);
+      color: #232946;
+      opacity: 1;
+      transform: translateY(-2px) scale(1.08);
+    }
+
+    .icon-button.github:hover {
+      background: #24292e;
+      color: #fff;
+    }
+    .icon-button.linkedin:hover {
+      background: #0077b5;
+      color: #fff;
+    }
+    .icon-button.google:hover {
+      background: #ea4335;
+      color: #fff;
+    }
+    .icon-button.gitlab:hover {
+      background: #fc6d26;
+      color: #fff;
+    }
+    .icon-button.twitter:hover {
+      background: #1da1f2;
+      color: #fff;
+    }
+    .icon-button.stack-overflow:hover {
+      background: #f48024;
+      color: #fff;
+    }
+
+    .icon-button i {
+      font-size: 1.45rem;
+      margin: 0;
+      pointer-events: none;
+    }
+
+    @media (min-width: 1900px) {
+      .page-frame {
+        grid-template-columns: 300px minmax(0, 1200px) 300px;
+        align-items: flex-start;
+      }
+
+      .main-column {
+        grid-column: 2;
+      }
+
+      .skin-left {
+        grid-column: 1;
+        justify-self: end;
+      }
+
+      .skin-right {
+        grid-column: 3;
+        justify-self: start;
+      }
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .page-frame {
+        padding: 0 1rem 2rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .frontpage-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .column-3 {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      main {
+        padding: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 0.5rem;
+      }
+
+      .frontpage-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .column-2,
+      .column-3 {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      main {
+        padding: 1rem;
+      }
+
+      section {
+        margin-bottom: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+
+      .ad-grid {
+        margin: 1.5rem 0;
+      }
+
+      .projects-grid {
+        padding: 2rem 1rem;
+      }
+
+      .project-placeholder p {
+        font-size: 1rem;
+      }
+
+      footer {
+        padding: 1.5rem 1rem;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .social-links a {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* En anchos menores los skins se ocultan para evitar solaparse */
+    @media (max-width: 1899px) {
+      .page-frame {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .skin {
+        display: none;
+      }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 0.25rem;
+      }
+
+      main {
+        padding: 0.5rem;
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+      }
+
+      .social-links a {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</Layout>

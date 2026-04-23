@@ -1,0 +1,304 @@
+---
+import TechStack from "./TechStack.astro";
+---
+
+<div class="card">
+  <div class="card__image">
+    <img src="/public/profile.png" alt="John Johnson" class="profile-img" />
+  </div>
+
+  <div class="card__content">
+    <div class="card__header">
+      <h1 class="card__name">
+        José Antonio López Molina<img
+          src="/public/andalucia.png"
+          alt="Flag"
+          class="flag"
+        />
+      </h1>
+      <p class="card__position">
+        AdTech Expert & Advertising Solutions Architect
+      </p>
+      <p>
+        Desde pequeño me apasionaba el mundo de la informática y ahora puedo
+        trabajar de lo que disfruto 🤘
+        <br />
+        <br />
+        Con más de 6 años de experiencia en el sector de la publicidad, he trabajado
+        con importantes medios de comunicación como Vocento, Axel Springer o Emprendedores.
+        Actualmente, formo parte del equipo de Arkeero, una agencia especializada
+        en Marketing Digital.
+      </p>
+    </div>
+
+    <!-- <div class="card__tags">
+      <p class="helping">Ayuda con:</p>
+      <div class="tags">
+        <span>Google Ad Manager</span>
+        <span>Product design</span>
+        <span>Header Bidding</span> -->
+    <!-- <span>JavaScript</span> -->
+    <!-- </div>
+    </div> -->
+
+    <!-- <div class="card__buttons">
+      <button class="about-btn">About</button>
+      <button class="book-btn">Book lector</button>
+    </div> -->
+  </div>
+  <div class="ad-label">Anuncio</div>
+</div>
+
+<!-- <div class="ad-tech-expert-banner">
+  <div class="content">
+    <img src="/path_to_profile_image.jpg" alt="José Antonio" class="profile-image" />
+    <div class="text-content">
+      <h1>AdTech Expert & Full Stack Developer</h1>
+      <TechStack />
+    </div>
+  </div>
+  <div class="ad-label">Anuncio</div>
+</div> -->
+
+<style>
+  .card {
+    display: flex;
+    height: 250px;
+    position: relative;
+    background: linear-gradient(90deg, #6366f1, #4f46e5);
+    border-radius: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .card__image {
+    flex: 0 0 400px;
+    height: 250px;
+  }
+
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  .card__content {
+    flex-grow: 1;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card__name {
+    font-size: 32px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .flag {
+    width: 32px;
+    height: 32px;
+  }
+
+  .card__position {
+    font-size: 16px;
+    color: #ffffff;
+    margin-top: 8px;
+  }
+
+  .card__tags {
+    margin-bottom: 24px;
+  }
+
+  .helping {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  .tags {
+    display: flex;
+    gap: 12px;
+  }
+
+  .tags span {
+    background-color: #e2e8f0;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 13px;
+    color: #333;
+  }
+
+  .card__buttons {
+    display: flex;
+    gap: 24px;
+  }
+
+  .about-btn,
+  .book-btn {
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .about-btn {
+    background-color: #f1f1f1;
+    color: #333;
+    border: none;
+  }
+
+  .book-btn {
+    background-color: #4c51bf;
+    color: #fff;
+    border: none;
+  }
+
+  .book-btn:hover {
+    background-color: #4338ca;
+  }
+
+  .about-btn:hover {
+    background-color: #e2e8f0;
+  }
+
+  .ad-label {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      flex-direction: column;
+      height: auto;
+      padding: 1.5rem;
+      max-width: 100%;
+    }
+
+    .card__image {
+      flex: none;
+      width: 100%;
+      height: 250px;
+      margin-bottom: 1rem;
+    }
+
+    .card__content {
+      padding-left: 0;
+      padding-top: 0;
+    }
+
+    .card__name {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .flag {
+      width: 24px;
+      height: 24px;
+    }
+
+    .card__position {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      padding: 1rem;
+    }
+
+    .card__name {
+      font-size: 1.2rem;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card__position {
+      font-size: 13px;
+    }
+
+    .card__image {
+      height: 200px;
+    }
+  }
+</style>
+
+<style>
+  .ad-tech-expert-banner {
+    width: 970px;
+    height: 90px;
+    background: linear-gradient(90deg, #6366f1, #4f46e5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .profile-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .ad-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+    border-bottom-left-radius: 0.3rem;
+  }
+  @media (max-width: 1024px) {
+    .ad-tech-expert-banner {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      padding: 1rem;
+    }
+    .content {
+      flex-direction: column;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.2rem;
+      white-space: normal;
+    }
+  }
+</style>

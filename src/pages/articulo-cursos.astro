@@ -1,0 +1,603 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavMenu from "../components/NavMenu.astro";
+import NewspaperHeader from "../components/NewspaperHeader.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import articles from "../data/articles.json";
+const data = articles.find((a) => a.slug === "cursos");
+
+const courseSections = [
+  {
+    title: "Desarrollo Frontend y Frameworks",
+    subtitle: "Interfaces reactivas y fundamentos web modernos",
+    courses: [
+      {
+        title: "React + Redux",
+        provider: "Fictizia · 2019",
+        description:
+          "Curso presencial de 30 horas centrado en la creación de interfaces reactivas, gestión avanzada de estado y arquitectura modular.",
+        link: {
+          href: "https://www.dropbox.com/scl/fi/01947k0ai8vi6plv07jsz/DIPLOMA-REACT-Jos-Antonio-L-pez-Molina.pdf?rlkey=rucgjkpzwq8jxj3zg8m773dh4&e=1&dl=0",
+          label: "Ver diploma"
+        }
+      },
+      {
+        title: "El Futuro del Desarrollo Web: HTML5",
+        provider: "Universidad de Albacete · 2012",
+        description:
+          "Programa online de 50 horas impartido por la Escuela Superior de Ingeniería Informática, centrado en fundamentos de HTML5 y maquetación semántica.",
+        link: {
+          href: "https://www.dropbox.com/scl/fi/t67nlxzgrj4wli92o2aeb/Maquetaci-n-web-HTML-CSS.pdf?rlkey=1qadbbkpsp1jr2zkd0zmz34ac&e=1&dl=0",
+          label: "Ver certificado"
+        }
+      }
+    ]
+  },
+  {
+    title: "Desarrollo Backend y Bases de Datos",
+    subtitle: "Integración de servicios y modelos de datos",
+    courses: [
+      {
+        title: "MongoDB + Node.js",
+        provider: "TrainingIT · 2019",
+        description:
+          "Curso intensivo de 20 horas enfocado en desarrollo backend con Node.js, Express y MongoDB, incluyendo prácticas de testing y creación de APIs REST.",
+        link: {
+          href: "https://www.dropbox.com/scl/fi/rrqkppt57319c0x7y7beh/Certificado_Jose.pdf?rlkey=na4kkqsdndv7xqh11q5adi195&e=1&dl=0",
+          label: "Ver certificado"
+        }
+      },
+      {
+        title: "Magento 2",
+        provider: "TrainingIT · 2019",
+        description:
+          "Curso presencial de 40 horas centrado en arquitectura, módulos y personalización avanzada de la plataforma.",
+        link: {
+          href: "https://www.dropbox.com/scl/fi/3z35tkgena4yhrbzxgmow/Diploma_Magento_Meytel.pdf?rlkey=3fo6vulzgokvmlitjn1zzvnpa&e=1&dl=0",
+          label: "Ver diploma"
+        }
+      }
+    ]
+  },
+  {
+    title: "Rendimiento, Control de versiones y Buenas prácticas",
+    subtitle: "Observabilidad, calidad de código y workflows colaborativos",
+    courses: [
+      {
+        title: "New Relic Certified Performance Pro",
+        provider: "New Relic University · 2019",
+        description:
+          "Certificación profesional en monitorización de rendimiento y optimización de aplicaciones, acreditando experiencia en análisis de métricas y resolución de cuellos de botella.",
+        link: {
+          href: "https://www.dropbox.com/scl/fi/h0j07cqifw2kcnr2ri335/new-relic.pdf?rlkey=jiprmpk44lgc5twyvs1xm6xsx&e=1&dl=0",
+          label: "Ver certificado"
+        }
+      },
+      {
+        title: "Git + GitHub",
+        provider: "Udemy · 2018",
+        description:
+          "Curso online de 7 horas orientado al flujo de trabajo profesional con Git, GitFlow y GitHub, cubriendo ramas, merges y automatización con Actions.",
+        link: {
+          href: "https://www.dropbox.com/scl/fi/3z35tkgena4yhrbzxgmow/Diploma_Magento_Meytel.pdf?rlkey=3fo6vulzgokvmlitjn1zzvnpa&e=1&dl=0",
+          label: "Ver certificado"
+        }
+      }
+    ]
+  },
+  {
+    title: "Formación complementaria universitaria",
+    subtitle: "Competencias digitales y gestión de fuentes académicas",
+    courses: [
+      {
+        title: "Programa de Alfabetización Informacional",
+        provider: "Universidad de Jaén · 2015",
+        description:
+          "Curso online de 36 horas organizado por la Biblioteca de la Universidad de Jaén, centrado en competencias digitales, búsqueda avanzada y gestión de fuentes académicas.",
+        link: {
+          href: "https://www.dropbox.com/scl/fi/2f0clyfvua4767nazmsgg/Curso-Biblioteca.pdf?rlkey=pw9refj2qvrdnc9ovpz55h555&e=1&dl=0",
+          label: "Ver certificado"
+        }
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Cursos y Certificaciones | El Diario AdTech">
+  <div class="container">
+    <NewspaperHeader />
+  </div>
+  <NavMenu />
+
+  <div class="container">
+    <Breadcrumbs
+      items={[{ label: "Portada", href: "/" }, { label: "Cursos" }]}
+    />
+  </div>
+
+  <div class="container">
+    <div class="article-page">
+      <div class="featured-image">
+        <img
+          src={data.imageUrl}
+          alt={data.title}
+          transition:name="article-/articulo-cursos"
+        />
+        <span class="category-badge">{data.category}</span>
+      </div>
+
+      <article class="full-article">
+        <h1 class="article-title" transition:name="title-/articulo-cursos">
+          {data.title}
+        </h1>
+
+        <div class="article-meta">
+          <span class="date">31 de Octubre, 2025</span>
+          <span class="separator">|</span>
+          <span class="author">{data.author}</span>
+        </div>
+
+        <p class="lead">
+          {data.subtitle}
+        </p>
+
+        <div class="article-content">
+          <p>
+            En un sector que evoluciona tan rápido como el de la tecnología
+            publicitaria, la formación continua es esencial. José Antonio López
+            Molina ha reforzado su perfil con certificaciones que consolidan su
+            especialización en AdTech y desarrollo full stack.
+          </p>
+
+          <p>
+            🎯 Cada curso suma herramientas prácticas que luego aterrizan en
+            despliegues reales, conectando teoría y producto sin perder ritmo.
+          </p>
+
+          <div class="courses-accordion">
+            {courseSections.map((section, index) => (
+              <details class="course-panel" open={index === 0}>
+                <summary>
+                  <div class="course-badge">{section.title.charAt(0)}</div>
+                  <div class="course-heading">
+                    <h3>{section.title}</h3>
+                    <p>{section.subtitle}</p>
+                  </div>
+                  <div class="course-indicator" aria-hidden="true">
+                    <span />
+                  </div>
+                </summary>
+
+                <div class="course-panel-content">
+                  <div class="course-list">
+                    {section.courses.map((course) => (
+                      <div class="course-item">
+                        <div class="course-item-header">
+                          <h4>{course.title}</h4>
+                          <span>{course.provider}</span>
+                        </div>
+                        <p>{course.description}</p>
+                        {course.link && (
+                          <a
+                            href={course.link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="course-item-link"
+                          >
+                            {course.link.label}
+                          </a>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+
+          <h2>🌟 Una formación en constante evolución</h2>
+          <p>
+            La combinación de estos cursos y certificaciones refleja un enfoque
+            de aprendizaje continuo que impulsa el ecosistema AdTech actual: desde
+            la optimización del rendimiento con New Relic hasta la integración de
+            librerías y arquitecturas modernas con React, Node.js y MongoDB.
+          </p>
+          <p>
+            <em
+              >“La tecnología cambia cada día; lo importante es mantener la
+              curiosidad y seguir aprendiendo”</em
+            >
+            , comenta José Antonio, convencido de que la formación continua es
+            clave para seguir innovando en la publicidad digital.
+          </p>
+        </div>
+
+        <div class="back-link">
+          <a href="/">← Volver a la portada</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  .article-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .featured-image {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .category-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .full-article {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 8px;
+  }
+  .article-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+  }
+  .article-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-weight: 500;
+    border-left: 4px solid var(--accent-primary);
+    padding-left: 1.5rem;
+  }
+  .article-content {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .article-content p {
+    margin-bottom: 1.5rem;
+  }
+  .article-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin: 2.5rem 0 1.5rem 0;
+    line-height: 1.3;
+  }
+
+  .article-content a {
+    color: var(--accent-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 0.125rem;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+  }
+
+  .article-content a:hover {
+    color: var(--accent-secondary);
+    text-decoration-color: currentColor;
+  }
+
+  .article-content em {
+    color: var(--accent-secondary);
+    font-style: italic;
+  }
+
+  .courses-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .course-panel {
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+      linear-gradient(135deg, rgba(18, 23, 34, 0.95), rgba(11, 15, 24, 0.82));
+    box-shadow: 0 18px 55px rgba(6, 10, 20, 0.55);
+    overflow: hidden;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .course-panel[open] {
+    border-color: rgba(243, 211, 77, 0.45);
+    box-shadow: 0 24px 68px rgba(8, 12, 24, 0.65);
+  }
+
+  .course-panel summary {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 1.9rem 2.2rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .course-panel summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .course-badge {
+    flex: 0 0 auto;
+    width: 76px;
+    height: 76px;
+    border-radius: 999px;
+    background: linear-gradient(
+      135deg,
+      rgba(243, 211, 77, 0.3),
+      rgba(99, 102, 241, 0.26)
+    );
+    color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    filter: drop-shadow(0 12px 24px rgba(10, 15, 26, 0.45));
+  }
+
+  .course-heading {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .course-heading h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.4rem;
+    letter-spacing: 0.4px;
+  }
+
+  .course-heading p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.95rem;
+  }
+
+  .course-indicator {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.35s ease, transform 0.35s ease;
+  }
+
+  .course-indicator span {
+    position: relative;
+    width: 12px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .course-indicator span::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    transform: rotate(90deg);
+    transition: transform 0.35s ease;
+  }
+
+  .course-panel[open] .course-indicator {
+    border-color: rgba(243, 211, 77, 0.45);
+    transform: rotate(90deg);
+  }
+
+  .course-panel[open] .course-indicator span::after {
+    transform: rotate(0deg);
+  }
+
+  .course-panel-content {
+    padding: 0 2.2rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.45s ease,
+      opacity 0.35s ease,
+      padding 0.3s ease;
+  }
+
+  .course-panel[open] .course-panel-content {
+    padding: 0 2.2rem 2rem;
+    max-height: 650px;
+    opacity: 1;
+  }
+
+  .course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .course-item {
+    padding: 1.35rem 1.5rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 12px 32px rgba(6, 10, 20, 0.4);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .course-item:hover {
+    border-color: rgba(243, 211, 77, 0.35);
+    box-shadow: 0 16px 40px rgba(6, 10, 20, 0.5);
+  }
+
+  .course-item-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    align-items: baseline;
+    margin-bottom: 0.85rem;
+  }
+
+  .course-item-header h4 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+  }
+
+  .course-item-header span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-style: italic;
+  }
+
+  .course-item p {
+    margin: 0 0 0.85rem 0;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.6;
+  }
+
+  .course-item-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.4px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .course-item-link::after {
+    content: "→";
+    font-size: 0.95rem;
+    transition: transform 0.3s ease;
+  }
+
+  .course-item-link:hover {
+    color: var(--accent-secondary);
+    transform: translateX(4px);
+  }
+
+  .course-item-link:hover::after {
+    transform: translateX(3px);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .back-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+  }
+  .back-link a:hover {
+    color: #ffffff;
+    transform: translateX(-5px);
+  }
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem 0.5rem;
+    }
+    .featured-image {
+      height: 300px;
+      border-radius: 0;
+    }
+    .full-article {
+      padding: 2rem 1.5rem;
+    }
+    .article-title {
+      font-size: 1.8rem;
+    }
+    .courses-accordion {
+      gap: 1.5rem;
+    }
+    .course-panel summary {
+      padding: 1.45rem 1.5rem;
+      gap: 1.1rem;
+    }
+    .course-badge {
+      width: 60px;
+      height: 60px;
+      font-size: 1.2rem;
+    }
+    .course-heading h3 {
+      font-size: 1.2rem;
+    }
+    .course-heading p {
+      font-size: 0.9rem;
+    }
+    .course-panel-content {
+      padding: 0 1.5rem;
+    }
+    .course-panel[open] .course-panel-content {
+      padding: 0 1.5rem 1.5rem;
+    }
+    .course-item {
+      padding: 1.2rem 1.2rem;
+    }
+    .course-item-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+    .course-item-header h4 {
+      font-size: 1.05rem;
+    }
+  }
+</style>

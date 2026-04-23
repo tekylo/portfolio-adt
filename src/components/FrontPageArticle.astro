@@ -1,0 +1,222 @@
+---
+// Componente para artículos de portada estilo El País
+export interface Props {
+  title: string;
+  subtitle: string;
+  category: string;
+  imageUrl: string;
+  href: string;
+  author?: string;
+  size?: "large" | "medium" | "small"; // large = columna completa, medium = media columna, small = miniatura
+}
+
+const {
+  title,
+  subtitle,
+  category,
+  imageUrl,
+  href,
+  author,
+  size = "large",
+} = Astro.props;
+---
+
+<article class={`frontpage-article ${size}`}>
+  <a href={href} class="article-link">
+    <div class="article-image">
+      <img src={imageUrl} alt={title} transition:name={`article-${href}`} />
+      <span class="category-badge">{category}</span>
+    </div>
+    <div class="article-content">
+      <h2 class="article-title" transition:name={`title-${href}`}>{title}</h2>
+      <p class="article-subtitle">{subtitle}</p>
+      {author && <p class="article-author">{author}</p>}
+    </div>
+  </a>
+</article>
+
+<style>
+  .frontpage-article {
+    position: relative;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-secondary);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .frontpage-article:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 4px 20px rgba(243, 211, 77, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .frontpage-article.large {
+    height: 540px;
+  }
+
+  .frontpage-article.medium {
+    height: 260px;
+  }
+
+  .frontpage-article.small {
+    height: 140px;
+    min-height: 120px;
+  }
+
+  .article-link {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .article-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .large .article-image {
+    height: 320px;
+  }
+
+  .medium .article-image {
+    height: 140px;
+  }
+
+  .small .article-image {
+    height: 60px;
+    min-height: 60px;
+  }
+
+  .article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .frontpage-article:hover .article-image img {
+    transform: scale(1.05);
+  }
+
+  .category-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .article-content {
+    padding: 1.5rem;
+  }
+
+  .medium .article-content {
+    padding: 1rem;
+  }
+
+  .small .article-content {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .article-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 0.75rem 0;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+  }
+
+  .medium .article-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .small .article-title {
+    font-size: 0.9rem;
+    margin: 0 0 0.3rem 0;
+  }
+
+  .frontpage-article:hover .article-title {
+    color: var(--accent-primary);
+  }
+
+  .article-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .medium .article-subtitle {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .small .article-subtitle {
+    font-size: 0.75rem;
+    -webkit-line-clamp: 1;
+    margin: 0 0 0.2rem 0;
+  }
+
+  .article-author {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .frontpage-article.large,
+    .frontpage-article.medium {
+      height: auto;
+      min-height: 300px;
+    }
+
+    .article-image {
+      height: 200px !important;
+    }
+
+    .article-title {
+      font-size: 1.2rem;
+    }
+
+    .article-subtitle {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .article-image {
+      height: 180px !important;
+    }
+
+    .article-content {
+      padding: 1rem;
+    }
+
+    .article-title {
+      font-size: 1.1rem;
+    }
+
+    .article-subtitle {
+      font-size: 0.85rem;
+      -webkit-line-clamp: 2;
+    }
+  }
+</style>

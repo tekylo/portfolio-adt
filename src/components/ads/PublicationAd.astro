@@ -1,0 +1,182 @@
+---
+export interface Publication {
+  title: string;
+  summary: string;
+  ctaLabel: string;
+  href: string;
+  theme?: "dark" | "light";
+}
+
+export interface Props {
+  publication?: Publication;
+}
+
+const {
+  publication = {
+    title: "Título de la publicación",
+    summary:
+      "Resumen breve del contenido para invitar a leer el artículo completo en la plataforma original.",
+    ctaLabel: "Leer publicación",
+    href: "#",
+    theme: "dark",
+  },
+} = Astro.props;
+
+const themeClass =
+  publication.theme === "light" ? "publication-theme-light" : "publication-theme-dark";
+---
+
+<section class={`publication-ad ${themeClass}`}>
+  <div class="label">Artículo destacado</div>
+  <div class="content">
+    <h3>{publication.title}</h3>
+    <p>{publication.summary}</p>
+    <a
+      href={publication.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cta"
+    >
+      {publication.ctaLabel}
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .publication-ad {
+    position: relative;
+    margin: 3rem 0;
+    padding: 2.5rem 2.75rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(225, 188, 38, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .publication-theme-dark {
+    background: radial-gradient(circle at top left, rgba(225, 188, 38, 0.2), transparent 55%),
+      linear-gradient(135deg, #312e81, #0f172a);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .publication-theme-light {
+    background: linear-gradient(135deg, #faf3d4, #fdfaf2);
+    color: #1f2937;
+    box-shadow: 0 10px 30px rgba(31, 41, 55, 0.15);
+  }
+
+  .label {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+  }
+
+  .publication-theme-light .label {
+    background: rgba(31, 41, 55, 0.15);
+    color: #1f2937;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.3;
+  }
+
+  .content p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .cta {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  .publication-theme-dark .cta {
+    background: rgba(225, 188, 38, 0.2);
+    color: #f8f3c6;
+    border: 1px solid rgba(225, 188, 38, 0.4);
+  }
+
+  .publication-theme-light .cta {
+    background: rgba(31, 41, 55, 0.08);
+    color: #1f2937;
+    border: 1px solid rgba(31, 41, 55, 0.2);
+  }
+
+  .cta:hover {
+    transform: translateY(-2px);
+  }
+
+  .publication-theme-dark .cta:hover {
+    background: rgba(225, 188, 38, 0.3);
+    border-color: rgba(225, 188, 38, 0.55);
+    box-shadow: 0 8px 20px rgba(225, 188, 38, 0.25);
+  }
+
+  .publication-theme-light .cta:hover {
+    background: rgba(31, 41, 55, 0.12);
+    border-color: rgba(31, 41, 55, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .publication-ad {
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    .content p {
+      font-size: 1rem;
+    }
+
+    .label {
+      position: static;
+      align-self: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

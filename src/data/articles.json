@@ -1,0 +1,72 @@
+[
+    {
+        "slug": "sobre-mi",
+        "title": "José Antonio López Molina: El experto en AdTech que revoluciona la publicidad digital",
+        "subtitle": "AdTech en Wemass tras etapas en Arkeero y Vocento, conectando producto, operaciones e ingeniería.",
+        "category": "PERFIL PROFESIONAL",
+        "imageUrl": "/jose.jpeg",
+        "href": "/articulo-sobre-mi",
+        "author": "Redacción AdTech",
+        "size": "large"
+    },
+    {
+        "slug": "conocimientos",
+        "title": "Stack tecnológico completo para AdTech",
+        "subtitle": "Plataformas AdTech, stack full stack y cultura DevOps para entregar soluciones escalables orientadas a negocio.",
+        "category": "CONOCIMIENTOS",
+        "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
+        "href": "/articulo-conocimientos",
+        "author": "Redacción AdTech",
+        "size": "medium"
+    },
+    {
+        "slug": "proyectos",
+        "title": "Proyectos AdTech de alto impacto",
+        "subtitle": "Migraciones de adserver, librerías programáticas y plataformas corporativas diseñadas para publishers y marcas.",
+        "category": "PROYECTOS",
+        "imageUrl": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&h=400&fit=crop",
+        "href": "/articulo-proyectos",
+        "author": "Redacción AdTech",
+        "size": "medium"
+    },
+    {
+        "slug": "header-bidding",
+        "title": "Header Bidding: subastas en la sombra",
+        "subtitle": "Análisis práctico de header bidding con claves para equilibrar monetización, latencia y coordinación operativa.",
+        "category": "EXPERIENCIA",
+        "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop",
+        "href": "/articulo-header-bidding",
+        "author": "José Antonio López Molina",
+        "size": "medium"
+    },
+    {
+        "slug": "educacion",
+        "title": "Ingeniería Informática · UJA",
+        "subtitle": "Grado en la UJA, programas complementarios y TFG Néfele sobre predicción meteorológica con algoritmos de regresión.",
+        "category": "EDUCACIÓN",
+        "imageUrl": "/logos/ujaen.jpg",
+        "href": "/articulo-educacion",
+        "author": "Redacción AdTech",
+        "size": "medium"
+    },
+    {
+        "slug": "experiencia",
+        "title": "6 años liderando proyectos AdTech en España",
+        "subtitle": "Trayectoria en Wemass, Arkeero, Vocento y más, uniendo arquitectura, programática y liderazgo técnico en AdTech.",
+        "category": "EXPERIENCIA",
+        "imageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+        "href": "/articulo-experiencia",
+        "author": "Redacción AdTech",
+        "size": "medium"
+    },
+    {
+        "slug": "cursos",
+        "title": "Certificaciones y formación continua",
+        "subtitle": "Certificaciones en React, Node, Magento, New Relic y Git que refuerzan un aprendizaje continuo en AdTech.",
+        "category": "CURSOS",
+        "imageUrl": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=400&fit=crop",
+        "href": "/articulo-cursos",
+        "author": "Redacción AdTech",
+        "size": "medium"
+    }
+]

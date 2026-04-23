@@ -1,0 +1,245 @@
+---
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const siteUrl = "https://jalopezmolina.vercel.app";
+const pageTitle = title;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Portfolio de José Antonio López Molina - AdTech Expert & Full Stack Developer especializado en tecnologías publicitarias y desarrollo web moderno."
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={siteUrl} />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content="Portfolio de José Antonio - AdTech Expert & Full Stack Developer" />
+    <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="José Antonio - AdTech Portfolio" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content="Portfolio de José Antonio - AdTech Expert & Full Stack Developer" />
+    <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+    <meta name="twitter:site" content="@tekylo" />
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    
+    <title>{title}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <ViewTransitions />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "José Antonio López Molina",
+      "jobTitle": "AdTech Expert & Full Stack Developer",
+      "url": "https://jalopezmolina.vercel.app",
+      "sameAs": [
+        "https://github.com/tekylo",
+        "https://www.linkedin.com/in/jos%C3%A9-antonio-lopez-molina-9881a8aa/",
+        "https://twitter.com/tekylo"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Wemass"
+      },
+      "knowsAbout": ["AdTech", "Full Stack Development", "JavaScript", "TypeScript", "React", "Vue", "Node.js", "Go"]
+    }
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script is:inline>
+      // Función para aplicar el tema
+      function updateThemeToggleButton(theme) {
+        const button = document.getElementById("themeToggle");
+        if (!button) return;
+        const nextTheme = theme === "dark" ? "light" : "dark";
+        button.setAttribute("data-next-theme", nextTheme);
+        button.setAttribute(
+          "aria-label",
+          `Cambiar a modo ${nextTheme === "dark" ? "oscuro" : "claro"}`
+        );
+      }
+
+      function applyTheme() {
+        const theme = (() => {
+          if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+          ) {
+            return localStorage.getItem("theme");
+          }
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return "dark";
+          }
+          return "dark"; // Por defecto dark
+        })();
+
+        if (theme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+
+        window.localStorage.setItem("theme", theme);
+        updateThemeToggleButton(theme);
+      }
+
+      const handleToggleClick = () => {
+        const element = document.documentElement;
+        element.classList.toggle("dark");
+
+        const isDark = element.classList.contains("dark");
+        const theme = isDark ? "dark" : "light";
+        localStorage.setItem("theme", theme);
+        updateThemeToggleButton(theme);
+      };
+
+      // Función para configurar el event listener del botón
+      function setupThemeToggle() {
+        const button = document.getElementById("themeToggle");
+        if (button) {
+          button.removeEventListener("click", handleToggleClick);
+          button.addEventListener("click", handleToggleClick);
+        }
+      }
+
+      // Aplicar tema y configurar botón inmediatamente
+      applyTheme();
+      setupThemeToggle();
+
+      // Reaplica el tema y reconfigura el botón después de cada navegación con View Transitions
+      document.addEventListener("astro:after-swap", () => {
+        applyTheme();
+        setupThemeToggle();
+      });
+
+      // También configurar en DOMContentLoaded por si acaso
+      document.addEventListener("DOMContentLoaded", () => {
+        applyTheme();
+        setupThemeToggle();
+      });
+    </script>
+  </body>
+</html>
+<style is:global>
+  :root {
+    /* Modo Claro - Fondos */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+
+    /* Modo Claro - Textos */
+    --text-primary: #1a1d23;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
+
+    /* Modo Claro - Acentos */
+    --accent-primary: #d4a017;
+    --accent-secondary: #4f46e5;
+    --accent-tertiary: #7c3aed;
+
+    /* Modo Claro - Bordes */
+    --border-subtle: #e5e7eb;
+    --border-medium: #d1d5db;
+
+    /* Estados */
+    --success: #059669;
+    --warning: #d97706;
+    --error: #dc2626;
+    --info: #2563eb;
+
+    /* Variables legacy (para compatibilidad) */
+    --background: var(--bg-primary);
+    --text-color: var(--text-primary);
+  }
+
+  .dark {
+    /* Modo Oscuro - Fondos */
+    --bg-primary: #0a0e17;
+    --bg-secondary: #171c28;
+    --bg-tertiary: #1e2532;
+
+    /* Modo Oscuro - Textos */
+    --text-primary: #e8eaed;
+    --text-secondary: #9aa0a9;
+    --text-muted: #6b7280;
+
+    /* Modo Oscuro - Acentos */
+    --accent-primary: #f3d34d;
+    --accent-secondary: #6366f1;
+    --accent-tertiary: #8b5cf6;
+
+    /* Modo Oscuro - Bordes */
+    --border-subtle: #2a2f3d;
+    --border-medium: #3a4050;
+
+    /* Estados en modo oscuro */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
+
+    /* Variables legacy (para compatibilidad) */
+    --background: var(--bg-primary);
+    --text-color: var(--text-primary);
+  }
+
+  html {
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: var(--bg-primary);
+  }
+
+  /* Mejorar rendimiento de animaciones en móvil */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  code {
+    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono",
+      "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+  }
+</style>

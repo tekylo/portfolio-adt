@@ -1,0 +1,221 @@
+---
+import type { AstroBuiltinProps } from "astro";
+
+export interface Testimonial {
+  name: string;
+  role: string;
+  quote: string;
+  ctaLabel: string;
+  href: string;
+  theme?: "dark" | "light";
+}
+
+export interface Props extends AstroBuiltinProps {
+  testimonial?: Testimonial;
+}
+
+const {
+  testimonial = {
+    name: "Nombre Apellido",
+    role: "Cargo · Organización",
+    quote:
+      "José Antonio aporta una combinación única de visión estratégica y excelencia técnica en cada proyecto que lidera.",
+    ctaLabel: "Leer testimonio",
+    href: "#",
+    theme: "dark",
+  },
+} = Astro.props;
+
+const themeClass = testimonial.theme === "light" ? "theme-light" : "theme-dark";
+---
+
+<aside class={`testimonial-ad ${themeClass}`}>
+  <div class="ad-label">Recomendación</div>
+
+  <div class="inner">
+    <div class="quote-mark">“</div>
+
+    <div class="content">
+      <p class="quote">{testimonial.quote}</p>
+
+      <div class="author">
+        <span class="name">{testimonial.name}</span>
+        <span class="role">{testimonial.role}</span>
+      </div>
+
+      <a
+        href={testimonial.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cta"
+      >
+        {testimonial.ctaLabel}
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .testimonial-ad {
+    position: relative;
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(225, 188, 38, 0.3);
+  }
+
+  .theme-dark {
+    background: radial-gradient(circle at top right, rgba(225, 188, 38, 0.2), transparent 55%),
+      linear-gradient(135deg, #1f2937, #111827);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .theme-light {
+    background: linear-gradient(135deg, #fdf6e3, #fefefe);
+    color: #1f2937;
+    box-shadow: 0 12px 35px rgba(31, 41, 55, 0.15);
+  }
+
+  .ad-label {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.35);
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+  }
+
+  .theme-light .ad-label {
+    background: rgba(31, 41, 55, 0.15);
+    color: #1f2937;
+  }
+
+  .inner {
+    display: flex;
+    gap: 1.75rem;
+    align-items: flex-start;
+  }
+
+  .quote-mark {
+    font-size: 5rem;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 0.7;
+    color: rgba(225, 188, 38, 0.8);
+    text-shadow: 0 6px 20px rgba(225, 188, 38, 0.35);
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .quote {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .role {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    align-self: flex-start;
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  .theme-dark .cta {
+    background: rgba(225, 188, 38, 0.15);
+    color: #fcefb4;
+    border: 1px solid rgba(225, 188, 38, 0.45);
+  }
+
+  .theme-light .cta {
+    background: rgba(31, 41, 55, 0.08);
+    color: #1f2937;
+    border: 1px solid rgba(31, 41, 55, 0.2);
+  }
+
+  .cta:hover {
+    transform: translateY(-2px);
+  }
+
+  .theme-dark .cta:hover {
+    background: rgba(225, 188, 38, 0.25);
+    color: #ffffff;
+    border-color: rgba(225, 188, 38, 0.6);
+  }
+
+  .theme-light .cta:hover {
+    background: rgba(31, 41, 55, 0.15);
+    border-color: rgba(31, 41, 55, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-ad {
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .inner {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .quote-mark {
+      font-size: 4rem;
+    }
+
+    .quote {
+      font-size: 1.2rem;
+    }
+
+    .cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

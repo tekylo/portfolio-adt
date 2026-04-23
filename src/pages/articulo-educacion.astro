@@ -1,0 +1,338 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavMenu from "../components/NavMenu.astro";
+import NewspaperHeader from "../components/NewspaperHeader.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import articles from "../data/articles.json";
+const data = articles.find((a) => a.slug === "educacion");
+---
+
+<Layout title={`${data.title} | El Diario AdTech`}>
+  <div class="container">
+    <NewspaperHeader />
+  </div>
+  <NavMenu />
+
+  <div class="container">
+    <Breadcrumbs
+      items={[{ label: "Portada", href: "/" }, { label: "Educación" }]}
+    />
+  </div>
+
+  <div class="container">
+    <div class="article-page">
+      <div class="featured-image">
+        <img
+          src={data.imageUrl}
+          alt={data.title}
+          transition:name="article-/articulo-educacion"
+        />
+        <span class="category-badge">{data.category}</span>
+      </div>
+
+      <article class="full-article">
+        <h1 class="article-title" transition:name="title-/articulo-educacion">
+          {data.title}
+        </h1>
+
+        <div class="article-meta">
+          <span class="date">31 de Octubre, 2025</span>
+          <span class="separator">|</span>
+          <span class="author">{data.author}</span>
+        </div>
+
+        <p class="lead">
+          {data.subtitle}
+        </p>
+
+        <div class="article-content">
+          <p>
+            Natural de Beas de Segura (Jaén), José Antonio López Molina descubrió
+            desde pequeño su fascinación por la tecnología. Esa curiosidad lo llevó
+            a estudiar <strong>Ingeniería Informática</strong> en la <strong
+              >Universidad de Jaén</strong
+            >, consolidando entre 2012 y 2017 los cimientos técnicos que más tarde
+            aplicaría en el sector de la publicidad digital.
+          </p>
+          <p>
+            🌟 Desde los primeros cursos, combinó teoría y práctica con la ilusión
+            de transformar líneas de código en soluciones tangibles para las
+            personas y los medios.
+          </p>
+
+          <h2>🎓 Universidad de Jaén</h2>
+
+          <p>
+            Durante su etapa universitaria profundizó en áreas clave como
+            programación, estructuras de datos, arquitectura de computadores,
+            redes, bases de datos y sistemas operativos. El enfoque práctico del
+            grado le permitió participar en proyectos reales desde los primeros
+            cursos, fortaleciendo su capacidad de trabajo en equipo, la resolución
+            de problemas y el pensamiento analítico.
+          </p>
+
+          <h2>📚 Formación complementaria</h2>
+
+          <p>
+            Dentro de la propia universidad cursó programas adicionales que
+            reforzaron su perfil técnico y su curiosidad por la innovación.
+          </p>
+
+          <ul>
+            <li>
+              🚀 <strong>El Futuro del Desarrollo Web: HTML5</strong> — curso online
+              de 50 horas impartido por la Escuela Superior de Ingeniería
+              Informática (octubre de 2012).
+            </li>
+            <li>
+              🔍 <strong>Programa de Alfabetización Informacional</strong> — curso de
+              36 horas organizado por la Biblioteca de la Universidad de Jaén (mayo
+              de 2015).
+            </li>
+          </ul>
+
+          <h2>🧪 Trabajo Fin de Grado</h2>
+
+          <p>
+            Su Trabajo Fin de Grado, calificado con un Notable (8.0), reflejó su
+            enfoque técnico y analítico. El proyecto completo está disponible
+            públicamente en el repositorio institucional de la Universidad de Jaén.
+          </p>
+
+          <p>
+            Bajo el nombre <strong>Néfele</strong>, diseñó una plataforma web para la
+            Universidad de Jaén centrada en el estudio de predicciones
+            meteorológicas de la provincia mediante algoritmos de regresión. El
+            sistema recopilaba datos cada seis horas para alimentar los modelos y
+            ofrecía pronósticos con horizontes de 24 y 48 horas.
+          </p>
+
+          <p>
+            <a
+              href="https://crea.ujaen.es/server/api/core/bitstreams/d8f3028d-2660-4130-baf2-a714148502d4/content"
+              target="_blank"
+              rel="noopener noreferrer"
+              >👀 Ver TFG en línea</a
+            >
+          </p>
+
+          <h2>🌱 Más allá del aula</h2>
+
+          <p>
+            <em
+              >“Mi paso por la Universidad de Jaén marcó el inicio de todo. Fue
+              allí donde entendí que la informática no era solo programación, sino
+              una forma de crear soluciones reales para el mundo”</em
+            >
+            , recuerda José Antonio.
+          </p>
+
+          <p>
+            Esta base académica, unida a su constante formación y aprendizaje
+            autodidacta, sentó las bases de la sólida carrera tecnológica que hoy
+            desarrolla en el ámbito AdTech.
+          </p>
+        </div>
+
+        <div class="back-link">
+          <a href="/">← Volver a la portada</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .article-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .featured-image {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .category-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .full-article {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 8px;
+  }
+
+  .article-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+  }
+
+  .article-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .separator {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .author {
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-weight: 500;
+    border-left: 4px solid var(--accent-primary);
+    padding-left: 1.5rem;
+  }
+
+  .article-content {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .article-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .article-content li {
+    margin-bottom: 0.75rem;
+  }
+
+  .article-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin: 2.5rem 0 1.5rem 0;
+    line-height: 1.3;
+  }
+
+  .article-content a {
+    color: var(--accent-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 0.125rem;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+  }
+
+  .article-content a:hover {
+    color: var(--accent-secondary);
+    text-decoration-color: currentColor;
+  }
+
+  .article-content em {
+    color: var(--accent-secondary);
+    font-style: italic;
+  }
+
+  .article-content strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .back-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+  }
+
+  .back-link a:hover {
+    color: #ffffff;
+    transform: translateX(-5px);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem 0.5rem;
+    }
+
+    .featured-image {
+      height: 300px;
+      border-radius: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .full-article {
+      padding: 2rem 1.5rem;
+    }
+
+    .article-title {
+      font-size: 1.8rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+    }
+
+    .article-content {
+      font-size: 1rem;
+    }
+
+    .article-content h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

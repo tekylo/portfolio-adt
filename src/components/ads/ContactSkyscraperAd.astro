@@ -95,14 +95,21 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
 </div>
 
 <style>
+  :root {
+    --ad-bg: var(--bg-secondary, #232946);
+    --ad-accent: var(--accent-primary, #eebd3d);
+    --ad-border: #121629;
+    --ad-shadow: 0 4px 18px rgba(35, 41, 70, 0.18);
+  }
+
   .contact-skyscraper {
     width: 100%;
     max-width: 300px;
     box-sizing: border-box;
     min-height: 600px;
-    background: var(--ad-bg, #232946);
-    box-shadow: 0 4px 18px var(--ad-shadow, rgba(35, 41, 70, 0.18));
-    border: 1px solid var(--ad-border, #121629);
+    background: var(--ad-bg);
+    box-shadow: var(--ad-shadow);
+    border: 1px solid var(--ad-border);
     padding: 1.5rem;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
     overflow: hidden;
@@ -188,7 +195,7 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
   .perks li svg {
     flex-shrink: 0;
     margin-top: 0.05rem;
-    color: #eebd3d !important;
+    color: var(--ad-accent) !important;
   }
 
   .contact-card {
@@ -223,7 +230,7 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
   }
 
   .contact-link svg {
-    color: #eebd3d;
+    color: var(--ad-accent);
   }
 
   .cta {
@@ -231,9 +238,9 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     align-self: stretch;
     border-radius: 8px;
     padding: 0.8rem 1.6rem;
-    background: #232946;
-    color: #eebd3d;
-    border: 2px solid #eebd3d;
+    background: var(--ad-bg);
+    color: var(--ad-accent);
+    border: 2px solid var(--ad-accent);
     font-weight: 700;
     font-size: 1rem;
     display: inline-flex;
@@ -252,16 +259,16 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
   }
 
   .cta:hover {
-    background: #eebd3d;
-    color: #232946;
+    background: var(--ad-accent);
+    color: var(--ad-bg);
     box-shadow: 0 4px 16px rgba(35, 41, 70, 0.18);
     transform: scale(1.05);
   }
 
   @media (max-width: 1100px) {
     :root {
-      --ad-bg: #232946;
-      --ad-accent: #eebd3d;
+      --ad-bg: var(--bg-secondary, #232946);
+      --ad-accent: var(--accent-primary, #eebd3d);
       --ad-text: #fff;
       --ad-border: #121629;
       --ad-radius: 8px;

@@ -162,8 +162,8 @@ const {
   }
 
   :root {
-    --ad-bg: #232946;
-    --ad-accent: #eebd3d;
+    --ad-bg: var(--bg-secondary, #232946);
+    --ad-accent: var(--accent-primary, #eebd3d);
     --ad-text: #fff;
     --ad-border: #121629;
     --ad-radius: 8px;
@@ -214,16 +214,16 @@ const {
   }
 
   li svg {
-    color: #eebd3d !important;
+    color: var(--ad-accent) !important;
   }
 
   .cta {
     align-self: stretch;
     border-radius: 8px;
     padding: 0.8rem 1.6rem;
-    background: #232946;
-    color: #eebd3d;
-    border: 2px solid #eebd3d;
+    background: var(--ad-bg);
+    color: var(--ad-accent);
+    border: 2px solid var(--ad-accent);
     font-weight: 700;
     font-size: 1rem;
     display: inline-flex;
@@ -238,8 +238,8 @@ const {
   }
 
   .cta:hover {
-    background: #eebd3d;
-    color: #232946;
+    background: var(--ad-accent);
+    color: var(--ad-bg);
     box-shadow: 0 4px 16px rgba(35, 41, 70, 0.18);
     transform: scale(1.05);
   }

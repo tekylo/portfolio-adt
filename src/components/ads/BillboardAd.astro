@@ -75,8 +75,8 @@ const {
 
 <style>
   :root {
-    --ad-bg: #232946;
-    --ad-accent: #eebd3d;
+    --ad-bg: var(--bg-secondary, #232946);
+    --ad-accent: var(--accent-primary, #eebd3d);
     --ad-text: #fff;
     --ad-border: #121629;
     --ad-radius: 8px;
@@ -116,12 +116,12 @@ const {
     font-weight: 600;
   }
   :root {
-    --ad-bg: #232946;
+    --ad-bg: var(--bg-secondary, #232946);
     --ad-border: #121629;
     --ad-shadow: rgba(35, 41, 70, 0.18);
-    --ad-label-bg: #232946;
-    --ad-label-text: #eebd3d;
-    --ad-label-border: #eebd3d;
+    --ad-label-bg: var(--bg-secondary, #232946);
+    --ad-label-text: var(--accent-primary, #eebd3d);
+    --ad-label-border: var(--accent-primary, #eebd3d);
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -129,8 +129,8 @@ const {
       --ad-border: #232946;
       --ad-shadow: rgba(35, 41, 70, 0.32);
       --ad-label-bg: #232946;
-      --ad-label-text: #eebd3d;
-      --ad-label-border: #eebd3d;
+      --ad-label-text: var(--accent-primary, #eebd3d);
+      --ad-label-border: var(--accent-primary, #eebd3d);
     }
   }
 

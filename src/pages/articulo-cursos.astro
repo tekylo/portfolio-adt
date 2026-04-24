@@ -4,18 +4,21 @@ import NavMenu from "../components/NavMenu.astro";
 import NewspaperHeader from "../components/NewspaperHeader.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import articles from "../data/articles.json";
-const data = articles.find((a) => a.slug === "cursos");
-const formatDate = (date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
+const article = articles.find((a) => a.slug === "cursos");
+const data = article!;
+const formatDate = (date: Date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
 const today = formatDate(new Date());
 
 const courseSections = [
   {
     title: "Desarrollo Frontend y Frameworks",
     subtitle: "Interfaces reactivas y fundamentos web modernos",
+    logo: "/logos/react-redux.svg",
     courses: [
       {
         title: "React + Redux",
         provider: "Fictizia · 2019",
+        logo: "/logos/react-redux.svg",
         description:
           "Curso presencial de 30 horas centrado en la creación de interfaces reactivas, gestión avanzada de estado y arquitectura modular.",
         link: {
@@ -26,10 +29,22 @@ const courseSections = [
       {
         title: "El Futuro del Desarrollo Web: HTML5",
         provider: "Universidad de Albacete · 2012",
+        logo: "/logos/uclm.png",
         description:
-          "Programa online de 50 horas impartido por la Escuela Superior de Ingeniería Informática, centrado en fundamentos de HTML5 y maquetación semántica.",
+          "Programa online de 25 horas impartido por la Escuela Superior de Ingeniería Informática, centrado en fundamentos de HTML5 y maquetación semántica.",
         link: {
-          href: "https://www.dropbox.com/scl/fi/t67nlxzgrj4wli92o2aeb/Maquetaci-n-web-HTML-CSS.pdf?rlkey=1qadbbkpsp1jr2zkd0zmz34ac&e=1&dl=0",
+          href: "https://www.dropbox.com/scl/fi/zh519xs4f8ojf7vsd629g/El-futuro-del-desarrollo-web-HTML5.pdf?rlkey=ax9rl6q7fgf8hxmx65kiz083l&st=3zieog7k&dl=0",
+          label: "Ver certificado"
+        }
+      },
+      {
+        title: "Maquetación web HTML-CSS.pdf",
+        provider: "Universidad de Albacete · 2012",
+        logo: "/logos/uclm.png",
+        description:
+          "Programa online de 25 horas impartido por la Escuela Superior de Ingeniería Informática, centrado en fundamentos de HTML y estilos.",
+        link: {
+          href: "https://www.dropbox.com/scl/fi/t67nlxzgrj4wli92o2aeb/Maquetaci-n-web-HTML-CSS.pdf?rlkey=1qadbbkpsp1jr2zkd0zmz34ac&st=i5goh062&dl=0",
           label: "Ver certificado"
         }
       }
@@ -38,10 +53,12 @@ const courseSections = [
   {
     title: "Desarrollo Backend y Bases de Datos",
     subtitle: "Integración de servicios y modelos de datos",
+    logo: "/logos/node.png",
     courses: [
       {
         title: "MongoDB + Node.js",
         provider: "TrainingIT · 2019",
+        logo: "/logos/node.png",
         description:
           "Curso intensivo de 20 horas enfocado en desarrollo backend con Node.js, Express y MongoDB, incluyendo prácticas de testing y creación de APIs REST.",
         link: {
@@ -52,6 +69,7 @@ const courseSections = [
       {
         title: "Magento 2",
         provider: "TrainingIT · 2019",
+        logo: "/logos/magento.svg",
         description:
           "Curso presencial de 40 horas centrado en arquitectura, módulos y personalización avanzada de la plataforma.",
         link: {
@@ -64,10 +82,12 @@ const courseSections = [
   {
     title: "Rendimiento, Control de versiones y Buenas prácticas",
     subtitle: "Observabilidad, calidad de código y workflows colaborativos",
+    logo: "/logos/new-relic.png",
     courses: [
       {
         title: "New Relic Certified Performance Pro",
         provider: "New Relic University · 2019",
+        logo: "/logos/new-relic.png",
         description:
           "Certificación profesional en monitorización de rendimiento y optimización de aplicaciones, acreditando experiencia en análisis de métricas y resolución de cuellos de botella.",
         link: {
@@ -78,6 +98,7 @@ const courseSections = [
       {
         title: "Git + GitHub",
         provider: "Udemy · 2018",
+        logo: "/logos/git-github.png",
         description:
           "Curso online de 7 horas orientado al flujo de trabajo profesional con Git, GitFlow y GitHub, cubriendo ramas, merges y automatización con Actions.",
         link: {
@@ -90,10 +111,12 @@ const courseSections = [
   {
     title: "Formación complementaria universitaria",
     subtitle: "Competencias digitales y gestión de fuentes académicas",
+    logo: "/logos/ujaen.jpg",
     courses: [
       {
         title: "Programa de Alfabetización Informacional",
         provider: "Universidad de Jaén · 2015",
+        logo: "/logos/ujaen.jpg",
         description:
           "Curso online de 36 horas organizado por la Biblioteca de la Universidad de Jaén, centrado en competencias digitales, búsqueda avanzada y gestión de fuentes académicas.",
         link: {
@@ -159,9 +182,15 @@ const courseSections = [
 
           <div class="courses-accordion">
             {courseSections.map((section, index) => (
-              <details class="course-panel" open={index === 0}>
+              <details class="course-panel">
                 <summary>
-                  <div class="course-badge">{section.title.charAt(0)}</div>
+                  <div class="course-badge">
+                    {section.logo ? (
+                      <img src={section.logo} alt={`Logo de ${section.title}`} />
+                    ) : (
+                      <span>{section.title.charAt(0)}</span>
+                    )}
+                  </div>
                   <div class="course-heading">
                     <h3>{section.title}</h3>
                     <p>{section.subtitle}</p>
@@ -176,8 +205,17 @@ const courseSections = [
                     {section.courses.map((course) => (
                       <div class="course-item">
                         <div class="course-item-header">
-                          <h4>{course.title}</h4>
-                          <span>{course.provider}</span>
+                          <div class="course-item-logo">
+                            {course.logo ? (
+                              <img src={course.logo} alt={`Logo de ${course.title}`} />
+                            ) : (
+                              <span>{course.title.charAt(0)}</span>
+                            )}
+                          </div>
+                          <div class="course-item-title">
+                            <h4>{course.title}</h4>
+                            <span>{course.provider}</span>
+                          </div>
                         </div>
                         <p>{course.description}</p>
                         {course.link && (
@@ -260,8 +298,8 @@ const courseSections = [
     z-index: 2;
   }
   .full-article {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
     padding: 3rem;
     border-radius: 8px;
   }
@@ -270,7 +308,7 @@ const courseSections = [
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 1.2;
-    color: #ffffff;
+    color: var(--text-primary);
     margin: 0 0 1rem 0;
   }
   .article-meta {
@@ -279,14 +317,14 @@ const courseSections = [
     align-items: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid var(--border-subtle);
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
   }
   .lead {
     font-size: 1.25rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-primary);
     margin-bottom: 2rem;
     font-weight: 500;
     border-left: 4px solid var(--accent-primary);
@@ -296,7 +334,7 @@ const courseSections = [
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1.1rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-secondary);
   }
   .article-content p {
     margin-bottom: 1.5rem;
@@ -337,9 +375,8 @@ const courseSections = [
 
   .course-panel {
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background:
-      linear-gradient(135deg, rgba(18, 23, 34, 0.95), rgba(11, 15, 24, 0.82));
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-tertiary);
     box-shadow: 0 18px 55px rgba(6, 10, 20, 0.55);
     overflow: hidden;
     transition: border-color 0.35s ease, box-shadow 0.35s ease;
@@ -367,21 +404,41 @@ const courseSections = [
     flex: 0 0 auto;
     width: 76px;
     height: 76px;
-    border-radius: 999px;
-    background: linear-gradient(
-      135deg,
-      rgba(243, 211, 77, 0.3),
-      rgba(99, 102, 241, 0.26)
-    );
-    color: rgba(255, 255, 255, 0.95);
+    border-radius: 14px;
+    background: linear-gradient(135deg, #e8e9ea 0%, #d1d2d4 100%);
+    border: 1px solid rgba(0, 0, 0, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0.85rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .course-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0.95);
+  }
+
+  .course-badge span {
     font-weight: 700;
     font-size: 1.5rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    filter: drop-shadow(0 12px 24px rgba(10, 15, 26, 0.45));
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .course-badge {
+      background: linear-gradient(135deg, #1e2028 0%, #15161c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+    .course-badge img {
+      filter: brightness(1);
+    }
+    .course-badge span {
+      color: var(--text-primary);
+    }
   }
 
   .course-heading {
@@ -393,14 +450,14 @@ const courseSections = [
 
   .course-heading h3 {
     margin: 0;
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: 1.4rem;
     letter-spacing: 0.4px;
   }
 
   .course-heading p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--text-secondary);
     font-size: 0.95rem;
   }
 
@@ -408,7 +465,7 @@ const courseSections = [
     width: 34px;
     height: 34px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--border-subtle);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -419,7 +476,7 @@ const courseSections = [
     position: relative;
     width: 12px;
     height: 2px;
-    background: rgba(255, 255, 255, 0.9);
+    background: 
   }
 
   .course-indicator span::after {
@@ -429,7 +486,7 @@ const courseSections = [
     left: 0;
     width: 12px;
     height: 2px;
-    background: rgba(255, 255, 255, 0.9);
+    background: 
     transform: rotate(90deg);
     transition: transform 0.35s ease;
   }
@@ -456,7 +513,7 @@ const courseSections = [
 
   .course-panel[open] .course-panel-content {
     padding: 0 2.2rem 2rem;
-    max-height: 650px;
+    max-height: 1200px;
     opacity: 1;
   }
 
@@ -482,28 +539,74 @@ const courseSections = [
 
   .course-item-header {
     display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-    align-items: baseline;
+    gap: 1rem;
+    align-items: center;
     margin-bottom: 0.85rem;
   }
 
-  .course-item-header h4 {
+  .course-item-logo {
+    flex: 0 0 auto;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e8e9ea 0%, #d1d2d4 100%);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  .course-item-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0.95);
+  }
+
+  .course-item-logo span {
+    font-weight: 700;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .course-item-logo {
+      background: linear-gradient(135deg, #1e2028 0%, #15161c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .course-item-logo img {
+      filter: brightness(1);
+    }
+    .course-item-logo span {
+      color: var(--text-secondary);
+    }
+  }
+
+  .course-item-title {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .course-item-title h4 {
     margin: 0;
     font-size: 1.15rem;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: 0.3px;
   }
 
-  .course-item-header span {
+  .course-item-title span {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--text-tertiary);
     font-style: italic;
   }
 
   .course-item p {
     margin: 0 0 0.85rem 0;
-    color: rgba(255, 255, 255, 0.88);
+    color: var(--text-primary);
     line-height: 1.6;
   }
 
@@ -549,7 +652,7 @@ const courseSections = [
     transition: all 0.3s ease;
   }
   .back-link a:hover {
-    color: #ffffff;
+    color: var(--text-primary);
     transform: translateX(-5px);
   }
   @media (max-width: 768px) {
@@ -576,7 +679,13 @@ const courseSections = [
     .course-badge {
       width: 60px;
       height: 60px;
-      font-size: 1.2rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #e8e9ea 0%, #d1d2d4 100%);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+    }
+    .course-badge img {
+      width: 100%;
+      height: 100%;
     }
     .course-heading h3 {
       font-size: 1.2rem;
@@ -600,6 +709,13 @@ const courseSections = [
     }
     .course-item-header h4 {
       font-size: 1.05rem;
+    }
+  }
+
+  @media (max-width: 768px) and (prefers-color-scheme: dark) {
+    .course-badge {
+      background: linear-gradient(135deg, #1e2028 0%, #15161c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
   }
 </style>

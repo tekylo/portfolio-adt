@@ -4,11 +4,28 @@ import NavMenu from "../components/NavMenu.astro";
 import NewspaperHeader from "../components/NewspaperHeader.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import articles from "../data/articles.json";
-const data = articles.find((a) => a.slug === "proyectos");
-const formatDate = (date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
+const article = articles.find((a) => a.slug === "proyectos");
+const data = article!;
+const formatDate = (date: Date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
 const today = formatDate(new Date());
 
 const projects = [
+  {
+    company: "Madrid Destino",
+    subtitle: "Ecosistema Digital: Web + Marketing",
+    summary:
+      "Contrato de consultoría con la empresa Alkemy para la conceptualización, desarrollo e implementación del ecosistema digital del Ayuntamiento de Madrid: entorno web y herramientas de marketing digital.",
+    site: "https://www.madrid-destino.com/",
+    siteLabel: "madrid-destino.com",
+    logo: "/logos/madrid-destino.jpg",
+    stack: [
+      "Consultoría técnica",
+      "Ecosistema digital",
+      "Marketing digital",
+      "Entorno web",
+    ],
+    ctaLabel: "Visitar site",
+  },
   {
     company: "Vocento",
     subtitle: "Migración de AdServer, WPO y Paywall",
@@ -204,7 +221,7 @@ const projects = [
 
           <div class="projects-accordion">
             {projects.map((project, index) => (
-              <details class="project-panel" open={index === 0}>
+              <details class="project-panel">
                 <summary>
                   <div
                     class={`panel-logo ${project.logo ? "" : "panel-logo--fallback"}`}
@@ -308,8 +325,8 @@ const projects = [
     z-index: 2;
   }
   .full-article {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
     padding: 3rem;
     border-radius: 8px;
   }
@@ -318,7 +335,7 @@ const projects = [
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 1.2;
-    color: #ffffff;
+    color: var(--text-primary);
     margin: 0 0 1rem 0;
   }
   .article-meta {
@@ -327,14 +344,14 @@ const projects = [
     align-items: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid var(--border-subtle);
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
   }
   .lead {
     font-size: 1.25rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-primary);
     margin-bottom: 2rem;
     font-weight: 500;
     border-left: 4px solid var(--accent-primary);
@@ -344,7 +361,7 @@ const projects = [
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1.1rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-secondary);
   }
   .article-content p {
     margin-bottom: 1.5rem;
@@ -420,26 +437,45 @@ const projects = [
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(0 12px 24px rgba(10, 15, 26, 0.45));
+    padding: 0.85rem;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #e8e9ea 0%, #d1d2d4 100%);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .panel-logo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    display: block;
+    filter: brightness(0.95);
   }
 
   .panel-logo--fallback {
-    border-radius: 999px;
-    background: linear-gradient(
-      135deg,
-      rgba(243, 211, 77, 0.3),
-      rgba(99, 102, 241, 0.32)
-    );
-    color: rgba(255, 255, 255, 0.95);
+    border-radius: 18px;
+    background: linear-gradient(135deg, #e8e9ea 0%, #d1d2d4 100%);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.7);
     font-weight: 700;
     font-size: 1.45rem;
     text-transform: uppercase;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .panel-logo {
+      background: linear-gradient(135deg, #1e2028 0%, #15161c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+    .panel-logo img {
+      filter: brightness(1);
+    }
+    .panel-logo--fallback {
+      background: linear-gradient(135deg, #1e2028 0%, #15161c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+    }
   }
 
   .panel-heading {
@@ -451,7 +487,7 @@ const projects = [
 
   .panel-heading h3 {
     margin: 0;
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: 1.4rem;
     letter-spacing: 0.4px;
   }
@@ -595,7 +631,7 @@ const projects = [
     transition: all 0.3s ease;
   }
   .back-link a:hover {
-    color: #ffffff;
+    color: var(--text-primary);
     transform: translateX(-5px);
   }
   @media (max-width: 768px) {
@@ -622,9 +658,15 @@ const projects = [
     .panel-logo {
       width: 60px;
       height: 60px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #e8e9ea 0%, #d1d2d4 100%);
+      border: 1px solid rgba(0, 0, 0, 0.12);
     }
     .panel-logo--fallback {
       font-size: 1.15rem;
+      background: linear-gradient(135deg, #e8e9ea 0%, #d1d2d4 100%);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.7);
     }
     .panel-heading h3 {
       font-size: 1.2rem;
@@ -637,6 +679,18 @@ const projects = [
     }
     .project-panel[open] .panel-content {
       padding: 0 1.5rem 1.4rem;
+    }
+  }
+
+  @media (max-width: 768px) and (prefers-color-scheme: dark) {
+    .panel-logo {
+      background: linear-gradient(135deg, #1e2028 0%, #15161c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .panel-logo--fallback {
+      background: linear-gradient(135deg, #1e2028 0%, #15161c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
     }
   }
 </style>

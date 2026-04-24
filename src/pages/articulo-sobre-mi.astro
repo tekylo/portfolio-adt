@@ -4,8 +4,9 @@ import NavMenu from "../components/NavMenu.astro";
 import NewspaperHeader from "../components/NewspaperHeader.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import articles from "../data/articles.json";
-const data = articles.find((a) => a.slug === "sobre-mi");
-const formatDate = (date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
+const article = articles.find((a) => a.slug === "sobre-mi");
+const data = article!;
+const formatDate = (date: Date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
 const today = formatDate(new Date());
 ---
 

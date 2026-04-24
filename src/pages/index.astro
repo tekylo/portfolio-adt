@@ -19,7 +19,7 @@ import ContactSkyscraperAd from "../components/ads/ContactSkyscraperAd.astro";
 import TechStackSkinAd from "../components/ads/TechStackSkinAd.astro";
 
 const getArticle = (slug: string) =>
-  articles.find((article) => article.slug === slug);
+  articles.find((article) => article.slug === slug)!;
 
 const experiences = [
   {
@@ -58,8 +58,11 @@ const articleSobreMi = getArticle("sobre-mi");
 const articleEducacion = getArticle("educacion");
 const articleExperiencia = getArticle("experiencia");
 const articleProyectos = getArticle("proyectos");
+const articleConocimientos = getArticle("conocimientos");
 const articleCursos = getArticle("cursos");
-const homepagePublication = publications.find((publication) => publication.slug === "header-bidding");
+const homepagePublication = publications.find(
+  (publication) => publication.slug === "header-bidding",
+) as any;
 ---
 
 <Layout title="José Antonio - AdTech Expert">
@@ -91,83 +94,123 @@ const homepagePublication = publications.find((publication) => publication.slug 
       <NavMenu />
 
       <div class="container">
-        <!-- PORTADA: Grid de artículos 3 columnas -->
-        <div class="frontpage-grid">
-          <div class="column-1">
-            {
-              articleSobreMi && (
-                <FrontPageArticle
-                  title={articleSobreMi.title}
-                  subtitle={articleSobreMi.subtitle}
-                  category={articleSobreMi.category}
-                  imageUrl={articleSobreMi.imageUrl}
-                  href={articleSobreMi.href}
-                  author={articleSobreMi.author}
-                  size={articleSobreMi.size as "large" | "medium" | "small"}
-                />
-              )
-            }
-          </div>
-          <div class="column-2">
+        <!-- PORTADA: composición editorial asimétrica -->
+        <div class="frontpage-editorial">
+          <div class="frontpage-column frontpage-column-left">
             {
               articleEducacion && (
-                <FrontPageArticle
-                  title={articleEducacion.title}
-                  subtitle={articleEducacion.subtitle}
-                  category={articleEducacion.category}
-                  imageUrl={articleEducacion.imageUrl}
-                  href={articleEducacion.href}
-                  author={articleEducacion.author}
-                  size={articleEducacion.size as "large" | "medium" | "small"}
-                />
+                <div class="story-slot story-slot-education">
+                  <FrontPageArticle
+                    title={articleEducacion.title}
+                    subtitle={articleEducacion.subtitle}
+                    category={articleEducacion.category}
+                    imageUrl={articleEducacion.imageUrl}
+                    href={articleEducacion.href}
+                    author={articleEducacion.author}
+                    size={articleEducacion.size as "large" | "medium" | "small"}
+                    prominence="secondary"
+                  />
+                </div>
               )
             }
             {
               articleExperiencia && (
-                <FrontPageArticle
-                  title={articleExperiencia.title}
-                  subtitle={articleExperiencia.subtitle}
-                  category={articleExperiencia.category}
-                  imageUrl={articleExperiencia.imageUrl}
-                  href={articleExperiencia.href}
-                  author={articleExperiencia.author}
-                  size={articleExperiencia.size as "large" | "medium" | "small"}
-                />
+                <div class="story-slot story-slot-experience">
+                  <FrontPageArticle
+                    title={articleExperiencia.title}
+                    subtitle={articleExperiencia.subtitle}
+                    category={articleExperiencia.category}
+                    imageUrl={articleExperiencia.imageUrl}
+                    href={articleExperiencia.href}
+                    author={articleExperiencia.author}
+                    size={articleExperiencia.size as "large" | "medium" | "small"}
+                    prominence="secondary"
+                  />
+                </div>
               )
             }
           </div>
-          <div class="column-3">
+
+          {
+            articleSobreMi && (
+              <div class="frontpage-column frontpage-column-center">
+                <div class="story-slot story-slot-hero">
+                  <FrontPageArticle
+                    title={articleSobreMi.title}
+                    subtitle={articleSobreMi.subtitle}
+                    category={articleSobreMi.category}
+                    imageUrl={articleSobreMi.imageUrl}
+                    href={articleSobreMi.href}
+                    author={articleSobreMi.author}
+                    size={articleSobreMi.size as "large" | "medium" | "small"}
+                    prominence="hero"
+                  />
+                </div>
+              </div>
+            )
+          }
+
+          <div class="frontpage-column frontpage-column-right">
             {
               articleProyectos && (
-                <FrontPageArticle
-                  title={articleProyectos.title}
-                  subtitle={articleProyectos.subtitle}
-                  category={articleProyectos.category}
-                  imageUrl={articleProyectos.imageUrl}
-                  href={articleProyectos.href}
-                  author={articleProyectos.author}
-                  size={articleProyectos.size as "large" | "medium" | "small"}
-                />
+                <div class="story-slot story-slot-projects">
+                  <FrontPageArticle
+                    title={articleProyectos.title}
+                    subtitle={articleProyectos.subtitle}
+                    category={articleProyectos.category}
+                    imageUrl={articleProyectos.imageUrl}
+                    href={articleProyectos.href}
+                    author={articleProyectos.author}
+                    size={articleProyectos.size as "large" | "medium" | "small"}
+                    prominence="secondary"
+                  />
+                </div>
               )
             }
-            {
-              articleCursos && (
-                <FrontPageArticle
-                  title={articleCursos.title}
-                  subtitle={articleCursos.subtitle}
-                  category={articleCursos.category}
-                  imageUrl={articleCursos.imageUrl}
-                  href={articleCursos.href}
-                  author={articleCursos.author}
-                  size={articleCursos.size as "large" | "medium" | "small"}
-                />
-              )
-            }
+
+            <div class="frontpage-right-lower">
+              {
+                articleConocimientos && (
+                  <div class="story-slot story-slot-knowledge">
+                    <FrontPageArticle
+                      title={articleConocimientos.title}
+                      subtitle={articleConocimientos.subtitle}
+                      category={articleConocimientos.category}
+                      imageUrl={articleConocimientos.imageUrl}
+                      href={articleConocimientos.href}
+                      author={articleConocimientos.author}
+                      size={articleConocimientos.size as "large" | "medium" | "small"}
+                      prominence="brief"
+                    />
+                  </div>
+                )
+              }
+              {
+                articleCursos && (
+                  <div class="story-slot story-slot-courses">
+                    <FrontPageArticle
+                      title={articleCursos.title}
+                      subtitle={articleCursos.subtitle}
+                      category={articleCursos.category}
+                      imageUrl={articleCursos.imageUrl}
+                      href={articleCursos.href}
+                      author={articleCursos.author}
+                      size={articleCursos.size as "large" | "medium" | "small"}
+                      prominence="brief"
+                    />
+                  </div>
+                )
+              }
+            </div>
           </div>
         </div>
 
         <!-- Featured Publication -->
-        {homepagePublication && <PublicationAd publication={homepagePublication} />}
+        {
+          homepagePublication && (
+            <PublicationAd publication={homepagePublication!} />
+          )
+        }
 
         <!-- <StickyFooterBanner /> -->
 
@@ -245,10 +288,10 @@ const homepagePublication = publications.find((publication) => publication.slug 
 
     .skin {
       position: fixed;
-      top: clamp(6rem, 7vw, 8.5rem);
+      /* top: clamp(6rem, 7vw, 8.5rem); */
       width: 300px;
       z-index: 5;
-      display: none;
+      /* display: none; */
     }
 
     .skin-left {
@@ -276,23 +319,77 @@ const homepagePublication = publications.find((publication) => publication.slug 
       justify-content: center;
     }
 
-    /* Grid de portada - 3 columnas */
-    .frontpage-grid {
+    /* Portada editorial asimétrica */
+    .frontpage-editorial {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.36fr) minmax(220px, 0.84fr);
+      align-items: start;
+      gap: 1rem 1.15rem;
       margin: 2rem 0;
     }
 
-    .column-1 {
-      /* Columna completa - 1 artículo grande */
-    }
-
-    .column-2,
-    .column-3 {
+    .frontpage-column {
+      min-width: 0;
       display: flex;
       flex-direction: column;
       gap: 1rem;
+    }
+
+    .frontpage-column-center {
+      align-self: stretch;
+    }
+
+    .frontpage-column-right {
+      gap: 0.8rem;
+    }
+
+    .frontpage-right-lower {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    .story-slot {
+      min-width: 0;
+    }
+
+    .story-slot-hero :global(.frontpage-article.prominence-hero) {
+      min-height: clamp(25rem, 42vw, 34rem);
+    }
+
+    .story-slot-hero :global(.prominence-hero .article-image) {
+      aspect-ratio: 4 / 3.9;
+    }
+
+    .story-slot-projects :global(.frontpage-article.prominence-secondary) {
+      min-height: clamp(15.5rem, 18vw, 17rem);
+    }
+
+    .story-slot-projects :global(.prominence-secondary .article-title) {
+      font-size: clamp(1.1rem, 1.35vw, 1.4rem);
+    }
+
+    .story-slot-projects :global(.prominence-secondary .article-content),
+    .story-slot-knowledge :global(.prominence-brief .article-content),
+    .story-slot-courses :global(.prominence-brief .article-content) {
+      padding: 0.78rem 0.82rem 0.88rem;
+    }
+
+    .story-slot-knowledge :global(.frontpage-article.prominence-brief),
+    .story-slot-courses :global(.frontpage-article.prominence-brief) {
+      min-height: clamp(11rem, 11.5vw, 12rem);
+    }
+
+    .story-slot-knowledge :global(.prominence-brief .article-title),
+    .story-slot-courses :global(.prominence-brief .article-title) {
+      font-size: clamp(0.95rem, 1vw, 1.08rem);
+    }
+
+    .story-slot-knowledge :global(.prominence-brief .article-subtitle),
+    .story-slot-courses :global(.prominence-brief .article-subtitle) {
+      font-size: 0.78rem;
+      -webkit-line-clamp: 2;
     }
 
     main {
@@ -473,16 +570,37 @@ const homepagePublication = publications.find((publication) => publication.slug 
         padding: 0 1rem;
       }
 
-      .frontpage-grid {
-        grid-template-columns: 1fr 1fr;
+      .frontpage-editorial {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 1rem;
       }
 
-      .column-3 {
+      .frontpage-column-left {
+        grid-column: 1;
+      }
+
+      .frontpage-column-center {
         grid-column: 1 / -1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+        grid-row: 1;
+      }
+
+      .frontpage-column-right {
+        grid-column: 2;
+      }
+
+      .story-slot-hero :global(.frontpage-article.prominence-hero) {
+        min-height: clamp(22rem, 54vw, 30rem);
+      }
+
+      .story-slot-projects :global(.frontpage-article.prominence-secondary),
+      .story-slot-knowledge :global(.frontpage-article.prominence-brief),
+      .story-slot-courses :global(.frontpage-article.prominence-brief) {
+        min-height: auto;
+      }
+
+      .frontpage-right-lower {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
       }
 
       main {
@@ -500,16 +618,20 @@ const homepagePublication = publications.find((publication) => publication.slug 
         padding: 0 0.5rem;
       }
 
-      .frontpage-grid {
+      .frontpage-editorial {
         grid-template-columns: 1fr;
         gap: 1rem;
       }
 
-      .column-2,
-      .column-3 {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+      .frontpage-column-left,
+      .frontpage-column-center,
+      .frontpage-column-right {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .frontpage-right-lower {
+        grid-template-columns: 1fr 1fr;
       }
 
       main {

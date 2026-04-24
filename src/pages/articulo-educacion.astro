@@ -4,8 +4,9 @@ import NavMenu from "../components/NavMenu.astro";
 import NewspaperHeader from "../components/NewspaperHeader.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import articles from "../data/articles.json";
-const data = articles.find((a) => a.slug === "educacion");
-const formatDate = (date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
+const article = articles.find((a) => a.slug === "educacion");
+const data = article!;
+const formatDate = (date: Date) => new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(date);
 const today = formatDate(new Date());
 ---
 
@@ -83,7 +84,12 @@ const today = formatDate(new Date());
           <ul>
             <li>
               🚀 <strong>El Futuro del Desarrollo Web: HTML5</strong> — curso online
-              de 50 horas impartido por la Escuela Superior de Ingeniería
+              de 25 horas impartido por la Escuela Superior de Ingeniería
+              Informática (octubre de 2012).
+            </li>
+            <li>
+              🚀 <strong>Maquetación web HTML-CSS.pdf</strong> — curso online
+              de 25 horas impartido por la Escuela Superior de Ingeniería
               Informática (octubre de 2012).
             </li>
             <li>
@@ -186,8 +192,8 @@ const today = formatDate(new Date());
   }
 
   .full-article {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
     padding: 3rem;
     border-radius: 8px;
   }
@@ -197,7 +203,7 @@ const today = formatDate(new Date());
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 1.2;
-    color: #ffffff;
+    color: var(--text-primary);
     margin: 0 0 1rem 0;
   }
 
@@ -207,25 +213,26 @@ const today = formatDate(new Date());
     align-items: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid var(--border-subtle);
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
   }
 
   .separator {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-tertiary);
   }
 
   .author {
     font-style: italic;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    color: var(--text-tertiary);
   }
 
   .lead {
     font-size: 1.25rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-primary);
     margin-bottom: 2rem;
     font-weight: 500;
     border-left: 4px solid var(--accent-primary);
@@ -236,7 +243,7 @@ const today = formatDate(new Date());
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1.1rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-secondary);
   }
 
   .article-content p {
@@ -280,14 +287,14 @@ const today = formatDate(new Date());
   }
 
   .article-content strong {
-    color: #ffffff;
+    color: var(--text-primary);
     font-weight: 600;
   }
 
   .back-link {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid var(--border-subtle);
   }
 
   .back-link a {
@@ -302,7 +309,7 @@ const today = formatDate(new Date());
   }
 
   .back-link a:hover {
-    color: #ffffff;
+    color: var(--text-primary);
     transform: translateX(-5px);
   }
 

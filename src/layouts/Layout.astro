@@ -70,7 +70,7 @@ const pageTitle = title;
       "knowsAbout": ["AdTech", "Full Stack Development", "JavaScript", "TypeScript", "React", "Vue", "Node.js", "Go"]
     }
     </script>
-  </head>
+</head>
   <body>
     <slot />
     <script is:inline>
@@ -107,40 +107,42 @@ const pageTitle = title;
         }
 
         window.localStorage.setItem("theme", theme);
-        updateThemeToggleButton(theme);
+        
+        // Actualizar botón si existe
+        const button = document.getElementById("themeToggle");
+        if (button) {
+          updateThemeToggleButton(theme);
+        }
       }
 
-      const handleToggleClick = () => {
-        const element = document.documentElement;
-        element.classList.toggle("dark");
+      // Aplicar tema inmediatamente al cargar
+      applyTheme();
 
-        const isDark = element.classList.contains("dark");
-        const theme = isDark ? "dark" : "light";
-        localStorage.setItem("theme", theme);
-        updateThemeToggleButton(theme);
-      };
-
-      // Función para configurar el event listener del botón
+      // Configurar el toggle después de que el DOM esté listo
       function setupThemeToggle() {
         const button = document.getElementById("themeToggle");
         if (button) {
-          button.removeEventListener("click", handleToggleClick);
+          const handleToggleClick = () => {
+            const element = document.documentElement;
+            element.classList.toggle("dark");
+            const isDark = element.classList.contains("dark");
+            const theme = isDark ? "dark" : "light";
+            localStorage.setItem("theme", theme);
+            updateThemeToggleButton(theme);
+          };
           button.addEventListener("click", handleToggleClick);
         }
       }
 
-      // Aplicar tema y configurar botón inmediatamente
-      applyTheme();
-      setupThemeToggle();
-
-      // Reaplica el tema y reconfigura el botón después de cada navegación con View Transitions
-      document.addEventListener("astro:after-swap", () => {
-        applyTheme();
+      // Configurar después de DOMContentLoaded
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", setupThemeToggle);
+      } else {
         setupThemeToggle();
-      });
+      }
 
-      // También configurar en DOMContentLoaded por si acaso
-      document.addEventListener("DOMContentLoaded", () => {
+      // Reaplica el tema después de cada navegación con View Transitions
+      document.addEventListener("astro:after-swap", () => {
         applyTheme();
         setupThemeToggle();
       });

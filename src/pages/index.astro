@@ -95,42 +95,9 @@ const homepagePublication = publications.find(
 
       <div class="container">
         <!-- PORTADA: composición editorial asimétrica -->
+        <!-- Mobile: Sobre Mi primero / Desktop: orden diferente -->
         <div class="frontpage-editorial">
-          <div class="frontpage-column frontpage-column-left">
-            {
-              articleEducacion && (
-                <div class="story-slot story-slot-education">
-                  <FrontPageArticle
-                    title={articleEducacion.title}
-                    subtitle={articleEducacion.subtitle}
-                    category={articleEducacion.category}
-                    imageUrl={articleEducacion.imageUrl}
-                    href={articleEducacion.href}
-                    author={articleEducacion.author}
-                    size={articleEducacion.size as "large" | "medium" | "small"}
-                    prominence="secondary"
-                  />
-                </div>
-              )
-            }
-            {
-              articleExperiencia && (
-                <div class="story-slot story-slot-experience">
-                  <FrontPageArticle
-                    title={articleExperiencia.title}
-                    subtitle={articleExperiencia.subtitle}
-                    category={articleExperiencia.category}
-                    imageUrl={articleExperiencia.imageUrl}
-                    href={articleExperiencia.href}
-                    author={articleExperiencia.author}
-                    size={articleExperiencia.size as "large" | "medium" | "small"}
-                    prominence="secondary"
-                  />
-                </div>
-              )
-            }
-          </div>
-
+          {/* Center: Sobre Mi - primero en mobile */}
           {
             articleSobreMi && (
               <div class="frontpage-column frontpage-column-center">
@@ -619,19 +586,28 @@ const homepagePublication = publications.find(
       }
 
       .frontpage-editorial {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 1rem;
       }
 
-      .frontpage-column-left,
-      .frontpage-column-center,
+      /* mobile-first: Sobre Mi primero (center), luego left, luego right */
+      .frontpage-column-center {
+        order: 1;
+      }
+
+      .frontpage-column-left {
+        order: 2;
+      }
+
       .frontpage-column-right {
-        grid-column: auto;
-        grid-row: auto;
+        order: 3;
       }
 
       .frontpage-right-lower {
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
       }
 
       main {

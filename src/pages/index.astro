@@ -7,13 +7,14 @@ import Knowledge from "../components/Knowledge.astro";
 import Projects from "../components/Projects.astro";
 import ExperienceCard from "../components/ExperienceCard.astro";
 import StickyFooterBanner from "../components/StickyFooterBanner.astro";
-import LeaderboardAd from "../components/ads/LeaderboardAd.astro";
+import PublicationAd from "../components/ads/PublicationAd.astro";
 import MediumRectangleAd from "../components/ads/MediumRectangleAd.astro";
 import BillboardAd from "../components/ads/BillboardAd.astro";
 import AdCarousel from "../components/AdCarousel.astro";
 import TechStack from "../components/TechStack.astro";
 import FrontPageArticle from "../components/FrontPageArticle.astro";
 import articles from "../data/articles.json";
+import publications from "../data/publications.json";
 import ContactSkyscraperAd from "../components/ads/ContactSkyscraperAd.astro";
 import TechStackSkinAd from "../components/ads/TechStackSkinAd.astro";
 
@@ -58,6 +59,7 @@ const articleEducacion = getArticle("educacion");
 const articleExperiencia = getArticle("experiencia");
 const articleProyectos = getArticle("proyectos");
 const articleCursos = getArticle("cursos");
+const homepagePublication = publications.find((publication) => publication.slug === "header-bidding");
 ---
 
 <Layout title="José Antonio - AdTech Expert">
@@ -164,8 +166,8 @@ const articleCursos = getArticle("cursos");
           </div>
         </div>
 
-        <!-- Leaderboard Ad -->
-        <LeaderboardAd />
+        <!-- Featured Publication -->
+        {homepagePublication && <PublicationAd publication={homepagePublication} />}
 
         <!-- <StickyFooterBanner /> -->
 

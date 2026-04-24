@@ -16,13 +16,13 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
 
 <div class="contact-skyscraper">
   <div class="ad-label">ANUNCIO</div>
+  <div class="accent-line"></div>
 
   <div class="inner">
     <div class="headline">
       <h3>{title}</h3>
+      <p class="highlight">{highlight}</p>
     </div>
-
-    <p class="highlight">{highlight}</p>
 
     <ul class="perks">
       {
@@ -44,12 +44,12 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
       }
     </ul>
 
-    <div class="contact-card">
+    <div class="contact-block">
       <span class="label">Contacto directo</span>
       <a class="contact-link" href={`mailto:${email}`}>
         <svg
-          width="18"
-          height="18"
+          width="16"
+          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -62,8 +62,8 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
       </a>
       <a class="contact-link" href={`tel:${sanitizedPhone}`}>
         <svg
-          width="18"
-          height="18"
+          width="16"
+          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -95,83 +95,81 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
 </div>
 
 <style>
-  :root {
-    --ad-bg: var(--bg-secondary);
-    --ad-accent: var(--accent-primary);
-    --ad-border: var(--border-default);
-    --ad-shadow: 0 4px 18px var(--shadow-default, rgba(35, 41, 70, 0.18));
-  }
-
   .contact-skyscraper {
     width: 100%;
     max-width: 300px;
     box-sizing: border-box;
-    min-height: 600px;
+    min-height: 580px;
     background: var(--bg-secondary);
-    box-shadow: var(--ad-shadow);
     border: 1px solid var(--border-default);
-    padding: 1.5rem;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    border-radius: var(--radius-md);
+    position: relative;
     overflow: hidden;
+    box-shadow: var(--shadow-md);
     transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-    color: var(--text-primary);
+      transform var(--transition-base) var(--ease-default),
+      box-shadow var(--transition-base) var(--ease-default),
+      border-color var(--transition-base) var(--ease-default);
   }
 
   .contact-skyscraper:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 22px 48px rgba(225, 188, 38, 0.35);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-primary);
   }
 
   .ad-label {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(0, 0, 0, 0.45);
-    padding: 0.25rem 0.6rem;
-    font-size: 0.6rem;
+    top: 0;
+    right: 0;
+    background: var(--text-secondary);
+    color: var(--bg-primary);
+    padding: 0.28rem 0.55rem;
+    border-radius: 0 0 0 var(--radius-sm);
+    font-size: 0.52rem;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    z-index: 10;
+  }
+
+  .accent-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent-primary);
   }
 
   .inner {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: var(--space-5);
     height: 100%;
+    padding: var(--space-6) var(--space-5) var(--space-5) var(--space-5);
   }
 
   .headline {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    text-align: left;
-  }
-
-  .upper {
-    font-size: 0.65rem;
-    letter-spacing: 0.3rem;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-    opacity: 0.85;
-    font-weight: 700;
+    gap: var(--space-2);
   }
 
   h3 {
     margin: 0;
-    font-size: 1.55rem;
-    line-height: 1.3;
-    font-family: Georgia, "Times New Roman", serif;
-    color: #fff;
+    font-size: var(--text-xl);
+    line-height: 1.25;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text-primary);
   }
 
   .highlight {
     margin: 0;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #fff;
+    font-size: var(--text-sm);
+    font-weight: 400;
+    color: var(--text-secondary);
   }
 
   .perks {
@@ -180,118 +178,103 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
 
   .perks li {
     display: flex;
     align-items: flex-start;
-    gap: 0.65rem;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: #fff;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    line-height: 1.45;
+    color: var(--text-primary);
+    opacity: 0.9;
   }
 
   .perks li svg {
     flex-shrink: 0;
-    margin-top: 0.05rem;
-    color: var(--accent-primary) !important;
+    margin-top: 0.1rem;
+    color: var(--accent-primary);
   }
 
-  .contact-card {
-    background: rgba(255, 255, 255, 0.22);
-    padding: 0.9rem;
+  .contact-block {
+    padding: var(--space-4);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(212, 160, 23, 0.3);
+    gap: var(--space-2);
   }
 
   .label {
-    color: #fff !important;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     text-transform: uppercase;
-    letter-spacing: 0.12rem;
+    letter-spacing: 0.1rem;
     font-weight: 600;
+    color: var(--text-tertiary);
   }
 
   .contact-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
     text-decoration: none;
-    color: #fff !important;
+    color: var(--text-primary);
+    transition: color var(--transition-base) var(--ease-default);
   }
 
   .contact-link:hover {
-    color: var(--accent-secondary);
+    color: var(--accent-primary);
   }
 
   .contact-link svg {
     color: var(--accent-primary);
+    flex-shrink: 0;
   }
 
   .cta {
     margin-top: auto;
-    align-self: stretch;
-    border-radius: 8px;
-    padding: 0.8rem 1.6rem;
-    background: var(--bg-secondary);
-    color: var(--accent-primary);
-    border: 2px solid var(--accent-primary);
-    font-weight: 700;
-    font-size: 1rem;
-    display: inline-flex;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.7rem;
-    box-shadow: var(--ad-box, 0 2px 8px rgba(35, 41, 70, 0.12));
-    letter-spacing: 0.5px;
-    cursor: pointer;
+    gap: var(--space-2);
+    box-shadow: var(--shadow-sm);
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0.8, 0.4, 1);
-  }
-
-  .cta svg {
-    color: #fff;
+    cursor: pointer;
+    transition:
+      opacity var(--transition-base) var(--ease-default),
+      transform var(--transition-base) var(--ease-default),
+      box-shadow var(--transition-base) var(--ease-default);
   }
 
   .cta:hover {
-    background: var(--accent-primary);
-    color: var(--text-primary);
-    box-shadow: var(--ad-box-hover, 0 4px 16px rgba(35, 41, 70, 0.18));
-    transform: scale(1.05);
+    opacity: var(--opacity-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta svg {
+    transition: transform var(--transition-base) var(--ease-default);
+  }
+
+  .cta:hover svg {
+    transform: translateX(2px);
   }
 
   @media (max-width: 1100px) {
-    :root {
-      --ad-bg: var(--bg-secondary);
-      --ad-accent: var(--accent-primary);
-      --ad-text: #fff;
-      --ad-border: var(--border-default);
-      --ad-radius: 8px;
-      --ad-shadow: var(--shadow-default, 0 4px 18px rgba(35, 41, 70, 0.18));
-      --ad-box: 0 2px 8px rgba(35, 41, 70, 0.12);
-      --ad-box-hover: 0 4px 16px rgba(35, 41, 70, 0.18);
-      --ad-bg-light: var(--bg-secondary);
-      --ad-border-light: var(--border-default);
-      --ad-text-dark: var(--text-primary);
-      --ad-text-muted: var(--text-secondary);
-    }
-
     .contact-skyscraper {
-      width: 100%;
-      max-width: 300px;
-      box-sizing: border-box;
-      min-height: 600px;
-      background: var(--ad-bg);
-      border: 2px solid var(--ad-border);
+      max-width: 100%;
+      min-height: auto;
       border-radius: 0;
-      padding: 1.5rem;
-      box-shadow: var(--ad-shadow);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      color: var(--ad-text);
     }
+  }
+</style>

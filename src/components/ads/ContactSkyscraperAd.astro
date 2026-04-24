@@ -107,15 +107,12 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition:
-      transform var(--transition-base) var(--ease-default),
       box-shadow var(--transition-base) var(--ease-default),
       border-color var(--transition-base) var(--ease-default);
   }
 
   .contact-skyscraper:hover {
-    transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--accent-primary);
   }
 
   .ad-label {

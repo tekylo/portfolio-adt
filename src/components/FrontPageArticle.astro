@@ -8,7 +8,14 @@ export interface Props {
   href: string;
   author?: string;
   size?: "large" | "medium" | "small"; // large = columna completa, medium = media columna, small = miniatura
+  prominence?: "hero" | "secondary" | "brief";
 }
+
+const sizeToProminence = {
+  large: "hero",
+  medium: "secondary",
+  small: "brief",
+} as const;
 
 const {
   title,
@@ -18,10 +25,13 @@ const {
   href,
   author,
   size = "large",
+  prominence,
 } = Astro.props;
+
+const resolvedProminence = prominence ?? sizeToProminence[size];
 ---
 
-<article class={`frontpage-article ${size}`}>
+<article class={`frontpage-article prominence-${resolvedProminence}`}>
   <a href={href} class="article-link">
     <div class="article-image">
       <img src={imageUrl} alt={title} transition:name={`article-${href}`} />
@@ -42,6 +52,7 @@ const {
     background: var(--bg-secondary);
     overflow: hidden;
     transition: all 0.3s ease;
+    min-height: 100%;
   }
 
   .frontpage-article:hover {
@@ -50,21 +61,21 @@ const {
     transform: translateY(-2px);
   }
 
-  .frontpage-article.large {
-    height: 540px;
+  .frontpage-article.prominence-hero {
+    min-height: clamp(32rem, 54vw, 46rem);
   }
 
-  .frontpage-article.medium {
-    height: 260px;
+  .frontpage-article.prominence-secondary {
+    min-height: clamp(18rem, 26vw, 23rem);
   }
 
-  .frontpage-article.small {
-    height: 140px;
-    min-height: 120px;
+  .frontpage-article.prominence-brief {
+    min-height: clamp(14rem, 20vw, 17rem);
   }
 
   .article-link {
-    display: block;
+    display: grid;
+    grid-template-rows: auto 1fr;
     height: 100%;
     text-decoration: none;
     color: inherit;
@@ -76,17 +87,16 @@ const {
     overflow: hidden;
   }
 
-  .large .article-image {
-    height: 320px;
+  .prominence-hero .article-image {
+    aspect-ratio: 4 / 3;
   }
 
-  .medium .article-image {
-    height: 140px;
+  .prominence-secondary .article-image {
+    aspect-ratio: 16 / 10;
   }
 
-  .small .article-image {
-    height: 60px;
-    min-height: 60px;
+  .prominence-brief .article-image {
+    aspect-ratio: 16 / 9;
   }
 
   .article-image img {
@@ -115,35 +125,44 @@ const {
   }
 
   .article-content {
-    padding: 1.5rem;
+    padding: 1.35rem 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
   }
 
-  .medium .article-content {
-    padding: 1rem;
+  .prominence-secondary .article-content {
+    padding: 1rem 1.05rem 1.15rem;
+    gap: 0.55rem;
   }
 
-  .small .article-content {
-    padding: 0.5rem 0.75rem;
+  .prominence-brief .article-content {
+    padding: 0.85rem 0.95rem 1rem;
+    gap: 0.35rem;
   }
 
   .article-title {
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    line-height: 1.3;
-    margin: 0 0 0.75rem 0;
+    line-height: 1.12;
+    margin: 0;
     color: var(--text-primary);
     transition: color 0.3s ease;
+    text-wrap: balance;
   }
 
-  .medium .article-title {
-    font-size: 1.1rem;
-    margin: 0 0 0.5rem 0;
+  .prominence-hero .article-title {
+    font-size: clamp(2rem, 3vw, 3rem);
   }
 
-  .small .article-title {
-    font-size: 0.9rem;
-    margin: 0 0 0.3rem 0;
+  .prominence-secondary .article-title {
+    font-size: clamp(1.35rem, 1.75vw, 1.8rem);
+  }
+
+  .prominence-brief .article-title {
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
+    line-height: 1.2;
   }
 
   .frontpage-article:hover .article-title {
@@ -151,49 +170,94 @@ const {
   }
 
   .article-subtitle {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-secondary);
-    margin: 0 0 0.75rem 0;
+    margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1.45;
   }
 
-  .medium .article-subtitle {
-    font-size: 0.85rem;
+  .prominence-hero .article-subtitle {
+    font-size: 1.05rem;
+    -webkit-line-clamp: 4;
+  }
+
+  .prominence-secondary .article-subtitle {
+    font-size: 0.92rem;
     -webkit-line-clamp: 2;
   }
 
-  .small .article-subtitle {
-    font-size: 0.75rem;
-    -webkit-line-clamp: 1;
-    margin: 0 0 0.2rem 0;
+  .prominence-brief .article-subtitle {
+    font-size: 0.82rem;
+    -webkit-line-clamp: 2;
   }
 
   .article-author {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-muted);
     margin: 0;
     font-style: italic;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin-top: auto;
   }
 
   /* Responsive */
+  @media (max-width: 1024px) {
+    .frontpage-article.prominence-hero {
+      min-height: clamp(28rem, 62vw, 38rem);
+    }
+
+    .frontpage-article.prominence-secondary {
+      min-height: clamp(17rem, 28vw, 21rem);
+    }
+
+    .frontpage-article.prominence-brief {
+      min-height: clamp(13rem, 22vw, 16rem);
+    }
+
+    .prominence-hero .article-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+    }
+  }
+
   @media (max-width: 768px) {
-    .frontpage-article.large,
-    .frontpage-article.medium {
-      height: auto;
-      min-height: 300px;
+    .frontpage-article.prominence-hero,
+    .frontpage-article.prominence-secondary,
+    .frontpage-article.prominence-brief {
+      min-height: auto;
     }
 
-    .article-image {
-      height: 200px !important;
+    .prominence-hero .article-image {
+      aspect-ratio: 16 / 10;
     }
 
-    .article-title {
-      font-size: 1.2rem;
+    .prominence-secondary .article-image,
+    .prominence-brief .article-image {
+      aspect-ratio: 16 / 9;
+    }
+
+    .article-content {
+      padding: 1rem 1rem 1.15rem;
+    }
+
+    .prominence-brief .article-content {
+      padding: 0.95rem 1rem 1.05rem;
+    }
+
+    .prominence-hero .article-title {
+      font-size: 1.85rem;
+    }
+
+    .prominence-secondary .article-title {
+      font-size: 1.35rem;
+    }
+
+    .prominence-brief .article-title {
+      font-size: 1.05rem;
     }
 
     .article-subtitle {
@@ -202,20 +266,24 @@ const {
   }
 
   @media (max-width: 480px) {
-    .article-image {
-      height: 180px !important;
-    }
-
     .article-content {
-      padding: 1rem;
+      padding: 0.9rem 0.9rem 1rem;
     }
 
-    .article-title {
-      font-size: 1.1rem;
+    .prominence-hero .article-title {
+      font-size: 1.6rem;
+    }
+
+    .prominence-secondary .article-title {
+      font-size: 1.2rem;
+    }
+
+    .prominence-brief .article-title {
+      font-size: 1rem;
     }
 
     .article-subtitle {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       -webkit-line-clamp: 2;
     }
   }

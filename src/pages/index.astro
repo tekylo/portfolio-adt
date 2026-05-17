@@ -97,6 +97,42 @@ const homepagePublication = publications.find(
         <!-- PORTADA: composición editorial asimétrica -->
         <!-- Mobile: Sobre Mi primero / Desktop: orden diferente -->
         <div class="frontpage-editorial">
+          <div class="frontpage-column frontpage-column-left">
+            {
+              articleExperiencia && (
+                <div class="story-slot story-slot-experience">
+                  <FrontPageArticle
+                    title={articleExperiencia.title}
+                    subtitle={articleExperiencia.subtitle}
+                    category={articleExperiencia.category}
+                    imageUrl={articleExperiencia.imageUrl}
+                    href={articleExperiencia.href}
+                    author={articleExperiencia.author}
+                    size={articleExperiencia.size as "large" | "medium" | "small"}
+                    prominence="secondary"
+                  />
+                </div>
+              )
+            }
+
+            {
+              articleEducacion && (
+                <div class="story-slot story-slot-education">
+                  <FrontPageArticle
+                    title={articleEducacion.title}
+                    subtitle={articleEducacion.subtitle}
+                    category={articleEducacion.category}
+                    imageUrl={articleEducacion.imageUrl}
+                    href={articleEducacion.href}
+                    author={articleEducacion.author}
+                    size={articleEducacion.size as "large" | "medium" | "small"}
+                    prominence="brief"
+                  />
+                </div>
+              )
+            }
+          </div>
+
           {/* Center: Sobre Mi - primero en mobile */}
           {
             articleSobreMi && (
@@ -329,30 +365,37 @@ const homepagePublication = publications.find(
       aspect-ratio: 4 / 3.9;
     }
 
+    .story-slot-experience :global(.frontpage-article.prominence-secondary),
     .story-slot-projects :global(.frontpage-article.prominence-secondary) {
       min-height: clamp(15.5rem, 18vw, 17rem);
     }
 
+    .story-slot-experience :global(.prominence-secondary .article-title),
     .story-slot-projects :global(.prominence-secondary .article-title) {
       font-size: clamp(1.1rem, 1.35vw, 1.4rem);
     }
 
+    .story-slot-experience :global(.prominence-secondary .article-content),
     .story-slot-projects :global(.prominence-secondary .article-content),
+    .story-slot-education :global(.prominence-brief .article-content),
     .story-slot-knowledge :global(.prominence-brief .article-content),
     .story-slot-courses :global(.prominence-brief .article-content) {
       padding: 0.78rem 0.82rem 0.88rem;
     }
 
+    .story-slot-education :global(.frontpage-article.prominence-brief),
     .story-slot-knowledge :global(.frontpage-article.prominence-brief),
     .story-slot-courses :global(.frontpage-article.prominence-brief) {
       min-height: clamp(11rem, 11.5vw, 12rem);
     }
 
+    .story-slot-education :global(.prominence-brief .article-title),
     .story-slot-knowledge :global(.prominence-brief .article-title),
     .story-slot-courses :global(.prominence-brief .article-title) {
       font-size: clamp(0.95rem, 1vw, 1.08rem);
     }
 
+    .story-slot-education :global(.prominence-brief .article-subtitle),
     .story-slot-knowledge :global(.prominence-brief .article-subtitle),
     .story-slot-courses :global(.prominence-brief .article-subtitle) {
       font-size: 0.78rem;
@@ -559,7 +602,9 @@ const homepagePublication = publications.find(
         min-height: clamp(22rem, 54vw, 30rem);
       }
 
+      .story-slot-experience :global(.frontpage-article.prominence-secondary),
       .story-slot-projects :global(.frontpage-article.prominence-secondary),
+      .story-slot-education :global(.frontpage-article.prominence-brief),
       .story-slot-knowledge :global(.frontpage-article.prominence-brief),
       .story-slot-courses :global(.frontpage-article.prominence-brief) {
         min-height: auto;

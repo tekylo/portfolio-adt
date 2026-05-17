@@ -25,3 +25,10 @@ pnpm-debug.log*
 
 # PDFs and large files (keep only what you need)
 *.pdf
+# Local Pi runtime state
+.atl/
+.pi/
+
+# OpenSpec project artifacts stay versioned.
+# Ignore only local/accidental nested copies if they appear.
+Ads/portfolio/openspec/

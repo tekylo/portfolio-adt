@@ -1,6 +1,6 @@
 # José Antonio López Molina - AdTech Portfolio
 
-A personal portfolio website showcasing expertise in AdTech, Full Stack development, and digital advertising technology. Built with Astro 4.15.3, this project demonstrates modern web development practices with a distinctive newspaper-style editorial design.
+A personal portfolio website showcasing expertise in AdTech, Full Stack development, and digital advertising technology. Built with Astro 6.3.3, this project demonstrates modern web development practices with a distinctive newspaper-style editorial design.
 
 ## Description
 
@@ -10,12 +10,12 @@ The site includes 8 complete pages: a home page and 7 detailed articles covering
 
 ## Tech Stack
 
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Astro | 4.15.3 | Static site generator and framework |
-| TypeScript | — | Type-safe JavaScript |
-| CSS (Vanilla) | — | Styling (no frameworks) |
-| @astrojs/sitemap | — | Automatic sitemap generation |
+| Technology       | Version | Purpose                             |
+| ---------------- | ------- | ----------------------------------- |
+| Astro            | 6.3.3   | Static site generator and framework |
+| TypeScript       | —       | Type-safe JavaScript                |
+| CSS (Vanilla)    | —       | Styling (no frameworks)             |
+| @astrojs/sitemap | —       | Automatic sitemap generation        |
 
 Additional integrations and dependencies include ViewTransitions for SPA-like navigation, and various Astro integrations configured in the project.
 
@@ -53,7 +53,7 @@ The development server will start at `http://localhost:4321` by default.
 
 ## Architecture
 
-```
+```txt
 src/
 ├── layouts/
 │   └── Layout.astro          # Base layout with SEO, theme, ViewTransitions
@@ -210,12 +210,12 @@ vercel
 
 ## Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start the development server with hot reload |
-| `npm run build` | Create production-optimized build in `/dist` |
-| `npm run preview` | Preview the production build locally |
-| `npm run astro` | Run Astro CLI commands |
+| Command           | Description                                  |
+| ----------------- | -------------------------------------------- |
+| `npm run dev`     | Start the development server with hot reload |
+| `npm run build`   | Create production-optimized build in `/dist` |
+| `npm run preview` | Preview the production build locally         |
+| `npm run astro`   | Run Astro CLI commands                       |
 
 ## Development Notes
 
@@ -241,7 +241,7 @@ This project is a personal portfolio. All content, images, and creative work are
 
 ## Author
 
-**José Antonio López Molina**
+### José Antonio López Molina
 
 - AdTech & Full Stack Developer
 - Specialized in digital advertising technology, header bidding, and modern web development
@@ -249,4 +249,4 @@ This project is a personal portfolio. All content, images, and creative work are
 
 ---
 
-Built with Astro 4.15.3 • TypeScript • Vanilla CSS
+Built with Astro 6.3.3 • TypeScript • Vanilla CSS

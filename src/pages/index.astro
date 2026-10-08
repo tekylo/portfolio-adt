@@ -2,16 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import NavMenu from "../components/NavMenu.astro";
 import NewspaperHeader from "../components/NewspaperHeader.astro";
-import NewspaperArticle from "../components/NewspaperArticle.astro";
-import Knowledge from "../components/Knowledge.astro";
-import Projects from "../components/Projects.astro";
-import ExperienceCard from "../components/ExperienceCard.astro";
-import StickyFooterBanner from "../components/StickyFooterBanner.astro";
 import PublicationAd from "../components/ads/PublicationAd.astro";
-import MediumRectangleAd from "../components/ads/MediumRectangleAd.astro";
 import BillboardAd from "../components/ads/BillboardAd.astro";
-import AdCarousel from "../components/AdCarousel.astro";
-import TechStack from "../components/TechStack.astro";
 import FrontPageArticle from "../components/FrontPageArticle.astro";
 import articles from "../data/articles.json";
 import publications from "../data/publications.json";
@@ -21,39 +13,6 @@ import TechStackSkinAd from "../components/ads/TechStackSkinAd.astro";
 const getArticle = (slug: string) =>
   articles.find((article) => article.slug === slug)!;
 
-const experiences = [
-  {
-    companyName: "Wemass",
-    logoUrl: "/images/wemass-logo.png",
-    dateRange: "Marzo 2024 - Actualidad",
-    jobDescription: [
-      "Líder técnico en implementación de soluciones AdTech",
-      "Optimización de revenue para medios premium españoles",
-      "Gestión de Google Ad Manager y Header Bidding",
-    ],
-  },
-  {
-    companyName: "Arkeero",
-    logoUrl: "/images/arkeero-logo.png",
-    dateRange: "Junio 2021 - Marzo 2024",
-    jobDescription: [
-      "Desarrollo de tecnologías publicitarias avanzadas",
-      "Integración de clientes premium (Vocento, Axel Springer)",
-      "Implementación de Header Bidding y optimización de revenue",
-    ],
-  },
-  {
-    companyName: "Vocento",
-    logoUrl: "/images/vocento-logo.png",
-    dateRange: "Mayo 2018 - Mayo 2021",
-    jobDescription: [
-      "Desarrollo Full Stack para portales de noticias",
-      "Optimización de rendimiento frontend",
-      "Colaboración con equipos de producto y diseño",
-    ],
-  },
-];
-
 const articleSobreMi = getArticle("sobre-mi");
 const articleEducacion = getArticle("educacion");
 const articleExperiencia = getArticle("experiencia");
@@ -62,7 +21,11 @@ const articleConocimientos = getArticle("conocimientos");
 const articleCursos = getArticle("cursos");
 const homepagePublication = publications.find(
   (publication) => publication.slug === "header-bidding",
-) as any;
+);
+const featuredPublication = homepagePublication && {
+  ...homepagePublication,
+  theme: homepagePublication.theme === "light" ? "light" as const : "dark" as const,
+};
 ---
 
 <Layout
@@ -221,8 +184,8 @@ const homepagePublication = publications.find(
 
         <!-- Featured Publication -->
         {
-          homepagePublication && (
-            <PublicationAd publication={homepagePublication!} />
+          featuredPublication && (
+            <PublicationAd publication={featuredPublication} />
           )
         }
 

@@ -1,5 +1,11 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+
+interface Props {
+  homepage?: boolean;
+}
+
+const { homepage = false } = Astro.props;
 // Cabecera estilo periódico
 ---
 
@@ -19,7 +25,11 @@ import ThemeToggle from "./ThemeToggle.astro";
       <ThemeToggle />
     </div>
     <a href="/" class="title-link">
-      <h1 class="newspaper-title">EL DIARIO ADTECH</h1>
+      {homepage ? (
+        <h1 class="newspaper-title">EL DIARIO ADTECH</h1>
+      ) : (
+        <span class="newspaper-title">EL DIARIO ADTECH</span>
+      )}
     </a>
     <p class="newspaper-slogan">
       Innovación Publicitaria · Tecnología Digital · Soluciones Programáticas
@@ -74,6 +84,7 @@ import ThemeToggle from "./ThemeToggle.astro";
   }
 
   .newspaper-title {
+    display: block;
     font-family: var(--font-display);
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: bold;
@@ -84,7 +95,7 @@ import ThemeToggle from "./ThemeToggle.astro";
   }
 
   .title-link:hover .newspaper-title {
-    color: var(--accent-primary);
+    color: var(--accent-text);
   }
 
   .newspaper-slogan {

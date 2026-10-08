@@ -23,6 +23,7 @@ const navItems = [
         ))
       }
     </ul>
+    <span class="nav-scroll-hint" aria-hidden="true">Desliza para ver más →</span>
   </div>
 </nav>
 
@@ -54,6 +55,10 @@ const navItems = [
   }
 
   .nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-scroll-hint {
     display: none;
   }
 
@@ -96,6 +101,17 @@ const navItems = [
     .nav-link {
       padding: var(--space-3) var(--space-4);
       font-size: var(--text-xs);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .nav-scroll-hint {
+      display: block;
+      padding: 0 0 var(--space-1);
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-align: right;
     }
   }
 

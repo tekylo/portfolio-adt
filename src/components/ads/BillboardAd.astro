@@ -1,5 +1,5 @@
 ---
-// Formato IAB Billboard: 970x250
+// Formato IAB Megabanner: 980x250
 export interface Props {
   headline?: string;
   description?: string;
@@ -22,23 +22,32 @@ const {
   
   <div class="billboard-content">
     <div class="billboard-text">
+      <span class="eyebrow">AdTech consultant · Portfolio creative</span>
       <h2 class="headline">{headline}</h2>
       <p class="description">{description}</p>
-      
+
       <div class="badges">
         {badges.map((badge) => (
           <span class="badge">{badge}</span>
         ))}
       </div>
     </div>
-    
-    <div class="billboard-cta">
-      <a href={ctaLink} class="cta-btn" download>
-        <span>{ctaText}</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+
+    <div class="billboard-side">
+      <div class="side-panel">
+        <span class="side-kicker">Available now</span>
+        <div class="side-metrics" aria-hidden="true">
+          <span>GAM</span>
+          <span>HB</span>
+          <span>CTV</span>
+        </div>
+        <a href={ctaLink} class="cta-btn" download>
+          <span>{ctaText}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
   
@@ -50,11 +59,14 @@ const {
 <style>
   .billboard-ad {
     position: relative;
+    width: 980px;
+    height: 250px;
     margin: var(--space-8) auto;
     background: var(--bg-secondary);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     overflow: hidden;
+    box-sizing: border-box;
     transition:
       border-color var(--transition-base) var(--ease-default),
       box-shadow var(--transition-base) var(--ease-default),
@@ -83,46 +95,66 @@ const {
   }
 
   .billboard-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-6) var(--space-8);
-    gap: var(--space-6);
+    display: grid;
+    grid-template-columns: minmax(0, 1.75fr) minmax(220px, 0.75fr);
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    padding: 22px 28px 20px 32px;
+    gap: 24px;
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
   }
 
   .billboard-text {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 580px;
+    min-width: 0;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #765600;
   }
 
   .headline {
     font-family: var(--font-display);
-    font-size: var(--text-2xl);
+    font-size: 2.15rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin: 0 0 var(--space-2) 0;
-    line-height: 1.15;
+    margin: 0 0 8px 0;
+    line-height: 1.02;
+    max-width: 12ch;
     transition: color var(--transition-base) var(--ease-default);
   }
 
   .description {
-    font-size: var(--text-sm);
+    font-size: 0.98rem;
     color: var(--text-secondary);
-    margin: 0 0 var(--space-3) 0;
+    margin: 0 0 14px 0;
     font-style: italic;
+    max-width: 46ch;
+    line-height: 1.35;
   }
 
   .badges {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: 8px;
   }
 
   .badge {
     display: inline-block;
     background: rgba(212, 160, 23, 0.12);
-    color: var(--accent-primary);
+    color: #765600;
     font-size: var(--text-xs);
     font-weight: 500;
     padding: var(--space-1) var(--space-2);
@@ -138,20 +170,75 @@ const {
     border-color: rgba(212, 160, 23, 0.4);
   }
 
-  .billboard-cta {
-    flex-shrink: 0;
+  .billboard-side {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+
+  .side-panel {
+    width: 100%;
+    min-width: 220px;
+    background:
+      linear-gradient(180deg, rgba(212, 160, 23, 0.12), rgba(212, 160, 23, 0.02)),
+      var(--bg-tertiary);
+    border: 1px solid var(--border-default);
+    border-radius: 14px;
+    padding: 18px 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .side-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+  }
+
+  .side-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .side-metrics span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 160, 23, 0.25);
+    background: rgba(212, 160, 23, 0.08);
+    color: #765600;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  :global(.dark) .eyebrow,
+  :global(.dark) .badge,
+  :global(.dark) .side-metrics span {
+    color: var(--accent-primary);
   }
 
   .cta-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-2);
+    width: 100%;
+    min-height: 48px;
     background: var(--accent-primary);
     color: var(--bg-primary);
     border: none;
     border-radius: var(--radius-sm);
-    padding: var(--space-3) var(--space-5);
-    font-size: var(--text-sm);
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
@@ -159,6 +246,7 @@ const {
       opacity var(--transition-base) var(--ease-default),
       transform var(--transition-base) var(--ease-default);
     white-space: nowrap;
+    box-sizing: border-box;
   }
 
   .cta-btn:hover {
@@ -192,25 +280,36 @@ const {
   /* Responsive - Tablet */
   @media (max-width: 900px) {
     .billboard-content {
-      padding: var(--space-5) var(--space-6);
-      gap: var(--space-4);
+      grid-template-columns: minmax(0, 1fr) 220px;
+      padding: 20px 24px;
+      gap: 18px;
     }
 
     .headline {
-      font-size: var(--text-xl);
+      font-size: 1.85rem;
+    }
+
+    .description {
+      font-size: 0.92rem;
     }
   }
 
   /* Responsive - Mobile */
   @media (max-width: 600px) {
     .billboard-ad {
+      width: 100%;
+      height: auto;
+      min-height: 250px;
       border-radius: 0;
       border-left: none;
       border-right: none;
     }
 
     .billboard-content {
+      display: flex;
       flex-direction: column;
+      height: auto;
+      min-height: 250px;
       padding: var(--space-5) var(--space-4);
       gap: var(--space-4);
       text-align: center;
@@ -218,14 +317,21 @@ const {
 
     .billboard-text {
       text-align: center;
+      max-width: none;
+    }
+
+    .eyebrow {
+      align-self: center;
     }
 
     .headline {
       font-size: var(--text-xl);
+      max-width: none;
     }
 
     .description {
       font-size: var(--text-sm);
+      max-width: none;
     }
 
     .badges {
@@ -236,8 +342,12 @@ const {
       font-size: 0.6rem;
     }
 
-    .billboard-cta {
+    .billboard-side {
       width: 100%;
+    }
+
+    .side-panel {
+      min-width: 0;
     }
 
     .cta-btn {

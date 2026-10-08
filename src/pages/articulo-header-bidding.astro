@@ -10,7 +10,9 @@ const formatDate = (date: Date) => new Intl.DateTimeFormat("es-ES", { day: "nume
 const today = formatDate(new Date());
 ---
 
-<Layout title={`${data.title} | El Diario AdTech`}>
+<Layout title={`${data.title} | El Diario AdTech`}
+  description="Una mirada práctica al header bidding en medios: subastas con Prebid.js, coordinación con el adserver y equilibrio entre latencia y monetización."
+>
   <div class="container">
     <NewspaperHeader />
   </div>

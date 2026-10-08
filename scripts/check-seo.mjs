@@ -15,6 +15,8 @@ function attribute(tag, key) {
   return tag.match(new RegExp(`\\b${key}="([^"]*)"`))?.[1];
 }
 
+const descriptions = new Set();
+
 for (const route of routes) {
   const file = join('dist', route, 'index.html');
   const html = readFileSync(file, 'utf8');
@@ -34,6 +36,8 @@ for (const route of routes) {
   assert.equal(title.length, 1, `${file}: expected one title`);
   const description = attribute(one('name', 'description'), 'content');
   assert.ok(description?.trim(), `${file}: empty description`);
+  assert.ok(!descriptions.has(description), `${file}: duplicate description`);
+  descriptions.add(description);
   assert.equal(attribute(one('property', 'og:title'), 'content'), title[0].slice(7, -8), `${file}: og:title`);
   assert.equal(attribute(one('name', 'twitter:title'), 'content'), title[0].slice(7, -8), `${file}: twitter:title`);
   assert.equal(attribute(one('property', 'og:description'), 'content'), description, `${file}: og:description`);

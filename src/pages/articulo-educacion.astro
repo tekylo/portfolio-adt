@@ -10,7 +10,9 @@ const formatDate = (date: Date) => new Intl.DateTimeFormat("es-ES", { day: "nume
 const today = formatDate(new Date());
 ---
 
-<Layout title={`${data.title} | El Diario AdTech`}>
+<Layout title={`${data.title} | El Diario AdTech`}
+  description="Formación en Ingeniería Informática en la Universidad de Jaén y proyecto Néfele de predicción meteorológica con algoritmos de regresión."
+>
   <div class="container">
     <NewspaperHeader />
   </div>

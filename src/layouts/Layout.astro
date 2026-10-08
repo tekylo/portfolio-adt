@@ -3,10 +3,10 @@ import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
-  description?: string;
+  description: string;
 }
 
-const { title, description = "Portfolio de José Antonio López Molina sobre tecnología publicitaria y desarrollo web." } = Astro.props;
+const { title, description } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname.replace(/\/?$/, "/"), Astro.site).href;
 const structuredData = {
   "@context": "https://schema.org",

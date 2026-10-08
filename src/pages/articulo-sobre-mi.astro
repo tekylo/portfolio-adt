@@ -10,7 +10,9 @@ const formatDate = (date: Date) => new Intl.DateTimeFormat("es-ES", { day: "nume
 const today = formatDate(new Date());
 ---
 
-<Layout title={`${data.title} | El Diario AdTech`}>
+<Layout title={`${data.title} | El Diario AdTech`}
+  description="Perfil de José Antonio López Molina: trabajo AdTech en Wemass, trayectoria en publicidad digital y coordinación entre operaciones e ingeniería."
+>
   <div class="container">
     <NewspaperHeader />
   </div>

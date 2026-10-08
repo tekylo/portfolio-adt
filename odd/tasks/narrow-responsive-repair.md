@@ -17,6 +17,6 @@ Fix browser-confirmed clipping/overlap on portfolio at narrow viewports while pr
 - [x] RESP-2 — Fixed masthead box sizing and homepage footer icon spacing/wrapping. Browser checked all eight routes at 320/390/768/1440: article mastheads fit (right edge 296px at 320); all six footer icons fit one row at 320 (left 38.8px, right 289.2px); no page scroll delta. Light theme homepage at 390 and side skins at 1920 checked; `pnpm build` (8 pages) and `git diff --check` passed. Work-unit commit: `c082158` (`fix(layout): keep mobile masthead and social links in view`).
 
 ## Progress
-- Current: both tasks done; two scoped work-unit commits on local `main`, no push. Existing user edits in README, StickyFooterBanner, ContactSkyscraperAd, PublicationAd, TechStackSkinAd and index remain unstaged. Feature document records evidence and awaits tracking-only commit.
-- Native RDD review inspect initially blocked on intended-untracked selection for ambient unrelated dirty workspace; do not review unrelated user edits. Reinspect for committed-only feature slice after tracking commit if offered; otherwise report review pending.
-- Next: mirror document, commit tracking document alone, run final readback and report.
+- Current: both tasks done; two scoped work-unit commits and tracking commit `d52b8ba` on local `main`, no push. Existing user edits in README, StickyFooterBanner, ContactSkyscraperAd, PublicationAd, TechStackSkinAd and index remain unstaged.
+- Native RDD review pending: inspect selected unrelated dirty workspace; explicit committed-only slice START could not bind to retained intended-untracked selection (`native-start-retained-selection-candidate-mismatch`). No review lineage or mutation created; never submit unrelated user changes as this feature's candidate.
+- Next: leave unrelated workspace intact; report verified fixes and pending native review.

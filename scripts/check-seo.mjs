@@ -9,6 +9,16 @@ try {
 } catch (error) {
   throw new Error('Invalid configured site URL', { cause: error });
 }
+function png(path, width, height) {
+  const bytes = readFileSync(path);
+  assert.equal(bytes.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', `${path}: PNG signature`);
+  assert.equal(bytes.toString('ascii', 12, 16), 'IHDR', `${path}: PNG header`);
+  assert.equal(bytes.readUInt32BE(16), width, `${path}: width`);
+  assert.equal(bytes.readUInt32BE(20), height, `${path}: height`);
+}
+png('public/favicon.png', 64, 64);
+png('public/og-image.png', 1200, 630);
+
 const routes = ['', ...readdirSync('src/pages').filter((name) => name.startsWith('articulo-') && name.endsWith('.astro')).map((name) => name.slice(0, -6))];
 
 function attribute(tag, key) {
@@ -42,8 +52,16 @@ for (const route of routes) {
   assert.equal(attribute(one('name', 'twitter:title'), 'content'), title[0].slice(7, -8), `${file}: twitter:title`);
   assert.equal(attribute(one('property', 'og:description'), 'content'), description, `${file}: og:description`);
   assert.equal(attribute(one('name', 'twitter:description'), 'content'), description, `${file}: twitter:description`);
-  assert.equal(matching('property', 'og:image').length, 0, `${file}: missing OG image referenced`);
-  assert.equal(matching('name', 'twitter:image').length, 0, `${file}: missing Twitter image referenced`);
+  const imageUrl = new URL('og-image.png', site).href;
+  assert.equal(attribute(one('rel', 'icon'), 'href'), '/favicon.png', `${file}: favicon`);
+  assert.equal(attribute(one('property', 'og:image'), 'content'), imageUrl, `${file}: og:image`);
+  assert.equal(attribute(one('name', 'twitter:image'), 'content'), imageUrl, `${file}: twitter:image`);
+  const imageAlt = 'José Antonio López Molina — AdTech';
+  assert.equal(attribute(one('property', 'og:image:alt'), 'content'), imageAlt, `${file}: OG image alt`);
+  assert.equal(attribute(one('name', 'twitter:image:alt'), 'content'), imageAlt, `${file}: Twitter image alt`);
+  assert.equal(attribute(one('property', 'og:image:width'), 'content'), '1200', `${file}: image width`);
+  assert.equal(attribute(one('property', 'og:image:height'), 'content'), '630', `${file}: image height`);
+  assert.equal(attribute(one('name', 'twitter:card'), 'content'), 'summary_large_image', `${file}: card type`);
   const jsonLd = [...head.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)];
   assert.equal(jsonLd.length, 1, `${file}: expected one JSON-LD`);
   let data;

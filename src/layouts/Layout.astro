@@ -8,6 +8,7 @@ interface Props {
 
 const { title, description } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname.replace(/\/?$/, "/"), Astro.site).href;
+const imageUrl = new URL("og-image.png", Astro.site).href;
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -23,7 +24,7 @@ const structuredData = {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Canonical URL -->
@@ -35,9 +36,15 @@ const structuredData = {
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="José Antonio - AdTech Portfolio" />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content="José Antonio López Molina — AdTech" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content="José Antonio López Molina — AdTech" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:site" content="@tekylo" />

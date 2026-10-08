@@ -1,0 +1,56 @@
+import assert from 'node:assert/strict';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import astroConfig from '../astro.config.mjs';
+
+let site;
+try {
+  site = new URL(astroConfig.site);
+} catch (error) {
+  throw new Error('Invalid configured site URL', { cause: error });
+}
+const routes = ['', ...readdirSync('src/pages').filter((name) => name.startsWith('articulo-') && name.endsWith('.astro')).map((name) => name.slice(0, -6))];
+
+function attribute(tag, key) {
+  return tag.match(new RegExp(`\\b${key}="([^"]*)"`))?.[1];
+}
+
+for (const route of routes) {
+  const file = join('dist', route, 'index.html');
+  const html = readFileSync(file, 'utf8');
+  const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1];
+  assert.ok(head, `${file}: head missing`);
+  const tags = [...head.matchAll(/<(?:meta|link)\b[^>]*>/gi)].map(([tag]) => tag);
+  const matching = (key, value) => tags.filter((tag) => attribute(tag, key) === value);
+  const one = (key, value) => {
+    const found = matching(key, value);
+    assert.equal(found.length, 1, `${file}: expected one ${key}=${value}`);
+    return found[0];
+  };
+  const expected = new URL(route ? `${route}/` : '', site).href;
+  assert.equal(attribute(one('rel', 'canonical'), 'href'), expected, `${file}: canonical`);
+  assert.equal(attribute(one('property', 'og:url'), 'content'), expected, `${file}: og:url`);
+  const title = head.match(/<title>([^<]+)<\/title>/gi) ?? [];
+  assert.equal(title.length, 1, `${file}: expected one title`);
+  const description = attribute(one('name', 'description'), 'content');
+  assert.ok(description?.trim(), `${file}: empty description`);
+  assert.equal(attribute(one('property', 'og:title'), 'content'), title[0].slice(7, -8), `${file}: og:title`);
+  assert.equal(attribute(one('name', 'twitter:title'), 'content'), title[0].slice(7, -8), `${file}: twitter:title`);
+  assert.equal(attribute(one('property', 'og:description'), 'content'), description, `${file}: og:description`);
+  assert.equal(attribute(one('name', 'twitter:description'), 'content'), description, `${file}: twitter:description`);
+  assert.equal(matching('property', 'og:image').length, 0, `${file}: missing OG image referenced`);
+  assert.equal(matching('name', 'twitter:image').length, 0, `${file}: missing Twitter image referenced`);
+  const jsonLd = [...head.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)];
+  assert.equal(jsonLd.length, 1, `${file}: expected one JSON-LD`);
+  let data;
+  try {
+    data = JSON.parse(jsonLd[0][1]);
+  } catch (error) {
+    throw new Error(`${file}: invalid JSON-LD`, { cause: error });
+  }
+  assert.equal(data['@type'], 'WebPage', `${file}: expected route WebPage`);
+  assert.equal(data.url, expected, `${file}: JSON-LD URL`);
+  assert.equal(data.name, title[0].slice(7, -8), `${file}: JSON-LD name`);
+  assert.equal(data.description, description, `${file}: JSON-LD description`);
+  console.log(`SEO OK ${file}`);
+}

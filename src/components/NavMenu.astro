@@ -27,6 +27,28 @@ const navItems = [
   </div>
 </nav>
 
+<script>
+  // Delegación sobre document: Astro conserva este listener entre transiciones.
+  document.addEventListener("focusin", (event) => {
+    const link = event.target;
+    if (!(link instanceof HTMLAnchorElement) || !link.matches(".nav-menu .nav-link")) return;
+
+    requestAnimationFrame(() => {
+      if (document.activeElement !== link || !link.isConnected) return;
+      const list = link.closest<HTMLElement>(".nav-list");
+      if (!list) return;
+
+      const viewport = list.getBoundingClientRect();
+      const item = link.getBoundingClientRect();
+      if (item.right > viewport.right) {
+        list.scrollLeft += item.right - viewport.right;
+      } else if (item.left < viewport.left) {
+        list.scrollLeft += item.left - viewport.left;
+      }
+    });
+  });
+</script>
+
 <style>
   .nav-menu {
     position: sticky;

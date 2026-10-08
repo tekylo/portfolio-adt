@@ -646,4 +646,20 @@ const experiences = [
       font-size: 1.1rem;
     }
   }
+  @media (max-width: 480px) {
+    .full-article {
+      padding: 1.5rem 1rem;
+    }
+    .timeline::before {
+      left: 0.5rem;
+    }
+    .timeline-item {
+      grid-template-columns: 1rem minmax(0, 1fr);
+      gap: 0.5rem;
+    }
+    .timeline-card {
+      min-width: 0;
+      padding: 0.75rem;
+    }
+  }
 </style>

@@ -131,12 +131,14 @@ const themeClass = testimonial.theme === "light" ? "theme-light" : "theme-dark";
 
   .content {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
 
   .quote {
+    overflow-wrap: anywhere;
     font-family: var(--font-display);
     font-size: 1.35rem;
     line-height: 1.6;
@@ -202,7 +204,8 @@ const themeClass = testimonial.theme === "light" ? "theme-light" : "theme-dark";
 
   @media (max-width: 768px) {
     .testimonial-ad {
-      padding: 2rem;
+      min-width: 0;
+      padding: 1.5rem;
       margin: 2rem 0;
     }
 
@@ -220,8 +223,20 @@ const themeClass = testimonial.theme === "light" ? "theme-light" : "theme-dark";
     }
 
     .cta {
-      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-wrap: anywhere;
       justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .testimonial-ad {
+      padding: 1rem;
+    }
+
+    .quote {
+      font-size: 1.1rem;
     }
   }
 </style>

@@ -52,7 +52,7 @@ Theme behavior uses the `.dark` class and browser `localStorage` in `Layout.astr
 
 ## Metadata and deployment notes
 
-`astro.config.mjs` sets `site` to `https://jalopezmolina.vercel.app`, a provisional hostname to confirm before publication. `Layout.astro` uses per-page descriptions and route-specific canonical and Open Graph URLs across all eight pages, plus Twitter tags, a robots meta directive and WebPage JSON-LD. Metadata presence alone does not establish SEO correctness. The favicon asset is still outstanding; check assets and deployed output before relying on them.
+`astro.config.mjs` sets `site` to `https://jalopezmolina.vercel.app`, a provisional hostname to confirm before publication. `Layout.astro` uses per-page descriptions and route-specific canonical and Open Graph URLs across all eight pages, plus Twitter tags, a robots meta directive and WebPage JSON-LD. Metadata presence alone does not establish SEO correctness. A 64×64 PNG favicon is present at `public/favicon.png` and linked by `Layout.astro`; verify it on the deployed host before relying on it.
 
 `public/robots.txt` allows crawlers and points to `/sitemap-index.xml` on that domain. Sitemap XML files exist in `public/`, but their URLs use `https://tekylo.vercel.app`, whereas `astro.config.mjs` and `robots.txt` use `https://jalopezmolina.vercel.app`. `@astrojs/sitemap` is listed as a dependency but **not** registered as an integration in `astro.config.mjs`; do not assume build-time sitemap generation or freshness. Deployment provider and publishing workflow are not configured here; reconcile the sitemap host and validate output and metadata before publishing.
 

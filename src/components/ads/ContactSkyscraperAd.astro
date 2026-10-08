@@ -96,10 +96,9 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
 
 <style>
   .contact-skyscraper {
-    width: 100%;
-    max-width: 300px;
+    width: 300px;
+    height: 600px;
     box-sizing: border-box;
-    min-height: 580px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-default);
     border-radius: var(--radius-md);
@@ -144,6 +143,8 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     flex-direction: column;
     gap: var(--space-5);
     height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
     padding: var(--space-6) var(--space-5) var(--space-5) var(--space-5);
   }
 
@@ -269,9 +270,7 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
 
   @media (max-width: 1100px) {
     .contact-skyscraper {
-      max-width: 100%;
-      min-height: auto;
-      border-radius: 0;
+      display: none;
     }
   }
 </style>

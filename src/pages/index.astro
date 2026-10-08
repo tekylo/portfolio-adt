@@ -112,7 +112,9 @@ const homepagePublication = publications.find(
                     imageUrl={articleExperiencia.imageUrl}
                     href={articleExperiencia.href}
                     author={articleExperiencia.author}
-                    size={articleExperiencia.size as "large" | "medium" | "small"}
+                    size={
+                      articleExperiencia.size as "large" | "medium" | "small"
+                    }
                     prominence="secondary"
                   />
                 </div>
@@ -186,7 +188,12 @@ const homepagePublication = publications.find(
                       imageUrl={articleConocimientos.imageUrl}
                       href={articleConocimientos.href}
                       author={articleConocimientos.author}
-                      size={articleConocimientos.size as "large" | "medium" | "small"}
+                      size={
+                        articleConocimientos.size as
+                          | "large"
+                          | "medium"
+                          | "small"
+                      }
                       prominence="brief"
                     />
                   </div>
@@ -317,15 +324,13 @@ const homepagePublication = publications.find(
       right: max(1.5rem, calc((100vw - 1200px) / 2 - 320px));
     }
 
-    @media (min-width: 1600px) {
-      .skin {
-        display: block;
-      }
+    .skin {
+      display: none;
     }
 
-    @media (max-width: 1599px) {
+    @media (min-width: 1900px) {
       .skin {
-        display: none;
+        display: block;
       }
     }
 
@@ -337,7 +342,10 @@ const homepagePublication = publications.find(
     /* Portada editorial asimétrica */
     .frontpage-editorial {
       display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.36fr) minmax(220px, 0.84fr);
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.36fr) minmax(
+          220px,
+          0.84fr
+        );
       align-items: start;
       gap: 1rem 1.15rem;
       margin: 2rem 0;
@@ -539,7 +547,7 @@ const homepagePublication = publications.find(
       color: #fff;
     }
     .icon-button.email:hover {
-      background: #ea4335;
+      background: #405c73;
       color: #fff;
     }
     .icon-button.gitlab:hover {
@@ -702,10 +710,6 @@ const homepagePublication = publications.find(
       .page-frame {
         grid-template-columns: minmax(0, 1fr);
       }
-
-      .skin {
-        display: none;
-      }
     }
 
     /* Small Mobile */
@@ -724,6 +728,7 @@ const homepagePublication = publications.find(
       .container {
         padding: 0 0.25rem;
       }
+
 
       .section-title {
         font-size: 1.1rem;

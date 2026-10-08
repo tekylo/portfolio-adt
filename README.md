@@ -1,252 +1,63 @@
-# José Antonio López Molina - AdTech Portfolio
+# José Antonio López Molina — AdTech portfolio
 
-A personal portfolio website showcasing expertise in AdTech, Full Stack development, and digital advertising technology. Built with Astro 6.3.3, this project demonstrates modern web development practices with a distinctive newspaper-style editorial design.
+Personal portfolio covering AdTech, full-stack work, and professional experience. Astro pages use an editorial homepage and article routes; advertising-format components are part of the presentation. Site content is primarily Spanish.
 
-## Description
+## What this site shows
 
-This portfolio represents my professional journey in the digital advertising and technology space. It features comprehensive information about my experience, projects, knowledge areas, and technical skills—all presented through an innovative AdTech-inspired interface that mirrors real-world advertising formats.
+- Eight page files: homepage plus seven articles on experience, education, projects, courses, knowledge, Header Bidding, and personal background.
+- Editorial, newspaper-inspired presentation with Astro ad-format components used alongside portfolio content. These are visual presentations, not evidence of an ad-serving integration.
+- Theme controls and shared page metadata; browser behavior and search-engine outcomes need separate verification.
 
-The site includes 8 complete pages: a home page and 7 detailed articles covering my experience, education, projects, courses, technical knowledge, Header Bidding expertise, and personal introduction.
+## Get started
 
-## Tech Stack
-
-| Technology       | Version | Purpose                             |
-| ---------------- | ------- | ----------------------------------- |
-| Astro            | 6.3.3   | Static site generator and framework |
-| TypeScript       | —       | Type-safe JavaScript                |
-| CSS (Vanilla)    | —       | Styling (no frameworks)             |
-| @astrojs/sitemap | —       | Automatic sitemap generation        |
-
-Additional integrations and dependencies include ViewTransitions for SPA-like navigation, and various Astro integrations configured in the project.
-
-## Installation
+Requires Node.js >= 24.15.0 and pnpm >= 11.1.1 (`package.json`).
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-
-# Navigate to the project directory
-cd portfolio
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-The development server will start at `http://localhost:4321` by default.
+Astro's development server normally serves `http://localhost:4321` (unless the port changes). Other configured commands:
 
-## Features
+| Command | Purpose |
+| --- | --- |
+| `pnpm build` | Build site into `dist/` |
+| `pnpm preview` | Preview production build locally |
+| `pnpm astro` | Run Astro CLI |
 
-- **8 Complete Pages**: Home page plus 7 comprehensive articles covering experience, education, projects, courses, technical knowledge, Header Bidding, and About Me
-- **Dark/Light Mode**: ThemeToggle component with localStorage persistence for user preference
-- **ViewTransitions**: Smooth, SPA-like navigation between pages without full page reloads
-- **Full SEO Implementation**:
-  - Open Graph meta tags for social sharing
-  - Twitter Card support
-  - JSON-LD Schema.org Person data
-  - Auto-generated sitemap.xml
-  - robots.txt configuration
-- **Responsive Design**: Mobile-first approach ensuring seamless experience across all devices
-- **Newspaper-Style AdTech Theme**: Editorial layout inspired by traditional newspapers, reimagined for digital advertising technology context
+No test, lint, or typecheck script is configured in `package.json`. A successful build checks compilation, not browser behavior, accessibility, or SEO correctness.
 
-## Architecture
+## Project map
 
-```txt
-src/
-├── layouts/
-│   └── Layout.astro          # Base layout with SEO, theme, ViewTransitions
-├── pages/
-│   ├── index.astro           # Home page
-│   ├── articulo-experiencia.astro
-│   ├── articulo-educacion.astro
-│   ├── articulo-proyectos.astro
-│   ├── articulo-cursos.astro
-│   ├── articulo-conocimientos.astro
-│   ├── articulo-header-bidding.astro
-│   └── articulo-sobre-mi.astro
-├── components/
-│   ├── ads/                  # Ad component demos
-│   │   ├── BillboardAd.astro
-│   │   ├── LeaderboardAd.astro
-│   │   ├── SkyscraperAd.astro
-│   │   ├── MediumRectangleAd.astro
-│   │   ├── WideSkyscraperAd.astro
-│   │   ├── TechStackSkinAd.astro
-│   │   ├── ContactSkyscraperAd.astro
-│   │   ├── PublicationAd.astro
-│   │   └── TestimonialAd.astro
-│   ├── AdBanner.astro
-│   ├── AdCard.astro
-│   ├── AdCarousel.astro
-│   ├── AdTechExpertBanner.astro
-│   ├── Breadcrumbs.astro
-│   ├── Card.astro
-│   ├── Experience.astro
-│   ├── ExperienceCard.astro
-│   ├── FrontPageArticle.astro
-│   ├── Knowledge.astro
-│   ├── NewspaperArticle.astro
-│   ├── NewspaperHeader.astro
-│   ├── NavMenu.astro
-│   ├── Projects.astro
-│   ├── StickyFooterBanner.astro
-│   ├── TechStack.astro
-│   └── ThemeToggle.astro
-├── svgs/
-│   └── [50+ tech logo components]
-│       ├── LogosAstroIcon.astro
-│       ├── LogosReact.astro
-│       ├── LogosNodejs.astro
-│       ├── LogosTypescriptIcon.astro
-│       ├── LogosPython.astro
-│       ├── LogosJava.astro
-│       ├── LogosPhp.astro
-│       ├── LogosDockerIcon.astro
-│       ├── LogosAws.astro
-│       ├── LogosGoogleAds.astro
-│       ├── LogosGoogleAdsense.astro
-│       ├── LogosGoogleTagManager.astro
-│       └── [many more]
-├── data/
-│   ├── articles.json
-│   ├── publications.json
-│   └── recommendations.json
-└── env.d.ts                  # TypeScript environment definitions
+- `src/pages/index.astro` — homepage; seven `src/pages/articulo-*.astro` files — article routes for experience, education, projects, courses, knowledge, Header Bidding, and about-me content.
+- `src/layouts/Layout.astro` — shared HTML shell, metadata, theme script, global styles, and Astro `ClientRouter`.
+- `src/components/` — UI and content components; `src/components/ads/` — ad-format presentations.
+- `src/data/` — article, publication, and recommendation JSON; `src/styles/` — shared styling.
+- `public/` — static assets, including `robots.txt` and sitemap XML files.
+- `openspec/changes/` — proposals and work plans, not runtime site code.
 
-public/
-└── logos/                    # Company and brand logos
-```
+### Content and component flow
 
-### Layout System
+Page files import `Layout.astro` for the document shell. Homepage composes editorial/content components and ad presentations, using `articles.json` and `publications.json`. Article pages import shared navigation/header/breadcrumb components and `articles.json`; the experience page also uses `recommendations.json` with `TestimonialAd.astro`. Content and layout also live directly in page files, so JSON is not the sole content source.
 
-The project uses a single base layout (`Layout.astro`) that provides:
+Content entry points:
 
-- Global CSS variables for theming
-- ViewTransitions integration
-- SEO meta tags and JSON-LD
-- Theme persistence logic
-- Navigation structure
+- `src/data/articles.json` feeds homepage and article pages.
+- `src/data/publications.json` feeds homepage publication content.
+- `src/data/recommendations.json` feeds experience-page testimonials.
 
-### Component Categories
+Inspect consuming page and component before changing data shape or presentation.
 
-1. **Ad Components** (`/src/components/ads/`): Realistic ad unit demonstrations mimicking standard IAB advertising formats
-2. **Layout Components**: Header, navigation, footer, breadcrumbs
-3. **Content Components**: Article displays, experience cards, project listings
-4. **UI Components**: ThemeToggle, Cards, Banners
-5. **SVG Components**: Tech stack logos and brand icons
+Theme behavior uses the `.dark` class and browser `localStorage` in `Layout.astro`. `ClientRouter` is present, but navigation behavior should be checked in a browser before making transition guarantees.
 
-### Data Management
+## Metadata and deployment notes
 
-JSON files in `/src/data/` store structured content:
+`astro.config.mjs` sets `site` to `https://jalopezmolina.vercel.app`, a provisional hostname to confirm before publication. `Layout.astro` uses per-page descriptions and route-specific canonical and Open Graph URLs across all eight pages, plus Twitter tags, a robots meta directive and WebPage JSON-LD. Metadata presence alone does not establish SEO correctness. The favicon asset is still outstanding; check assets and deployed output before relying on them.
 
-- `articles.json`: Article metadata and content structure
-- `publications.json`: Published works and contributions
-- `recommendations.json`: Professional recommendations
+`public/robots.txt` allows crawlers and points to `/sitemap-index.xml` on that domain. Sitemap XML files exist in `public/`, but their URLs use `https://tekylo.vercel.app`, whereas `astro.config.mjs` and `robots.txt` use `https://jalopezmolina.vercel.app`. `@astrojs/sitemap` is listed as a dependency but **not** registered as an integration in `astro.config.mjs`; do not assume build-time sitemap generation or freshness. Deployment provider and publishing workflow are not configured here; reconcile the sitemap host and validate output and metadata before publishing.
 
-## SEO & Metadata
+## Author and rights
 
-### Meta Tags
+José Antonio López Molina — AdTech and Full Stack developer. Original project README describes content, images, and creative work as proprietary; contact the author for usage inquiries. No open-source license is stated here.
 
-The site implements comprehensive meta tags including:
-
-- Canonical URLs
-- Open Graph tags (og:title, og:description, og:image, og:type, og:url)
-- Twitter Card meta tags (twitter:card, twitter:site, twitter:title, twitter:description, twitter:image)
-- Robots meta directives
-
-### Structured Data
-
-JSON-LD Schema.org Person markup provides search engines with structured information:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "José Antonio López Molina",
-  "jobTitle": "AdTech & Full Stack Developer",
-  "url": "https://josewemass.es"
-}
-```
-
-### Sitemap
-
-The `@astrojs/sitemap` integration automatically generates `sitemap-index.xml` and `sitemap-0.xml` at build time, including all pages, last modified dates, and change frequency hints.
-
-### robots.txt
-
-Configured to allow all crawlers while specifying sitemap location.
-
-## Deployment
-
-### Vercel (Recommended)
-
-Vercel provides the optimal deployment experience for Astro projects:
-
-1. Push your code to a GitHub repository
-2. Import the project in Vercel
-3. Vercel automatically detects Astro and configures the build settings
-4. Deploy with zero configuration
-
-```bash
-# Optional: Deploy from CLI
-npm i -g vercel
-vercel
-```
-
-### GitHub Pages
-
-1. Update `astro.config.mjs` with your GitHub Pages URL
-2. Configure GitHub Actions or use the built-in deployment option
-3. Push changes to trigger deployment
-
-### Netlify
-
-1. Connect your repository to Netlify
-2. Specify build command: `npm run build`
-3. Specify publish directory: `dist`
-4. Deploy automatically on push
-
-## Available Commands
-
-| Command           | Description                                  |
-| ----------------- | -------------------------------------------- |
-| `npm run dev`     | Start the development server with hot reload |
-| `npm run build`   | Create production-optimized build in `/dist` |
-| `npm run preview` | Preview the production build locally         |
-| `npm run astro`   | Run Astro CLI commands                       |
-
-## Development Notes
-
-### Theme System
-
-The theme toggle uses CSS custom properties and localStorage for persistence. The theme is applied at the document root level, ensuring all components respect the user's preference.
-
-### ViewTransitions
-
-Astro's ViewTransitions API provides seamless navigation. The layout includes the `<ViewTransitions />` component which intercepts link clicks and updates the DOM without full page reloads.
-
-### Ad Component System
-
-Ad components are built as Astro components and demonstrate various IAB standard ad formats. They serve both as visual examples and as reusable UI elements throughout the portfolio.
-
-## Browser Support
-
-The project supports all modern browsers including Chrome, Firefox, Safari, Edge, and mobile browsers. The responsive design ensures compatibility across desktop, tablet, and mobile devices.
-
-## License
-
-This project is a personal portfolio. All content, images, and creative work are proprietary. Contact the author for any usage inquiries.
-
-## Author
-
-### José Antonio López Molina
-
-- AdTech & Full Stack Developer
-- Specialized in digital advertising technology, header bidding, and modern web development
-- Location: Spain
-
----
-
-Built with Astro 6.3.3 • TypeScript • Vanilla CSS
+For contributor-specific working rules, see [AGENTS.md](AGENTS.md).

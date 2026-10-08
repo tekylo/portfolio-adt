@@ -117,19 +117,25 @@ import LogosWordpressIcon from "../svgs/LogosWordpressIcon.astro";
   .sticky-side-banner {
     position: sticky;
     top: 20px;
-    width: 100%;
+    width: 728px;
+    height: 90px;
+    box-sizing: border-box;
     background: linear-gradient(135deg, #333333, #1a1a1a);
     color: white;
-    padding: 20px;
+    padding: 12px 18px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
+    overflow: hidden;
   }
 
   .banner-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: 100%;
     text-align: center;
   }
 
@@ -174,7 +180,7 @@ import LogosWordpressIcon from "../svgs/LogosWordpressIcon.astro";
   .ad-label {
     position: absolute;
     top: 10px;
-    right: 25px;
+    left: 18px;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 2px 6px;
     font-size: 0.7rem;
@@ -183,7 +189,18 @@ import LogosWordpressIcon from "../svgs/LogosWordpressIcon.astro";
   }
 
   .card__tags {
-    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0.35rem;
+    align-items: center;
+    width: 100%;
+    max-width: 520px;
+    padding: 0;
+  }
+
+  .banner-content h2 {
+    font-size: 0.95rem;
+    white-space: nowrap;
   }
 
   .tags {
@@ -201,45 +218,7 @@ import LogosWordpressIcon from "../svgs/LogosWordpressIcon.astro";
 
   @media (max-width: 1024px) {
     .sticky-side-banner {
-      position: static;
-      width: auto;
-      margin-bottom: 20px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .sticky-side-banner {
-      width: 100%;
-      max-width: 100%;
-    }
-
-    .banner-content h2 {
-      font-size: 1.3rem;
-      text-align: center;
-    }
-
-    .card__tags {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-      gap: 0.5rem;
-      justify-items: center;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .banner-content h2 {
-      font-size: 1.1rem;
-    }
-
-    .card__tags {
-      grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
-      gap: 0.35rem;
-    }
-
-    .close-button {
-      width: 30px;
-      height: 30px;
-      font-size: 1.2rem;
+      display: none;
     }
   }
 </style>

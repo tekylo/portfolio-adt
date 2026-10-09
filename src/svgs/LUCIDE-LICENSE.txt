@@ -2,6 +2,8 @@ Source: https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/{layout
 Icons: layout-dashboard, gavel, code-xml.
 Source: https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/{network,braces}.svg
 Icons: network, braces (LucideNetwork.astro, LucideBraces.astro).
+Source: https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/arrow-left-right.svg
+Icon: arrow-left-right (LucideArrowLeftRight.astro).
 
 ISC License
 Copyright (c) 2026 Lucide Icons and Contributors

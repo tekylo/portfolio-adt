@@ -11,6 +11,7 @@ import LogosDockerIcon from '../../../svgs/LogosDockerIcon.astro';
 import LogosAws from '../../../svgs/LogosAws.astro';
 import LucideLayoutDashboard from '../../../svgs/LucideLayoutDashboard.astro';
 import LucideGavel from '../../../svgs/LucideGavel.astro';
+import LucideArrowLeftRight from '../../../svgs/LucideArrowLeftRight.astro';
 import LucideCodeXml from '../../../svgs/LucideCodeXml.astro';
 import LucideNetwork from '../../../svgs/LucideNetwork.astro';
 import LucideBraces from '../../../svgs/LucideBraces.astro';
@@ -67,12 +68,17 @@ const groups = [
           <h3>{group.label}</h3>
         </div>
         <ul>
-          {group.items.map((item) => (
-            <li>
-              {variant !== 'expanded' && <span class="icon" aria-hidden="true"><item.icon aria-hidden="true" />{item.secondIcon && <item.secondIcon aria-hidden="true" />}</span>}
-              <span>{item.name}</span>
-            </li>
-          ))}
+          {group.items.map((item) => {
+            const shownItem = variant === 'icons-expanded' && item.name === 'Header Bidding'
+              ? { name: 'OpenRTB', icon: LucideArrowLeftRight }
+              : item;
+            return (
+              <li>
+                {variant !== 'expanded' && <span class="icon" aria-hidden="true"><shownItem.icon aria-hidden="true" />{item.secondIcon && <item.secondIcon aria-hidden="true" />}</span>}
+                <span>{shownItem.name}</span>
+              </li>
+            );
+          })}
           {variant === 'expanded' && <li>{group.extra.name}</li>}
           {variant === 'icons-expanded' && <li><span class="icon" aria-hidden="true"><group.extra.icon aria-hidden="true" /></span><span>{group.extra.name}</span></li>}
         </ul>

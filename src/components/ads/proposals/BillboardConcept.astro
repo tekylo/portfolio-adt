@@ -9,7 +9,7 @@ const badges = ['8+ años', 'Google Ad Manager', 'Header Bidding', 'Xandr', 'Pro
 
 <section class:list={['concept', theme]} aria-label="Anuncio del portfolio de José Antonio López Molina">
   <div class="topline">
-    <span class="advertiser">PUBLICIDAD · JOSÉ ANTONIO / PORTFOLIO</span>
+    <span class="advertiser">PERFIL · PORTFOLIO</span>
     <div class="controls">
       <span class="ad-label">ANUNCIO</span>
       <button class="close" type="button" aria-label="Cerrar anuncio">×</button>
@@ -56,6 +56,7 @@ const badges = ['8+ años', 'Google Ad Manager', 'Header Bidding', 'Xandr', 'Pro
     width: 980px;
     height: 250px;
     border: 1px solid var(--rule);
+    border-radius: 6px;
     background: var(--paper);
     color: var(--ink);
     font-family: Arial, Helvetica, sans-serif;
@@ -97,6 +98,7 @@ const badges = ['8+ años', 'Google Ad Manager', 'Header Bidding', 'Xandr', 'Pro
     border: 0;
     border-left: 1px solid var(--rule);
     background: var(--panel);
+    border-top-right-radius: 5px;
     color: var(--ink);
     font: 28px/1 Arial, Helvetica, sans-serif;
     cursor: pointer;
@@ -115,6 +117,7 @@ const badges = ['8+ años', 'Google Ad Manager', 'Header Bidding', 'Xandr', 'Pro
     min-width: 0;
     padding: 16px 26px 12px;
     border-left: 5px solid var(--accent);
+    border-bottom-left-radius: 5px;
   }
   .kicker { color: var(--accent); }
   h2 {
@@ -145,6 +148,7 @@ const badges = ['8+ años', 'Google Ad Manager', 'Header Bidding', 'Xandr', 'Pro
     justify-content: space-between;
     padding: 20px 19px;
     border-left: 1px solid var(--rule);
+    border-bottom-right-radius: 5px;
     background: var(--panel);
   }
   .side-number { color: var(--muted); }
@@ -171,8 +175,8 @@ const badges = ['8+ años', 'Google Ad Manager', 'Header Bidding', 'Xandr', 'Pro
   }
   @media (max-width: 700px) {
     .body { display: block; }
-    .message { padding: 20px 16px; }
-    .side { gap: 14px; padding: 16px; border-left: 0; border-top: 1px solid var(--rule); }
+    .message { padding: 20px 16px; border-bottom-left-radius: 0; }
+    .side { gap: 14px; padding: 16px; border-left: 0; border-top: 1px solid var(--rule); border-bottom-left-radius: 5px; }
     .side p { font-size: 17px; }
     h2 { font-size: clamp(26px, 8vw, 32px); }
   }

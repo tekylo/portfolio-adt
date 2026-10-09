@@ -4,56 +4,69 @@ interface Props {
 }
 
 const { theme } = Astro.props;
+const badges = ['8+ años', 'Google Ad Manager', 'Header Bidding', 'Xandr', 'Programática'];
 ---
 
 <section class:list={['concept', theme]} aria-label="Anuncio del portfolio de José Antonio López Molina">
   <div class="topline">
-    <span class="owner">JOSÉ ANTONIO <span class="owner-separator">/</span> PORTFOLIO</span>
-    <span class="ad-label">ANUNCIO</span>
+    <span class="advertiser">PUBLICIDAD · JOSÉ ANTONIO / PORTFOLIO</span>
+    <div class="controls">
+      <span class="ad-label">ANUNCIO</span>
+      <button class="close" type="button" aria-label="Cerrar anuncio">×</button>
+    </div>
   </div>
   <div class="body">
     <div class="message">
-      <span class="kicker">ARQUITECTURA ADTECH · PUBLISHERS</span>
-      <h2>La publicidad también<br class="desktop-break" /> tiene arquitectura<span class="period">.</span></h2>
-      <p>De la integración multisite al ecosistema programático.</p>
-      <a class="cta" href="/articulo-proyectos">Explorar proyectos <span aria-hidden="true">↗</span></a>
+      <span class="kicker">PERFIL PROFESIONAL / ADTECH</span>
+      <h2>José Antonio<br />López Molina<span class="period">.</span></h2>
+      <p>Profesional de publicidad digital y tecnología programática.</p>
+      <div class="badges" aria-label="Experiencia y especialidades">
+        {badges.map((badge) => <span class="badge">{badge}</span>)}
+      </div>
     </div>
-    <div class="diagram" aria-hidden="true">
-      <div class="diagram-title">ECOSISTEMA / PUBLISHER</div>
-      <div class="nodes"><span>GAM</span><span>Prebid.js</span><span>OpenRTB</span></div>
-      <div class="diagram-line"></div>
-      <div class="diagram-base">INTEGRACIÓN MULTISITE <span>✳</span></div>
+    <div class="side">
+      <span class="side-number" aria-hidden="true">01 / PERFIL</span>
+      <p>AdTech para conectar tecnología, medios y publicidad.</p>
+      <a class="cta" href="/José Antonio López Molina · CV.pdf" download>
+        Descargar CV <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </div>
-  <div class="accent-edge" aria-hidden="true"></div>
 </section>
+
+<script>
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const button = target.closest<HTMLButtonElement>('.concept .close');
+    button?.closest('.concept')?.remove();
+  });
+</script>
 
 <style>
   .concept {
-    --paper: #f6f1e7;
-    --ink: #202b2b;
-    --muted: #495957;
-    --accent: #91501e;
-    --panel: #e7dfd0;
-    --rule: #b2b9ab;
+    --paper: #fff;
+    --ink: #1a1d23;
+    --muted: #45484e;
+    --accent: #806000;
+    --panel: #f1f3f5;
+    --rule: #c6c9cc;
     position: relative;
-    isolation: isolate;
     box-sizing: border-box;
     width: 980px;
     height: 250px;
-    overflow: hidden;
     border: 1px solid var(--rule);
     background: var(--paper);
     color: var(--ink);
     font-family: Arial, Helvetica, sans-serif;
   }
   .concept.dark {
-    --paper: #142728;
-    --ink: #f6f0df;
-    --muted: #c9d6cf;
-    --accent: #efbd72;
-    --panel: #203c3b;
-    --rule: #5c8077;
+    --paper: #1a1d23;
+    --ink: #fff;
+    --muted: #e1e2e5;
+    --accent: #f3d34d;
+    --panel: #292d34;
+    --rule: #62666d;
   }
   .topline {
     height: 35px;
@@ -61,113 +74,111 @@ const { theme } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 30px;
+    gap: 4px;
+    padding-left: 22px;
     border-bottom: 1px solid var(--rule);
   }
-  .owner, .ad-label, .kicker, .diagram-title, .diagram-base {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .14em;
+  .advertiser, .ad-label, .kicker, .side-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
   }
-  .owner-separator { color: var(--accent); padding: 0 6px; }
+  .advertiser { color: var(--muted); }
+  .controls { display: flex; align-self: stretch; flex: none; }
   .ad-label {
-    align-self: stretch;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 14px;
     background: var(--ink);
     color: var(--paper);
   }
+  .close {
+    width: 40px;
+    border: 0;
+    border-left: 1px solid var(--rule);
+    background: var(--panel);
+    color: var(--ink);
+    font: 28px/1 Arial, Helvetica, sans-serif;
+    cursor: pointer;
+  }
+  .close:hover { background: var(--rule); }
+  .close:focus-visible, .cta:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: -3px;
+  }
   .body {
-    height: calc(100% - 35px);
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 306px;
+    grid-template-columns: minmax(0, 1fr) 270px;
+    height: calc(100% - 35px);
   }
   .message {
     min-width: 0;
-    padding: 19px 30px 14px;
+    padding: 16px 26px 12px;
+    border-left: 5px solid var(--accent);
   }
   .kicker { color: var(--accent); }
   h2 {
-    margin: 9px 0 5px;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 31px;
-    line-height: 1.05;
-    letter-spacing: -.035em;
-    font-weight: 700;
+    margin: 7px 0 5px;
+    font: 700 32px/1.04 Georgia, 'Times New Roman', serif;
+    letter-spacing: -.025em;
   }
   .period { color: var(--accent); }
-  p {
-    margin: 0;
+  .message p {
+    margin: 0 0 11px;
     color: var(--muted);
     font-size: 13px;
     line-height: 1.35;
   }
+  .badges { display: flex; flex-wrap: wrap; gap: 5px; }
+  .badge {
+    padding: 4px 7px;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    background: var(--panel);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 19px;
+    border-left: 1px solid var(--rule);
+    background: var(--panel);
+  }
+  .side-number { color: var(--muted); }
+  .side p {
+    margin: 0;
+    font: 700 20px/1.18 Georgia, 'Times New Roman', serif;
+  }
   .cta {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 20px;
-    margin-top: 12px;
-    padding: 8px 13px;
+    justify-content: space-between;
+    min-height: 42px;
+    padding: 0 13px;
     background: var(--ink);
     color: var(--paper);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     text-decoration: none;
   }
   .cta:hover { text-decoration: underline; }
-  .cta:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-  .diagram {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 24px 22px 19px;
-    background: var(--panel);
-    border-left: 1px solid var(--rule);
-  }
-  .diagram-title { color: var(--muted); }
-  .nodes { display: flex; flex-wrap: wrap; gap: 7px; position: relative; z-index: 1; }
-  .nodes span {
-    border: 1px solid var(--rule);
-    background: var(--paper);
-    padding: 8px 10px;
-    font: 700 12px Arial, Helvetica, sans-serif;
-  }
-  .diagram-line {
-    position: absolute;
-    top: 95px;
-    left: 33px;
-    width: 1px;
-    height: 70px;
-    background: var(--accent);
-  }
-  .diagram-base {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid var(--accent);
-    padding-top: 11px;
-    color: var(--accent);
-  }
-  .diagram-base span { font-size: 19px; line-height: 1; }
-  .accent-edge { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--accent); }
   @media (max-width: 979px) {
-    .concept { width: 100%; height: auto; min-height: 250px; overflow: visible; }
-    .body { height: auto; }
-    .message { padding-bottom: 22px; }
+    .concept { width: 100%; height: auto; min-height: 250px; }
+    .body { height: auto; min-height: 214px; }
   }
   @media (max-width: 700px) {
-    .body { grid-template-columns: 1fr; }
-    .diagram { border-left: 0; border-top: 1px solid var(--rule); gap: 16px; padding: 17px 22px 20px; }
-    .diagram-line { display: none; }
-    .message { padding: 24px 22px; }
-    h2 { font-size: clamp(25px, 7vw, 31px); }
-    .desktop-break { display: none; }
+    .body { display: block; }
+    .message { padding: 20px 16px; }
+    .side { gap: 14px; padding: 16px; border-left: 0; border-top: 1px solid var(--rule); }
+    .side p { font-size: 17px; }
+    h2 { font-size: clamp(26px, 8vw, 32px); }
   }
-  @media (max-width: 360px) {
-    .topline { padding-left: 14px; }
-    .ad-label { padding: 0 12px; }
-    .owner, .ad-label { font-size: 9px; letter-spacing: .08em; }
+  @media (max-width: 390px) {
+    .topline { padding-left: 8px; }
+    .advertiser, .ad-label { font-size: 9px; letter-spacing: 0; }
+    .ad-label { padding: 0 7px; }
   }
 </style>

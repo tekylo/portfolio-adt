@@ -12,10 +12,13 @@ import LogosAws from '../../../svgs/LogosAws.astro';
 import LucideLayoutDashboard from '../../../svgs/LucideLayoutDashboard.astro';
 import LucideGavel from '../../../svgs/LucideGavel.astro';
 import LucideCodeXml from '../../../svgs/LucideCodeXml.astro';
+import LucideNetwork from '../../../svgs/LucideNetwork.astro';
+import LucideBraces from '../../../svgs/LucideBraces.astro';
+import LogosMysql from '../../../svgs/LogosMysql.astro';
 
 interface Props {
   theme: 'light' | 'dark';
-  variant?: 'icons' | 'expanded';
+  variant?: 'icons' | 'expanded' | 'icons-expanded';
 }
 
 const { theme, variant = 'icons' } = Astro.props;
@@ -25,19 +28,19 @@ const groups = [
     { name: 'Header Bidding', icon: LucideGavel },
     { name: 'Prebid.js', icon: LucideCodeXml },
     { name: 'Tag Manager', icon: LogosGoogleTagManager },
-  ], extra: 'Xandr' },
+  ], extra: { name: 'Xandr', icon: LucideNetwork } },
   { label: 'Frontend', items: [
     { name: 'Astro', icon: LogosAstroIcon },
     { name: 'React', icon: LogosReact },
     { name: 'TypeScript', icon: LogosTypescriptIcon },
     { name: 'TailwindCSS', icon: LogosTailwindcssIcon },
-  ], extra: 'AngularJS' },
+  ], extra: { name: 'AngularJS', icon: LucideBraces } },
   { label: 'Backend & DevOps', items: [
     { name: 'Node.js', icon: LogosNodejs },
     { name: 'PHP / Symfony', icon: LogosPhp, secondIcon: LogosSymfony },
     { name: 'Docker', icon: LogosDockerIcon },
     { name: 'AWS', icon: LogosAws },
-  ], extra: 'MySQL' },
+  ], extra: { name: 'MySQL', icon: LogosMysql } },
 ];
 ---
 
@@ -66,11 +69,12 @@ const groups = [
         <ul>
           {group.items.map((item) => (
             <li>
-              {variant === 'icons' && <span class="icon" aria-hidden="true"><item.icon aria-hidden="true" />{item.secondIcon && <item.secondIcon aria-hidden="true" />}</span>}
+              {variant !== 'expanded' && <span class="icon" aria-hidden="true"><item.icon aria-hidden="true" />{item.secondIcon && <item.secondIcon aria-hidden="true" />}</span>}
               <span>{item.name}</span>
             </li>
           ))}
-          {variant === 'expanded' && <li>{group.extra}</li>}
+          {variant === 'expanded' && <li>{group.extra.name}</li>}
+          {variant === 'icons-expanded' && <li><span class="icon" aria-hidden="true"><group.extra.icon aria-hidden="true" /></span><span>{group.extra.name}</span></li>}
         </ul>
       </section>
     ))}
@@ -180,10 +184,15 @@ const groups = [
   ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 5px; margin: 7px 0 0; padding: 0; list-style: none; }
   li { font-size: 11px; line-height: 1.2; font-weight: 600; overflow-wrap: anywhere; }
   .expanded li::before { content: '▪'; color: var(--accent); margin-right: 3px; }
-  .icons li { display: flex; align-items: center; gap: 5px; min-height: 23px; }
+  .icons li, .icons-expanded li { display: flex; align-items: center; gap: 5px; min-height: 23px; }
   .icon { flex: none; display: flex; align-items: center; justify-content: center; gap: 1px; width: 20px; height: 20px; background: #fff; border-radius: 3px; color: #1a1d23; }
   .icon :global(svg) { max-width: 17px; max-height: 17px; width: auto; height: auto; }
   .icon:has(:global(svg + svg)) :global(svg) { max-width: 9px; max-height: 16px; }
+  .icons-expanded .intro { padding-top: 12px; padding-bottom: 8px; }
+  .icons-expanded .groups { gap: 4px; }
+  .icons-expanded .group { padding-top: 4px; padding-bottom: 4px; }
+  .icons-expanded .group-heading { padding-bottom: 3px; }
+  .icons-expanded ul { gap: 3px 4px; margin-top: 4px; }
   .icons .groups { gap: 5px; }
   .icons .group { padding-top: 6px; padding-bottom: 6px; }
   .icons ul { gap: 5px 4px; }

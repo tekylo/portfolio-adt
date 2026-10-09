@@ -4,50 +4,67 @@ interface Props {
 }
 
 const { theme } = Astro.props;
+const groups = [
+  { label: 'Advertising & Data', items: ['Google Ad Manager', 'Header Bidding', 'Prebid.js', 'Tag Manager'] },
+  { label: 'Frontend', items: ['Astro', 'React', 'TypeScript', 'TailwindCSS'] },
+  { label: 'Backend & DevOps', items: ['Node.js', 'PHP / Symfony', 'Docker', 'AWS'] },
+];
 ---
 
-<section class:list={['skyscraper', theme]} aria-label="Anuncio del portfolio de José Antonio López Molina">
+<section class:list={['skyscraper', theme]} aria-label="Anuncio de conocimientos del portfolio de José Antonio López Molina">
   <div class="topline">
-    <span>JOSÉ ANTONIO <b>/</b> PORTFOLIO</span>
-    <span class="ad-label">ANUNCIO</span>
+    <span class="advertiser">JOSÉ ANTONIO / PORTFOLIO</span>
+    <div class="controls">
+      <span class="ad-label">ANUNCIO</span>
+      <button class="close" type="button" aria-label="Cerrar anuncio de conocimientos">×</button>
+    </div>
   </div>
 
-  <div class="intro">
-    <span class="eyebrow">ARQUITECTURA ADTECH</span>
-    <h2>Del bid al<br />publisher<span>.</span></h2>
-    <p>Integraciones que conectan la subasta con la experiencia editorial.</p>
+  <header class="intro">
+    <span class="eyebrow">EDICIÓN / CONOCIMIENTOS</span>
+    <h2>Stack Tecnológico<br />AdTech<span>.</span></h2>
+    <p>Tecnologías que utilizo para conectar publicidad digital y desarrollo.</p>
+  </header>
+
+  <div class="groups" aria-label="Tecnologías por especialidad">
+    {groups.map((group, index) => (
+      <section class="group" aria-label={group.label}>
+        <div class="group-heading">
+          <span class="number">0{index + 1}</span>
+          <h3>{group.label}</h3>
+        </div>
+        <ul>{group.items.map((item) => <li>{item}</li>)}</ul>
+      </section>
+    ))}
   </div>
 
-  <div class="flow" aria-label="Ruta visual: subasta, adserver e integración publisher">
-    <div class="flow-title">RUTA DE INTEGRACIÓN <span aria-hidden="true">↘</span></div>
-    <div class="step"><span class="index">01</span><span><strong>SUBASTA</strong><small>Prebid.js · OpenRTB / Xandr</small></span></div>
-    <div class="connector" aria-hidden="true"></div>
-    <div class="step"><span class="index">02</span><span><strong>ADSERVER</strong><small>Google Ad Manager</small></span></div>
-    <div class="connector" aria-hidden="true"></div>
-    <div class="step"><span class="index">03</span><span><strong>PUBLISHER</strong><small>Integración multisite</small></span></div>
-  </div>
-
-  <div class="footer">
-    <p>Arquitectura publicitaria con visión de producto.</p>
-    <a href="/articulo-experiencia">Ver experiencia <span aria-hidden="true">↗</span></a>
-  </div>
-  <div class="edge" aria-hidden="true"></div>
+  <footer>
+    <span class="footer-note">HERRAMIENTAS / PRÁCTICA</span>
+    <a class="cta" href="/articulo-conocimientos">Ver conocimientos <span aria-hidden="true">↗</span></a>
+  </footer>
 </section>
+
+<script>
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const button = target.closest<HTMLButtonElement>('.skyscraper .close');
+    button?.closest('.skyscraper')?.remove();
+  });
+</script>
 
 <style>
   .skyscraper {
-    --paper: #f5f0e5;
-    --ink: #1b3030;
-    --muted: #465b57;
-    --accent: #89501f;
-    --panel: #e5dfd0;
-    --rule: #a6b3a8;
+    --paper: #fff;
+    --ink: #1a1d23;
+    --muted: #45484e;
+    --accent: #806000;
+    --panel: #f8f9fa;
+    --rule: #c6c9cc;
     box-sizing: border-box;
     position: relative;
-    isolation: isolate;
     width: 300px;
     height: 600px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--rule);
@@ -56,101 +73,91 @@ const { theme } = Astro.props;
     font-family: Arial, Helvetica, sans-serif;
   }
   .skyscraper.dark {
-    --paper: #142728;
-    --ink: #f6f0df;
-    --muted: #c9d6cf;
-    --accent: #efbd72;
-    --panel: #203c3b;
-    --rule: #5c8077;
+    --paper: #1a1d23;
+    --ink: #fff;
+    --muted: #e1e2e5;
+    --accent: #f3d34d;
+    --panel: #292d34;
+    --rule: #62666d;
   }
   .topline {
-    height: 44px;
+    box-sizing: border-box;
+    height: 36px;
     flex: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 15px;
     border-bottom: 1px solid var(--rule);
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: .08em;
+    padding-left: 10px;
   }
-  .topline b { color: var(--accent); padding: 0 3px; }
+  .advertiser, .ad-label, .eyebrow, .footer-note {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+  .advertiser { color: var(--muted); }
+  .controls { display: flex; align-self: stretch; flex: none; }
   .ad-label {
-    align-self: stretch;
     display: flex;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 8px;
     background: var(--ink);
     color: var(--paper);
   }
-  .intro { padding: 26px 22px 20px; }
-  .eyebrow, .flow-title, .step strong {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .12em;
+  .close {
+    width: 36px;
+    border: 0;
+    border-left: 1px solid var(--rule);
+    background: var(--panel);
+    color: var(--ink);
+    font: 26px/1 Arial, Helvetica, sans-serif;
+    cursor: pointer;
   }
+  .close:hover { background: var(--rule); }
+  .close:focus-visible, .cta:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: -3px;
+  }
+  .intro { padding: 17px 17px 12px; border-left: 4px solid var(--accent); }
   .eyebrow { color: var(--accent); }
   h2 {
-    margin: 12px 0 11px;
-    font: 700 36px/1.03 Georgia, 'Times New Roman', serif;
-    letter-spacing: -.04em;
+    margin: 7px 0 6px;
+    font: 700 26px/1.08 Georgia, 'Times New Roman', serif;
+    letter-spacing: -.03em;
   }
   h2 span { color: var(--accent); }
-  .intro p, .footer p {
+  .intro p {
     margin: 0;
     color: var(--muted);
-    font-size: 13px;
-    line-height: 1.4;
+    font-size: 12px;
+    line-height: 1.35;
   }
-  .flow {
-    margin: 0 15px;
-    padding: 16px 14px 17px;
-    background: var(--panel);
-    border: 1px solid var(--rule);
-  }
-  .flow-title {
+  .groups { display: flex; flex-direction: column; gap: 7px; padding: 0 13px; }
+  .group { padding: 8px 10px 9px; background: var(--panel); border: 1px solid var(--rule); }
+  .group-heading { display: flex; align-items: baseline; gap: 7px; border-bottom: 1px solid var(--rule); padding-bottom: 5px; }
+  .number { color: var(--accent); font: 700 14px/1 Georgia, 'Times New Roman', serif; }
+  h3 { margin: 0; font-size: 12px; line-height: 1.2; letter-spacing: .02em; }
+  ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 5px; margin: 7px 0 0; padding: 0; list-style: none; }
+  li { font-size: 11px; line-height: 1.2; font-weight: 600; overflow-wrap: anywhere; }
+  li::before { content: '▪'; color: var(--accent); margin-right: 3px; }
+  footer { margin-top: auto; padding: 10px 13px 14px; }
+  .footer-note { display: block; margin-bottom: 6px; color: var(--muted); }
+  .cta {
+    box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    color: var(--muted);
-  }
-  .flow-title span { color: var(--accent); font-size: 16px; line-height: .7; }
-  .step { display: flex; gap: 12px; align-items: center; }
-  .index {
-    display: grid;
-    place-items: center;
-    flex: none;
-    width: 30px;
-    height: 30px;
-    border: 1px solid var(--accent);
-    border-radius: 50%;
-    color: var(--accent);
-    font-size: 10px;
-    font-weight: 800;
-  }
-  .step strong, .step small { display: block; }
-  .step small { margin-top: 3px; color: var(--muted); font-size: 10px; }
-  .connector { height: 16px; margin: 2px 0 2px 15px; border-left: 1px solid var(--accent); }
-  .footer { margin-top: auto; padding: 17px 22px 24px; }
-  .footer p { margin-bottom: 13px; }
-  a {
-    display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 11px 12px;
+    min-height: 40px;
+    padding: 0 12px;
     background: var(--ink);
     color: var(--paper);
     font-size: 12px;
     font-weight: 700;
     text-decoration: none;
   }
-  a:hover { text-decoration: underline; }
-  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-  .edge { position: absolute; bottom: 0; width: 100%; height: 4px; background: var(--accent); }
+  .cta:hover { text-decoration: underline; }
   @media (max-width: 299px) {
-    .skyscraper { max-width: 100%; }
+    .skyscraper { width: 100%; height: auto; min-height: 600px; }
+    .advertiser { font-size: 8px; }
   }
 </style>

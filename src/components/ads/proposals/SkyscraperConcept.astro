@@ -1,19 +1,49 @@
 ---
+import LogosGoogleTagManager from '../../../svgs/LogosGoogleTagManager.astro';
+import LogosAstroIcon from '../../../svgs/LogosAstroIcon.astro';
+import LogosReact from '../../../svgs/LogosReact.astro';
+import LogosTypescriptIcon from '../../../svgs/LogosTypescriptIcon.astro';
+import LogosTailwindcssIcon from '../../../svgs/LogosTailwindcssIcon.astro';
+import LogosNodejs from '../../../svgs/LogosNodejs.astro';
+import LogosPhp from '../../../svgs/LogosPhp.astro';
+import LogosSymfony from '../../../svgs/LogosSymfony.astro';
+import LogosDockerIcon from '../../../svgs/LogosDockerIcon.astro';
+import LogosAws from '../../../svgs/LogosAws.astro';
+import LucideLayoutDashboard from '../../../svgs/LucideLayoutDashboard.astro';
+import LucideGavel from '../../../svgs/LucideGavel.astro';
+import LucideCodeXml from '../../../svgs/LucideCodeXml.astro';
+
 interface Props {
   theme: 'light' | 'dark';
+  variant?: 'icons' | 'expanded';
 }
 
-const { theme } = Astro.props;
+const { theme, variant = 'icons' } = Astro.props;
 const groups = [
-  { label: 'Advertising & Data', items: ['Google Ad Manager', 'Header Bidding', 'Prebid.js', 'Tag Manager'] },
-  { label: 'Frontend', items: ['Astro', 'React', 'TypeScript', 'TailwindCSS'] },
-  { label: 'Backend & DevOps', items: ['Node.js', 'PHP / Symfony', 'Docker', 'AWS'] },
+  { label: 'Advertising & Data', items: [
+    { name: 'Google Ad Manager', icon: LucideLayoutDashboard },
+    { name: 'Header Bidding', icon: LucideGavel },
+    { name: 'Prebid.js', icon: LucideCodeXml },
+    { name: 'Tag Manager', icon: LogosGoogleTagManager },
+  ], extra: 'Xandr' },
+  { label: 'Frontend', items: [
+    { name: 'Astro', icon: LogosAstroIcon },
+    { name: 'React', icon: LogosReact },
+    { name: 'TypeScript', icon: LogosTypescriptIcon },
+    { name: 'TailwindCSS', icon: LogosTailwindcssIcon },
+  ], extra: 'AngularJS' },
+  { label: 'Backend & DevOps', items: [
+    { name: 'Node.js', icon: LogosNodejs },
+    { name: 'PHP / Symfony', icon: LogosPhp, secondIcon: LogosSymfony },
+    { name: 'Docker', icon: LogosDockerIcon },
+    { name: 'AWS', icon: LogosAws },
+  ], extra: 'MySQL' },
 ];
 ---
 
-<section class:list={['skyscraper', theme]} aria-label="Anuncio de conocimientos del portfolio de José Antonio López Molina">
+<section class:list={['skyscraper', theme, variant]} aria-label="Anuncio de conocimientos del portfolio de José Antonio López Molina">
   <div class="topline">
-    <span class="advertiser">JOSÉ ANTONIO / PORTFOLIO</span>
+    <span class="advertiser">CONOCIMIENTOS · PORTFOLIO</span>
     <div class="controls">
       <span class="ad-label">ANUNCIO</span>
       <button class="close" type="button" aria-label="Cerrar anuncio de conocimientos">×</button>
@@ -33,7 +63,15 @@ const groups = [
           <span class="number">0{index + 1}</span>
           <h3>{group.label}</h3>
         </div>
-        <ul>{group.items.map((item) => <li>{item}</li>)}</ul>
+        <ul>
+          {group.items.map((item) => (
+            <li>
+              {variant === 'icons' && <span class="icon" aria-hidden="true"><item.icon aria-hidden="true" />{item.secondIcon && <item.secondIcon aria-hidden="true" />}</span>}
+              <span>{item.name}</span>
+            </li>
+          ))}
+          {variant === 'expanded' && <li>{group.extra}</li>}
+        </ul>
       </section>
     ))}
   </div>
@@ -70,6 +108,8 @@ const groups = [
     border: 1px solid var(--rule);
     background: var(--paper);
     color: var(--ink);
+    border-radius: 6px;
+    overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
   }
   .skyscraper.dark {
@@ -139,7 +179,17 @@ const groups = [
   h3 { margin: 0; font-size: 12px; line-height: 1.2; letter-spacing: .02em; }
   ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 5px; margin: 7px 0 0; padding: 0; list-style: none; }
   li { font-size: 11px; line-height: 1.2; font-weight: 600; overflow-wrap: anywhere; }
-  li::before { content: '▪'; color: var(--accent); margin-right: 3px; }
+  .expanded li::before { content: '▪'; color: var(--accent); margin-right: 3px; }
+  .icons li { display: flex; align-items: center; gap: 5px; min-height: 23px; }
+  .icon { flex: none; display: flex; align-items: center; justify-content: center; gap: 1px; width: 20px; height: 20px; background: #fff; border-radius: 3px; color: #1a1d23; }
+  .icon :global(svg) { max-width: 17px; max-height: 17px; width: auto; height: auto; }
+  .icon:has(:global(svg + svg)) :global(svg) { max-width: 9px; max-height: 16px; }
+  .icons .groups { gap: 5px; }
+  .icons .group { padding-top: 6px; padding-bottom: 6px; }
+  .icons ul { gap: 5px 4px; }
+  .expanded .groups { gap: 5px; }
+  .expanded .group { padding-top: 6px; padding-bottom: 6px; }
+  .expanded ul { gap: 5px 4px; }
   footer { margin-top: auto; padding: 10px 13px 14px; }
   .footer-note { display: block; margin-bottom: 6px; color: var(--muted); }
   .cta {

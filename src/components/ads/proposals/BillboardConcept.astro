@@ -1,0 +1,173 @@
+---
+interface Props {
+  theme: 'light' | 'dark';
+}
+
+const { theme } = Astro.props;
+---
+
+<section class:list={['concept', theme]} aria-label="Anuncio del portfolio de José Antonio López Molina">
+  <div class="topline">
+    <span class="owner">JOSÉ ANTONIO <span class="owner-separator">/</span> PORTFOLIO</span>
+    <span class="ad-label">ANUNCIO</span>
+  </div>
+  <div class="body">
+    <div class="message">
+      <span class="kicker">ARQUITECTURA ADTECH · PUBLISHERS</span>
+      <h2>La publicidad también<br class="desktop-break" /> tiene arquitectura<span class="period">.</span></h2>
+      <p>De la integración multisite al ecosistema programático.</p>
+      <a class="cta" href="/articulo-proyectos">Explorar proyectos <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="diagram" aria-hidden="true">
+      <div class="diagram-title">ECOSISTEMA / PUBLISHER</div>
+      <div class="nodes"><span>GAM</span><span>Prebid.js</span><span>OpenRTB</span></div>
+      <div class="diagram-line"></div>
+      <div class="diagram-base">INTEGRACIÓN MULTISITE <span>✳</span></div>
+    </div>
+  </div>
+  <div class="accent-edge" aria-hidden="true"></div>
+</section>
+
+<style>
+  .concept {
+    --paper: #f6f1e7;
+    --ink: #202b2b;
+    --muted: #495957;
+    --accent: #91501e;
+    --panel: #e7dfd0;
+    --rule: #b2b9ab;
+    position: relative;
+    isolation: isolate;
+    box-sizing: border-box;
+    width: 980px;
+    height: 250px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .concept.dark {
+    --paper: #142728;
+    --ink: #f6f0df;
+    --muted: #c9d6cf;
+    --accent: #efbd72;
+    --panel: #203c3b;
+    --rule: #5c8077;
+  }
+  .topline {
+    height: 35px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .owner, .ad-label, .kicker, .diagram-title, .diagram-base {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .14em;
+  }
+  .owner-separator { color: var(--accent); padding: 0 6px; }
+  .ad-label {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .body {
+    height: calc(100% - 35px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 306px;
+  }
+  .message {
+    min-width: 0;
+    padding: 19px 30px 14px;
+  }
+  .kicker { color: var(--accent); }
+  h2 {
+    margin: 9px 0 5px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 31px;
+    line-height: 1.05;
+    letter-spacing: -.035em;
+    font-weight: 700;
+  }
+  .period { color: var(--accent); }
+  p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 12px;
+    padding: 8px 13px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .cta:hover { text-decoration: underline; }
+  .cta:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .diagram {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 22px 19px;
+    background: var(--panel);
+    border-left: 1px solid var(--rule);
+  }
+  .diagram-title { color: var(--muted); }
+  .nodes { display: flex; flex-wrap: wrap; gap: 7px; position: relative; z-index: 1; }
+  .nodes span {
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    padding: 8px 10px;
+    font: 700 12px Arial, Helvetica, sans-serif;
+  }
+  .diagram-line {
+    position: absolute;
+    top: 95px;
+    left: 33px;
+    width: 1px;
+    height: 70px;
+    background: var(--accent);
+  }
+  .diagram-base {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--accent);
+    padding-top: 11px;
+    color: var(--accent);
+  }
+  .diagram-base span { font-size: 19px; line-height: 1; }
+  .accent-edge { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--accent); }
+  @media (max-width: 979px) {
+    .concept { width: 100%; height: auto; min-height: 250px; overflow: visible; }
+    .body { height: auto; }
+    .message { padding-bottom: 22px; }
+  }
+  @media (max-width: 700px) {
+    .body { grid-template-columns: 1fr; }
+    .diagram { border-left: 0; border-top: 1px solid var(--rule); gap: 16px; padding: 17px 22px 20px; }
+    .diagram-line { display: none; }
+    .message { padding: 24px 22px; }
+    h2 { font-size: clamp(25px, 7vw, 31px); }
+    .desktop-break { display: none; }
+  }
+  @media (max-width: 360px) {
+    .topline { padding-left: 14px; }
+    .ad-label { padding: 0 12px; }
+    .owner, .ad-label { font-size: 9px; letter-spacing: .08em; }
+  }
+</style>

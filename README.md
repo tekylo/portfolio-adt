@@ -1,65 +1,91 @@
-# José Antonio López Molina — AdTech portfolio
+# Portafolio AdTech de José Antonio López Molina
 
-Personal portfolio covering AdTech, full-stack work, and professional experience. Astro pages use an editorial homepage and article routes; advertising-format components are part of the presentation. Site content is primarily Spanish.
+Portafolio personal sobre experiencia en AdTech y desarrollo full stack. Está construido con Astro: una portada editorial enlaza artículos sobre trayectoria, proyectos y formación. Los formatos publicitarios forman parte de la presentación visual; no demuestran una integración con un servidor de anuncios.
 
-## What this site shows
+## Qué encontrarás
 
-- Eight page files: homepage plus seven articles on experience, education, projects, courses, knowledge, Header Bidding, and personal background.
-- Editorial, newspaper-inspired presentation with Astro ad-format components used alongside portfolio content. These are visual presentations, not evidence of an ad-serving integration.
-- Theme controls and shared page metadata; browser behavior and search-engine outcomes need separate verification.
+- Ocho páginas: la portada y siete artículos sobre experiencia, educación, proyectos, cursos, conocimientos, Header Bidding y perfil profesional.
+- Una presentación inspirada en un periódico, con anuncios de muestra, navegación y temas claro y oscuro.
+- Metadatos compartidos. Su presencia no sustituye la comprobación en navegador ni garantiza resultados en buscadores.
 
-## Get started
+## Inicio rápido
 
-Requires Node.js >= 24.15.0 and pnpm >= 11.1.1 (`package.json`).
+Necesitas Node.js >= 24.15.0 y pnpm >= 11.1.1 (consulta `package.json`).
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Astro's development server normally serves `http://localhost:4321` (unless the port changes). Other configured commands:
+El servidor de desarrollo de Astro suele estar en `http://localhost:4321`, salvo que cambie el puerto.
 
-| Command | Purpose |
+| Comando | Uso |
 | --- | --- |
-| `pnpm build` | Build site into `dist/` |
-| `pnpm preview` | Preview production build locally |
-| `pnpm astro` | Run Astro CLI |
+| `pnpm build` | Genera el sitio en `dist/`. |
+| `pnpm preview` | Previsualiza localmente el resultado de la compilación. |
+| `pnpm astro` | Ejecuta la CLI de Astro. |
 
-No test, lint, or typecheck script is configured in `package.json`. A successful build checks compilation, not browser behavior, accessibility, or SEO correctness.
+`package.json` no define scripts de test, lint ni typecheck. Que `pnpm build` termine correctamente no demuestra que funcionen la navegación, la accesibilidad o el SEO.
 
-## Project map
+## Mapa del proyecto
 
-- `src/pages/index.astro` — homepage; seven `src/pages/articulo-*.astro` files — article routes for experience, education, projects, courses, knowledge, Header Bidding, and about-me content.
-- `src/layouts/Layout.astro` — shared HTML shell, metadata, theme script, global styles, and Astro `ClientRouter`.
-- `src/components/` — UI and content components; `src/components/ads/` — ad-format presentations.
-- `src/data/` — article, publication, and recommendation JSON; `src/styles/` — shared styling.
-- `public/` — static assets, including `robots.txt` and sitemap XML files.
-- `openspec/changes/` — proposals and work plans, not runtime site code.
+| Ruta | Contenido |
+| --- | --- |
+| `src/pages/index.astro` y `src/pages/articulo-*.astro` | Portada y siete artículos. |
+| `src/layouts/Layout.astro` | Estructura HTML, metadatos, tema, estilos globales y `ClientRouter` de Astro. |
+| `src/components/` y `src/components/ads/` | Componentes de interfaz y formatos publicitarios. |
+| `src/data/` y `src/styles/` | Datos de artículos, publicaciones y recomendaciones; estilos compartidos. |
+| `public/` | Recursos estáticos, incluido `robots.txt`. `@astrojs/sitemap` genera los XML en `dist/` al compilar. |
+| `openspec/changes/` | Propuestas y planes de trabajo; no es código del sitio. |
 
-### Content and component flow
+### Cómo se compone la portada
 
-Page files import `Layout.astro` for the document shell. Homepage composes editorial/content components and ad presentations, using `articles.json` and `publications.json`. The knowledge lateral is `src/components/ads/proposals/SkyscraperConcept.astro`, using the site-token appearance and automatic theme in the scrolling left rail at widths ≥1900px (hidden at narrower widths); its previous live version is preserved without modification at `src/components/ads/archive/TechStackSkinAd.astro`, and the previous concept appearance remains available as `look="current"`. The homepage now opts into `clean`, removing redundant lateral labels and numbering; the previous appearance remains available by omitting that prop. See the [light](odd/previews/skyscraper-v8-clean-context-light.png) and [dark](odd/previews/skyscraper-v8-clean-context-dark.png) comparisons. The mounted billboard, contact, publication, and testimonial ads share the site-aligned visual treatment, a scoped × close beside `ANUNCIO`, and a square gold CTA style without changing each ad's destination. Their pre-restyle versions remain in `src/components/ads/archive/`, and the intermediate styling-only version is retained in Git commit `5d3a05e`. Unused ad formats are unchanged. The new lateral's brand-artwork provenance and **publication-rights caveat** are in `src/svgs/AD-BRAND-SOURCES.md`; local integration does not establish permission to deploy it. Article pages import shared navigation/header/breadcrumb components and `articles.json`; the experience page also uses `recommendations.json` with `TestimonialAd.astro`. Content and layout also live directly in page files, so JSON is not the sole content source.
+Las páginas importan `Layout.astro`. La portada combina componentes editoriales y anuncios con datos de `articles.json` y `publications.json`.
 
-The homepage now opts into both hierarchy refinements: `noEdition` removes the clean lateral's editorial eyebrow, while `highlightFirst` puts the contact ad's existing gold highlight before its white headline in visual and reading order. Omit either prop to recover the prior appearance. The [dark](odd/previews/ad-hierarchy-v1-dark.png) and [light](odd/previews/ad-hierarchy-v1-light.png) comparisons retain both versions; [live dark](odd/previews/ad-hierarchy-live-dark.png) and [live light](odd/previews/ad-hierarchy-live-light.png) captures show the activated homepage at 1900px.
+- **Lateral de conocimientos:** `src/components/ads/proposals/SkyscraperConcept.astro` usa los colores del sitio y el tema automático. Se muestra en la columna izquierda desplazable a partir de 1900 px; por debajo queda oculto. Su versión anterior permanece en `src/components/ads/archive/TechStackSkinAd.astro`, y el aspecto previo del concepto se recupera con `look="current"`. La portada activa `clean` para quitar etiquetas y números redundantes; basta omitir esa prop para recuperar el aspecto anterior. Comparativas: [claro](odd/previews/skyscraper-v8-clean-context-light.png) y [oscuro](odd/previews/skyscraper-v8-clean-context-dark.png).
+- **Anuncios montados:** billboard, contacto, publicación y testimonio comparten una apariencia adaptada al sitio, un cierre × limitado a cada anuncio junto a `ANUNCIO` y un CTA dorado cuadrado. Sus destinos no cambian. Las versiones anteriores están en `src/components/ads/archive/`; la versión intermedia de estilo se conserva en el commit `5d3a05e`. Los formatos publicitarios no utilizados permanecen intactos.
+- **Jerarquía lateral:** la portada activa `noEdition` para quitar la etiqueta editorial del lateral limpio y `highlightFirst` para situar el destacado dorado del anuncio de contacto antes del titular blanco, tanto visualmente como en el orden de lectura. Si omites cualquiera de esas props, recuperas su versión anterior. Compara [oscuro anterior](odd/previews/ad-hierarchy-v1-dark.png), [claro anterior](odd/previews/ad-hierarchy-v1-light.png), [oscuro activo](odd/previews/ad-hierarchy-live-dark.png) y [claro activo](odd/previews/ad-hierarchy-live-light.png) a 1900 px.
+- **Contacto y CV en pantallas estrechas:** por debajo de 1900 px aparece un acceso compacto al correo tras la navegación, mientras el anuncio lateral de contacto permanece oculto. A partir de 1900 px se invierte esa visibilidad. Hasta 600 px, el billboard del CV muestra nombre, especialidad y descarga; por encima conserva su diseño completo. Las capturas [clara](odd/previews/mobile-cv-v1-comparison-light.png) y [oscura](odd/previews/mobile-cv-v1-comparison-dark.png) comparan ambas versiones antes de la activación.
 
-Content entry points:
+Los artículos reutilizan navegación, cabecera y migas de pan, además de `articles.json`. Experiencia incorpora `recommendations.json` mediante `TestimonialAd.astro`. Parte del contenido y la composición reside directamente en las páginas: los JSON no son la única fuente.
 
-- `src/data/articles.json` feeds homepage and article pages.
-- `src/data/publications.json` feeds homepage publication content.
-- `src/data/recommendations.json` feeds experience-page testimonials.
+### Datos y comportamiento
 
-Inspect consuming page and component before changing data shape or presentation.
+- `src/data/articles.json`: portada y artículos.
+- `src/data/publications.json`: publicación destacada en portada.
+- `src/data/recommendations.json`: testimonios de Experiencia.
 
-Theme behavior uses the `.dark` class and browser `localStorage` in `Layout.astro`. `ClientRouter` is present, but navigation behavior should be checked in a browser before making transition guarantees.
+Antes de cambiar datos o presentación, revisa las páginas y componentes que los consumen. El tema utiliza la clase `.dark` y `localStorage` desde `Layout.astro`. Existe `ClientRouter`, pero hay que comprobar la navegación en un navegador antes de dar por garantizadas sus transiciones.
 
-## Metadata and deployment notes
+## Metadatos y comprobación SEO
 
-`astro.config.mjs` sets `site` to `https://jalopezmolina.vercel.app`, a provisional hostname to confirm before publication. `Layout.astro` uses per-page descriptions and route-specific canonical and Open Graph URLs across all eight pages, plus Twitter tags, a robots meta directive and WebPage JSON-LD. Metadata presence alone does not establish SEO correctness. A 64×64 PNG favicon is present at `public/favicon.png` and linked by `Layout.astro`; verify it on the deployed host before relying on it.
+`astro.config.mjs` fija `site` en `https://jalopezmolina.vercel.app`, destino previsto en Vercel. Esta configuración local **no equivale a un despliegue**.
 
-`public/robots.txt` allows crawlers and points to `/sitemap-index.xml` on that domain. Sitemap XML files exist in `public/`, but their URLs use `https://tekylo.vercel.app`, whereas `astro.config.mjs` and `robots.txt` use `https://jalopezmolina.vercel.app`. `@astrojs/sitemap` is listed as a dependency but **not** registered as an integration in `astro.config.mjs`; do not assume build-time sitemap generation or freshness. Deployment provider and publishing workflow are not configured here; reconcile the sitemap host and validate output and metadata before publishing.
+`Layout.astro` genera descripciones por página, canonical y Open Graph para las ocho rutas, además de etiquetas de Twitter, directiva robots y JSON-LD `WebPage`. La portada identifica a José Antonio con `Person` en `mainEntity`; seis artículos publican `BreadcrumbList` cuando sus niveles anteriores tienen enlaces. Header Bidding incluye un nivel intermedio «Publicaciones» sin URL, así que no publica una URL de migas inventada.
 
-## Author and rights
+El favicon PNG de 64×64 está en `public/favicon.png` y enlazado desde `Layout.astro`. Compruébalo en el servidor real antes de confiar en él. La presencia de metadatos por sí sola tampoco demuestra que el SEO sea correcto.
 
-José Antonio López Molina — AdTech and Full Stack developer. Original project README describes content, images, and creative work as proprietary; contact the author for usage inquiries. No open-source license is stated here.
+`@astrojs/sitemap` genera `dist/sitemap-index.xml` y `dist/sitemap-0.xml` con las ocho rutas compiladas. Se retiraron los XML estáticos anteriores de `public/`; `public/robots.txt` apunta al dominio elegido. Después de `pnpm build`, ejecuta `node scripts/check-seo.mjs` para contrastar las URL del sitemap con las canonical y comprobar los metadatos. Generar un sitemap no lo publica ni lo envía a un buscador. La [medición local de rendimiento móvil](odd/reports/mobile-seo-performance.md) recoge observaciones de laboratorio, no Core Web Vitals de usuarios reales ni rendimiento en Vercel.
 
-For contributor-specific working rules, see [AGENTS.md](AGENTS.md).
+### Preparar Vercel
+
+1. Conecta este repositorio a tu cuenta de Vercel.
+2. Impórtalo como proyecto `jalopezmolina` si el nombre está disponible. Vercel asigna una dirección gratuita `*.vercel.app`: confirma en su panel el hostname real. `https://jalopezmolina.vercel.app` es un destino previsto, no una dirección reservada.
+3. Mantén el preset de Astro, usa `pnpm build` como comando de compilación y `dist` como directorio de salida. El proyecto requiere Node.js >= 24.15.0 y pnpm >= 11.1.1. Esta compilación estática no necesita adaptador de servidor.
+4. Si el hostname asignado es distinto, actualiza `site` en `astro.config.mjs`, la URL del sitemap en `public/robots.txt` y las URL de Search Console indicadas más abajo **antes de publicar**. Comprueba `pnpm build` y `node scripts/check-seo.mjs` en local. Tras un despliegue autorizado, revisa portada, artículos, canonical, `robots.txt` y `sitemap-index.xml` en el servidor real.
+
+Si añades más adelante un dominio propio, actualiza esas mismas referencias. Esta configuración no crea un proyecto ni realiza un despliegue en Vercel.
+
+### Search Console tras el despliegue
+
+1. Confirma en el sitio publicado el hostname, las canonical, `robots.txt` y el sitemap generado.
+2. Añade en Google Search Console la propiedad de prefijo de URL exacta `https://jalopezmolina.vercel.app/` desde la cuenta propietaria. Usa el método y el token que facilite Google (por ejemplo, un archivo HTML o una etiqueta meta); aquí no se presupone ningún token ni la titularidad del sitio.
+3. Una vez verificada, envía `https://jalopezmolina.vercel.app/sitemap-index.xml`, inspecciona las ocho URL y sigue la indexación y los Core Web Vitals de usuarios reales. Enviar el sitemap o alcanzar una puntuación local de Lighthouse no garantiza indexación ni posición en buscadores.
+
+Estos cambios locales no han creado una propiedad de Search Console ni han hecho despliegue, push o publicación.
+
+## Autor
+
+José Antonio López Molina — desarrollador Full Stack y especialista en AdTech.
+
+Consulta las reglas para colaboradores en [AGENTS.md](AGENTS.md).

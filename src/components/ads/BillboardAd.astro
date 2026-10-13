@@ -18,8 +18,11 @@ const {
 ---
 
 <div class="billboard-ad">
-  <span class="ad-label">ANUNCIO</span>
-  
+  <div class="ad-controls">
+    <span class="ad-label">ANUNCIO</span>
+    <button class="close" type="button" aria-label="Cerrar anuncio de currículum">×</button>
+  </div>
+
   <div class="billboard-content">
     <div class="billboard-text">
       <span class="eyebrow">AdTech consultant · Portfolio creative</span>
@@ -43,9 +46,7 @@ const {
         </div>
         <a href={ctaLink} class="cta-btn" download>
           <span>{ctaText}</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
+          <span aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
@@ -55,6 +56,15 @@ const {
     <div class="accent-bar"></div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const button = target.closest<HTMLButtonElement>('.billboard-ad .close');
+    button?.closest('.billboard-ad')?.remove();
+  });
+</script>
 
 <style>
   .billboard-ad {
@@ -78,21 +88,40 @@ const {
     box-shadow: var(--shadow-md);
   }
 
-  .ad-label {
+  .ad-controls {
     position: absolute;
     top: 0;
     right: 0;
+    display: flex;
+    height: 36px;
+    z-index: 2;
+  }
+
+  .ad-label {
+    display: flex;
+    align-items: center;
     background: var(--text-secondary);
     color: var(--bg-primary);
     font-size: 0.625rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    padding: 8px 10px;
-    border-radius: 0 0 0 var(--radius-md);
-    z-index: 2;
-    transition: background-color var(--transition-base) var(--ease-default);
+    padding: 0 8px;
   }
+
+  .close {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-left: 1px solid var(--border-default);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font: 26px/1 Arial, Helvetica, sans-serif;
+    cursor: pointer;
+  }
+
+  .close:hover { background: var(--border-default); }
+  .close:focus-visible { outline: 3px solid var(--accent-text); outline-offset: -3px; }
 
   .billboard-content {
     display: grid;
@@ -100,7 +129,7 @@ const {
     align-items: stretch;
     width: 100%;
     height: 100%;
-    padding: 22px 28px 20px 32px;
+    padding: 40px 28px 20px 32px;
     gap: 24px;
     position: relative;
     z-index: 1;
@@ -225,42 +254,27 @@ const {
   .cta-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
+    justify-content: space-between;
     width: 100%;
-    min-height: 48px;
+    min-height: 40px;
     background: var(--accent-primary);
     color: var(--accent-foreground);
     border: none;
-    border-radius: var(--radius-sm);
-    padding: var(--space-3) var(--space-4);
-    font-size: 0.95rem;
+    border-radius: 0;
+    padding: 0 12px;
+    font-size: 12px;
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
-    transition:
-      opacity var(--transition-base) var(--ease-default),
-      transform var(--transition-base) var(--ease-default);
     white-space: nowrap;
     box-sizing: border-box;
   }
 
-  .cta-btn:hover {
-    opacity: var(--opacity-hover);
-    transform: translateY(-2px);
-  }
+  .cta-btn:hover { text-decoration: underline; }
 
   .cta-btn:focus-visible {
     outline: 3px solid var(--accent-text);
     outline-offset: -3px;
-  }
-
-  .cta-btn svg {
-    transition: transform var(--transition-base) var(--ease-default);
-  }
-
-  .cta-btn:hover svg {
-    transform: translateX(3px);
   }
 
   .billboard-decor {
@@ -282,7 +296,7 @@ const {
   @media (max-width: 900px) {
     .billboard-content {
       grid-template-columns: minmax(0, 1fr) 220px;
-      padding: 20px 24px;
+      padding: 40px 24px 20px;
       gap: 18px;
     }
 
@@ -311,7 +325,7 @@ const {
       flex-direction: column;
       height: auto;
       min-height: 250px;
-      padding: var(--space-5) var(--space-4);
+      padding: 48px var(--space-4) var(--space-5);
       gap: var(--space-4);
       text-align: center;
     }
@@ -351,9 +365,6 @@ const {
       min-width: 0;
     }
 
-    .cta-btn {
-      width: 100%;
-      justify-content: center;
-    }
+    .cta-btn { width: 100%; }
   }
 </style>

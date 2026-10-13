@@ -28,7 +28,10 @@ const themeClass =
 
 <section class={`publication-ad ${themeClass}`}>
   <div class="accent-line"></div>
-  <div class="label">ANUNCIO</div>
+  <div class="controls">
+    <span class="label">ANUNCIO</span>
+    <button class="close" type="button" aria-label="Cerrar anuncio de publicación">×</button>
+  </div>
   <div class="content">
     <div class="copy-block">
       <h3>{publication.title}</h3>
@@ -41,20 +44,18 @@ const themeClass =
       class="cta"
     >
       {publication.ctaLabel}
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-      </svg>
+      <span aria-hidden="true">↗</span>
     </a>
   </div>
 </section>
+
+<script>
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    target.closest<HTMLButtonElement>('.publication-ad .close')?.closest('.publication-ad')?.remove();
+  });
+</script>
 
 <style>
   .publication-ad {
@@ -89,10 +90,18 @@ const themeClass =
     background: var(--accent-text);
   }
 
-  .label {
+  .controls {
     position: absolute;
     top: 0;
     right: 0;
+    display: flex;
+    height: 36px;
+    z-index: 1;
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -101,8 +110,22 @@ const themeClass =
     color: var(--bg-primary);
     padding: 0.28rem 0.55rem;
     border-radius: 0 0 0 var(--radius-sm);
-    z-index: 1;
   }
+
+  .close {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-left: 1px solid var(--border-default);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font: 26px/1 Arial, Helvetica, sans-serif;
+    cursor: pointer;
+  }
+
+  .close:hover { background: var(--border-default); }
+  .close:focus-visible { outline: 3px solid var(--accent-text); outline-offset: -3px; }
 
   .publication-theme-light .label {
     background: var(--text-secondary);
@@ -125,6 +148,8 @@ const themeClass =
     justify-content: center;
     gap: 0.15rem;
     flex: 1;
+    padding-right: 110px;
+    box-sizing: border-box;
   }
 
   h3 {
@@ -157,19 +182,16 @@ const themeClass =
   .cta {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 0.4rem;
     min-width: 140px;
-    height: 40px;
-    padding: 0 0.9rem;
-    border-radius: 3px;
+    min-height: 40px;
+    align-self: flex-end;
+    padding: 0 12px;
+    border-radius: 0;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.78rem;
-    transition:
-      background-color var(--transition-base) var(--ease-default),
-      transform var(--transition-base) var(--ease-default),
-      box-shadow var(--transition-base) var(--ease-default);
+    font-size: 12px;
     white-space: nowrap;
     flex-shrink: 0;
     box-sizing: border-box;
@@ -182,13 +204,12 @@ const themeClass =
   }
 
   .cta:hover {
-    transform: translateY(-1px);
     text-decoration: underline;
   }
 
   .cta:focus-visible {
     outline: 3px solid var(--accent-text);
-    outline-offset: 2px;
+    outline-offset: -3px;
   }
 
   .publication-theme-dark .cta:hover {
@@ -199,14 +220,6 @@ const themeClass =
     background: var(--accent-hover);
   }
 
-  .cta svg {
-    transition: transform var(--transition-base) var(--ease-default);
-  }
-
-  .cta:hover svg {
-    transform: translateX(2px);
-  }
-
   @media (max-width: 768px) {
     .publication-ad {
       width: 100%;
@@ -215,6 +228,8 @@ const themeClass =
       padding: 2.5rem 1rem 1rem 1.25rem;
       margin: 2.5rem 0;
     }
+
+    .copy-block { padding-right: 0; }
 
     .content {
       flex-direction: column;
@@ -233,15 +248,11 @@ const themeClass =
       font-size: 0.85rem;
     }
 
-    .label {
-      top: 10px;
-      right: 10px;
-    }
-
     .cta {
       width: 100%;
       min-width: 0;
-      justify-content: center;
+      align-self: flex-start;
+      justify-content: space-between;
     }
   }
 </style>

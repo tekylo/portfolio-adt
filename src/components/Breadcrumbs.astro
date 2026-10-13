@@ -5,6 +5,18 @@ export interface Props {
 }
 
 const { items } = Astro.props;
+// Only publish a hierarchy when every ancestor has a real destination.
+const linkedTrail = items.length > 1 && items.slice(0, -1).every((item) => item.href);
+const structuredData = linkedTrail && {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.label,
+    item: new URL(item.href ?? Astro.url.pathname, Astro.site).href,
+  })),
+};
 ---
 
 <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -27,6 +39,8 @@ const { items } = Astro.props;
     }
   </ol>
 </nav>
+
+{structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
 
 <style>
   .breadcrumbs {

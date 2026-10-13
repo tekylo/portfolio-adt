@@ -75,5 +75,42 @@ for (const route of routes) {
   assert.equal(data.url, expected, `${file}: JSON-LD URL`);
   assert.equal(data.name, title[0].slice(7, -8), `${file}: JSON-LD name`);
   assert.equal(data.description, description, `${file}: JSON-LD description`);
+  if (!route) {
+    assert.equal(data.mainEntity?.['@type'], 'Person', `${file}: homepage Person`);
+    assert.equal(data.mainEntity.name, 'José Antonio López Molina', `${file}: Person name`);
+    assert.equal(data.mainEntity.url, expected, `${file}: Person URL`);
+    assert.ok(data.mainEntity.jobTitle?.includes('AdTech'), `${file}: Person role`);
+  }
+
+  const breadcrumbs = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)]
+    .map(([, content]) => {
+      try {
+        return JSON.parse(content);
+      } catch (error) {
+        throw new Error(`${file}: invalid JSON-LD`, { cause: error });
+      }
+    })
+    .filter((entry) => entry['@type'] === 'BreadcrumbList');
+  // The Header Bidding article has an unlinked intermediate crumb, not a canonical page.
+  const expectedBreadcrumbs = route && route !== 'articulo-header-bidding' ? 1 : 0;
+  assert.equal(breadcrumbs.length, expectedBreadcrumbs, `${file}: valid breadcrumb schema count`);
+  if (expectedBreadcrumbs) {
+    const list = breadcrumbs[0].itemListElement;
+    assert.equal(list.length, 2, `${file}: breadcrumb depth`);
+    assert.deepEqual(list.map((item) => item.position), [1, 2], `${file}: breadcrumb positions`);
+    assert.equal(list[0].name, 'Portada', `${file}: breadcrumb origin label`);
+    assert.equal(list[0].item, site.href, `${file}: breadcrumb origin URL`);
+    assert.equal(list[1].item, expected, `${file}: breadcrumb current URL`);
+    assert.ok(list[1].name?.trim(), `${file}: breadcrumb current label`);
+  }
   console.log(`SEO OK ${file}`);
 }
+
+const locs = (xml) => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
+const indexFile = readFileSync('dist/sitemap-index.xml', 'utf8');
+assert.deepEqual(locs(indexFile), [new URL('sitemap-0.xml', site).href], 'Sitemap index host');
+const sitemapFile = readFileSync('dist/sitemap-0.xml', 'utf8');
+const expectedRoutes = routes.map((route) => new URL(route ? `${route}/` : '', site).href);
+assert.deepEqual(locs(sitemapFile).sort(), expectedRoutes.sort(), 'Sitemap route and canonical URL set');
+assert.match(readFileSync('dist/robots.txt', 'utf8'), new RegExp(`^Sitemap: ${site.href}sitemap-index\\.xml$`, 'm'), 'robots.txt sitemap host');
+console.log('SEO OK sitemap and robots.txt');

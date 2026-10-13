@@ -16,6 +16,14 @@ const structuredData = {
   name: title,
   description,
   url: canonicalUrl,
+  ...(Astro.url.pathname === '/' && {
+    mainEntity: {
+      "@type": "Person",
+      name: "José Antonio López Molina",
+      jobTitle: "Especialista en AdTech y arquitectura publicitaria",
+      url: canonicalUrl,
+    },
+  }),
 };
 ---
 

@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://jalopezmolina.vercel.app'
+  site: 'https://jalopezmolina.vercel.app',
+  integrations: [sitemap()]
 });

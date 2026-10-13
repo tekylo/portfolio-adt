@@ -1,4 +1,9 @@
 ---
+import MobileNavMenu from "./MobileNavMenu.astro";
+
+// Set to false to restore the original horizontally scrolling mobile navigation.
+const mobileMenuEnabled = true;
+
 // Menú de navegación estilo El País
 const navItems = [
   { label: "SOBRE MÍ", href: "/articulo-sobre-mi" },
@@ -10,8 +15,9 @@ const navItems = [
 ];
 ---
 
-<nav class="nav-menu">
+<nav class:list={["nav-menu", { "nav-menu--mobile-sections": mobileMenuEnabled }]} aria-label="Secciones del diario">
   <div class="nav-container">
+    {mobileMenuEnabled && <MobileNavMenu items={navItems} />}
     <ul class="nav-list">
       {
         navItems.map((item) => (
@@ -127,6 +133,11 @@ const navItems = [
   }
 
   @media (max-width: 767px) {
+    .nav-menu--mobile-sections .nav-list,
+    .nav-menu--mobile-sections .nav-scroll-hint {
+      display: none;
+    }
+
     .nav-scroll-hint {
       display: block;
       padding: 0 0 var(--space-1);

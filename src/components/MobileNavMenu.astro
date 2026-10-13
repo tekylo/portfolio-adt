@@ -1,0 +1,136 @@
+---
+interface Props {
+  items: { label: string; href: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<details class="mobile-nav">
+  <summary>
+    <span>Secciones</span>
+    <span class="menu-icon" aria-hidden="true"><span class="icon-closed">☰</span><span class="icon-open">×</span></span>
+  </summary>
+  <ul class="mobile-nav-list">
+    {items.map((item) => (
+      <li>
+        <a href={item.href}>
+          <span>{item.label.toLocaleLowerCase("es-ES")}</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</details>
+
+<script>
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    const menu = document.querySelector<HTMLDetailsElement>(".mobile-nav[open]");
+    if (!menu || getComputedStyle(menu).display === "none" || !menu.contains(document.activeElement)) return;
+    menu.open = false;
+    menu.querySelector("summary")?.focus();
+  });
+</script>
+
+<style>
+  .mobile-nav {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    .mobile-nav {
+      display: block;
+      color: var(--text-primary);
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 48px;
+      padding: 0 var(--space-4);
+      cursor: pointer;
+      list-style: none;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary:hover,
+    summary:focus-visible {
+      color: var(--accent-text);
+    }
+
+    summary:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: -2px;
+    }
+
+    .menu-icon {
+      width: 20px;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .icon-open,
+    .mobile-nav[open] .icon-closed {
+      display: none;
+    }
+
+    .mobile-nav[open] .icon-open {
+      display: inline;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0 var(--space-4) var(--space-3);
+      border-top: 1px solid var(--border-default);
+    }
+
+    li {
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    li:last-child {
+      border-bottom: 0;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      min-height: 48px;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      text-decoration: none;
+    }
+
+    a span:first-child {
+      text-transform: capitalize;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--accent-text);
+    }
+
+    .arrow {
+      color: var(--accent-text);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+    }
+  }
+
+</style>

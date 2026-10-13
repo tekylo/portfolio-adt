@@ -1,4 +1,4 @@
-# Brand artwork sources for local CREATIVE-9 comparison
+# Brand artwork sources for the knowledge lateral
 
 Only the isolated `icons-expanded` variant uses these graphics. Visible technology names remain text; SVGs are decorative. Neither the comparison nor these graphics imply brand endorsement.
 
@@ -6,4 +6,4 @@ Only the isolated `icons-expanded` variant uses these graphics. Visible technolo
 - **Prebid.js product pictogram:** https://raw.githubusercontent.com/prebid/prebid.github.io/master/assets/images/icon__product--prebid-js.svg — `LogosPrebidJsProduct.astro` retains eight original colored paths; removes visually inert grouping and fixed dimensions and adds `aria-hidden`. [Prebid's IP policy](https://docs.prebid.org/policies/ip-policy.html) says website materials use Apache 2.0; complete upstream https://raw.githubusercontent.com/prebid/prebid.github.io/master/LICENSE is copied to `PREBID-APACHE-LICENSE.txt`. Upstream root `NOTICE` request returned HTTP 404; no root NOTICE was found at that path. Apache 2.0 does not grant trademark rights (section 6). Permission for promotional use or endorsement is not established.
 - **Xandr emblem crop:** https://raw.githubusercontent.com/prebid/prebid.github.io/master/assets/images/logos/xandr-logo.svg — `LogosXandrEmblem.astro` is a **derived crop** of six colored emblem paths (`Fill-13`, `Fill-16`, `Fill-18`, `Fill-20`, `Fill-22`, `Fill-24`) from `xandr-logo`. The first path retains `translate(0 37)`; masks and wordmark letters were removed. This is not an approved standalone brand asset. Prebid hosting does not establish rights to Microsoft's Xandr mark or authorize cropping. Publication requires a brand-rights review and any necessary approval.
 
-Source retrieval date not asserted. This comparison remains local and is not integrated into live ads.
+Source retrieval date not asserted. The `icons-expanded` lateral is mounted on the local homepage; this work has not pushed or deployed it. Before any public deployment, review brand rights and obtain any required approval, particularly for the Xandr crop and Prebid.js artwork.

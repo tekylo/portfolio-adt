@@ -24,6 +24,9 @@ const {
 
 const themeClass =
   publication.theme === "light" ? "publication-theme-light" : "publication-theme-dark";
+const titleColonIndex = publication.title.indexOf(":");
+const highlightedTitle = titleColonIndex > 0 ? publication.title.slice(0, titleColonIndex) : null;
+const remainingTitle = highlightedTitle ? publication.title.slice(titleColonIndex) : publication.title;
 ---
 
 <section class={`publication-ad ${themeClass}`}>
@@ -34,7 +37,7 @@ const themeClass =
   </div>
   <div class="content">
     <div class="copy-block">
-      <h3>{publication.title}</h3>
+      <h3>{highlightedTitle && <span class="title-accent">{highlightedTitle}</span>}{remainingTitle}</h3>
       <p>{publication.summary}</p>
     </div>
     <a
@@ -171,7 +174,7 @@ const themeClass =
     overflow: hidden;
   }
 
-  h3::first-letter { color: var(--accent-text); }
+  .title-accent { color: var(--accent-text); }
 
   .content p {
     margin: 0;

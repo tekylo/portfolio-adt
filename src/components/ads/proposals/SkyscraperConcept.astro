@@ -23,9 +23,10 @@ import LogosXandrEmblem from '../../../svgs/LogosXandrEmblem.astro';
 interface Props {
   theme: 'light' | 'dark' | 'auto';
   variant?: 'icons' | 'expanded' | 'icons-expanded';
+  look?: 'current' | 'site';
 }
 
-const { theme, variant = 'icons' } = Astro.props;
+const { theme, variant = 'icons', look = 'current' } = Astro.props;
 const groups = [
   { label: 'Advertising & Data', items: [
     { name: 'Google Ad Manager', icon: LucideLayoutDashboard },
@@ -48,7 +49,7 @@ const groups = [
 ];
 ---
 
-<section class:list={['skyscraper', theme, variant]} aria-label="Anuncio de conocimientos del portfolio de José Antonio López Molina">
+<section class:list={['skyscraper', theme, variant, look]} aria-label="Anuncio de conocimientos del portfolio de José Antonio López Molina">
   <div class="topline">
     <span class="advertiser">CONOCIMIENTOS · PORTFOLIO</span>
     <div class="controls">
@@ -139,6 +140,14 @@ const groups = [
     --panel: #292d34;
     --rule: #62666d;
   }
+  .skyscraper.site, .skyscraper.dark.site, :global(html.dark) .skyscraper.auto.site {
+    --paper: var(--bg-secondary);
+    --ink: var(--text-primary);
+    --muted: var(--text-secondary);
+    --accent: var(--accent-text);
+    --panel: var(--bg-tertiary);
+    --rule: var(--border-default);
+  }
   .topline {
     box-sizing: border-box;
     height: 36px;
@@ -203,6 +212,12 @@ const groups = [
   .icon { flex: none; display: flex; align-items: center; justify-content: center; gap: 1px; width: 20px; height: 20px; background: #fff; border-radius: 3px; color: #1a1d23; }
   .icon :global(svg) { max-width: 17px; max-height: 17px; width: auto; height: auto; }
   .icon:has(:global(svg + svg)) :global(svg) { max-width: 9px; max-height: 16px; }
+  .site .advertiser, .site .ad-label, .site .eyebrow, .site .footer-note { font-size: 10px; letter-spacing: .02em; }
+  .site .ad-label { background: var(--text-secondary); color: var(--bg-primary); }
+  .site .icon { box-sizing: border-box; border: 1px solid var(--border-subtle); background: var(--bg-tertiary); color: var(--text-primary); }
+  .skyscraper.dark.site .icon, :global(html.dark) .skyscraper.auto.site .icon { background: var(--text-secondary); color: var(--accent-foreground); }
+  .site .cta { background: var(--accent-primary); color: var(--accent-foreground); }
+  .site .close { background: var(--bg-secondary); }
   .icons-expanded .intro { padding-top: 12px; padding-bottom: 8px; }
   .icons-expanded .groups { gap: 4px; }
   .icons-expanded .group { padding-top: 4px; padding-bottom: 4px; }

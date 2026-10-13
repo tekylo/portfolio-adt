@@ -95,7 +95,7 @@ const themeClass =
     top: 0;
     right: 0;
     display: flex;
-    height: 36px;
+    height: 35px;
     z-index: 1;
   }
 
@@ -108,13 +108,17 @@ const themeClass =
     text-transform: uppercase;
     background: var(--text-secondary);
     color: var(--bg-primary);
-    padding: 0.28rem 0.55rem;
-    border-radius: 0 0 0 var(--radius-sm);
+    padding: 0 8px;
+    border-radius: 0;
   }
 
   .close {
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    flex: none;
     width: 36px;
-    height: 36px;
+    height: 35px;
     padding: 0;
     border: 0;
     border-left: 1px solid var(--border-default);

@@ -93,7 +93,7 @@ const {
     top: 0;
     right: 0;
     display: flex;
-    height: 36px;
+    height: 35px;
     z-index: 2;
   }
 
@@ -110,8 +110,13 @@ const {
   }
 
   .close {
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    flex: none;
     width: 36px;
-    height: 36px;
+    height: 35px;
+    padding: 0;
     border: 0;
     border-left: 1px solid var(--border-default);
     background: var(--bg-secondary);

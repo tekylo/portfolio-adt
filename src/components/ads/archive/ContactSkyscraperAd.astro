@@ -1,0 +1,276 @@
+---
+const {
+  title = "¿Hablamos de tu proyecto?",
+  highlight = "Consultoría AdTech a medida",
+  perks = [
+    "Implementaciones de Google Ad Manager y Header Bidding",
+    "Optimización de revenue para medios premium",
+    "Integraciones programáticas y Tag Management",
+  ],
+  email = "lopezmolinaja@gmail.com",
+  phone = "+34 687 873 208",
+} = Astro.props;
+
+const sanitizedPhone = phone.replace(/\s+/g, "");
+---
+
+<div class="contact-skyscraper">
+  <div class="ad-label">ANUNCIO</div>
+  <div class="accent-line"></div>
+
+  <div class="inner">
+    <div class="headline">
+      <h3>{title}</h3>
+      <p class="highlight">{highlight}</p>
+    </div>
+
+    <ul class="perks">
+      {
+        perks.map((perk) => (
+          <li>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span>{perk}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="contact-block">
+      <span class="label">Contacto directo</span>
+      <a class="contact-link" href={`mailto:${email}`}>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        {email}
+      </a>
+      <a class="contact-link" href={`tel:${sanitizedPhone}`}>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 11.1 19.1 19.8 19.8 0 0 1 2.07 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.7 12.7 0 0 0 .7 2.8 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.28a2 2 0 0 1 2.11-.45 12.7 12.7 0 0 0 2.8.7A2 2 0 0 1 22 16.92z"
+          ></path>
+        </svg>
+        {phone}
+      </a>
+    </div>
+
+    <a class="cta" href={`mailto:${email}`}>
+      Reservar una llamada
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<style>
+  .contact-skyscraper {
+    width: 300px;
+    height: 600px;
+    box-sizing: border-box;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition:
+      box-shadow var(--transition-base) var(--ease-default),
+      border-color var(--transition-base) var(--ease-default);
+  }
+
+  .contact-skyscraper:hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .ad-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--text-secondary);
+    color: var(--bg-primary);
+    padding: 0.28rem 0.55rem;
+    border-radius: 0 0 0 var(--radius-sm);
+    font-size: 0.52rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    z-index: 10;
+  }
+
+  .accent-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent-primary);
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: var(--space-6) var(--space-5) var(--space-5) var(--space-5);
+  }
+
+  .headline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--text-xl);
+    line-height: 1.25;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .highlight {
+    margin: 0;
+    font-size: var(--text-sm);
+    font-weight: 400;
+    color: var(--text-secondary);
+  }
+
+  .perks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .perks li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    line-height: 1.45;
+    color: var(--text-primary);
+    opacity: 0.9;
+  }
+
+  .perks li svg {
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    color: var(--accent-primary);
+  }
+
+  .contact-block {
+    padding: var(--space-4);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .label {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: color var(--transition-base) var(--ease-default);
+  }
+
+  .contact-link:hover {
+    color: var(--accent-primary);
+  }
+
+  .contact-link svg {
+    color: var(--accent-primary);
+    flex-shrink: 0;
+  }
+
+  .cta {
+    margin-top: auto;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      opacity var(--transition-base) var(--ease-default),
+      transform var(--transition-base) var(--ease-default),
+      box-shadow var(--transition-base) var(--ease-default);
+  }
+
+  .cta:hover {
+    opacity: var(--opacity-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta svg {
+    transition: transform var(--transition-base) var(--ease-default);
+  }
+
+  .cta:hover svg {
+    transform: translateX(2px);
+  }
+
+  @media (max-width: 1100px) {
+    .contact-skyscraper {
+      display: none;
+    }
+  }
+</style>

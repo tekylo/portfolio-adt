@@ -64,10 +64,10 @@ const themeClass =
     margin: 3rem auto;
     padding: 10px 18px 10px 22px;
     box-sizing: border-box;
-    border-radius: var(--radius-md);
+    border-radius: 6px;
     overflow: hidden;
     border: 1px solid var(--border-default);
-    box-shadow: var(--shadow-sm);
+    box-shadow: none;
   }
 
   .publication-theme-dark {
@@ -86,16 +86,16 @@ const themeClass =
     left: 0;
     width: 3px;
     height: 100%;
-    background: var(--accent-primary);
+    background: var(--accent-text);
   }
 
   .label {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 0.52rem;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     background: var(--text-secondary);
     color: var(--bg-primary);
@@ -128,12 +128,12 @@ const themeClass =
   }
 
   h3 {
-    font-size: 0.96rem;
+    font-size: 1.02rem;
     margin: 0;
     font-family: var(--font-display);
     line-height: 1.1;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     max-width: none;
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -162,9 +162,9 @@ const themeClass =
     min-width: 140px;
     height: 40px;
     padding: 0 0.9rem;
-    border-radius: var(--radius-sm);
+    border-radius: 3px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.78rem;
     transition:
       background-color var(--transition-base) var(--ease-default),
@@ -183,7 +183,12 @@ const themeClass =
 
   .cta:hover {
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    text-decoration: underline;
+  }
+
+  .cta:focus-visible {
+    outline: 3px solid var(--accent-text);
+    outline-offset: 2px;
   }
 
   .publication-theme-dark .cta:hover {

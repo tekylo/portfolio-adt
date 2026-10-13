@@ -120,11 +120,11 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     right: 0;
     background: var(--text-secondary);
     color: var(--bg-primary);
-    padding: 0.28rem 0.55rem;
+    padding: 8px 10px;
     border-radius: 0 0 0 var(--radius-sm);
-    font-size: 0.52rem;
+    font-size: 0.625rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
     font-weight: 700;
     z-index: 10;
   }
@@ -133,7 +133,7 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     position: absolute;
     top: 0;
     left: 0;
-    width: 3px;
+    width: 4px;
     height: 100%;
     background: var(--accent-primary);
   }
@@ -141,7 +141,7 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
   .inner {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
+    gap: var(--space-4);
     height: 100%;
     box-sizing: border-box;
     overflow: hidden;
@@ -152,6 +152,8 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border-default);
   }
 
   h3 {
@@ -159,15 +161,16 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     font-size: var(--text-xl);
     line-height: 1.25;
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     color: var(--text-primary);
   }
 
   .highlight {
     margin: 0;
     font-size: var(--text-sm);
-    font-weight: 400;
-    color: var(--text-secondary);
+    font-weight: 600;
+    color: var(--accent-text);
   }
 
   .perks {
@@ -186,7 +189,6 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     font-size: var(--text-sm);
     line-height: 1.45;
     color: var(--text-primary);
-    opacity: 0.9;
   }
 
   .perks li svg {
@@ -198,7 +200,7 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
   .contact-block {
     padding: var(--space-4);
     background: var(--bg-tertiary);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-default);
     border-radius: var(--radius-sm);
     display: flex;
     flex-direction: column;
@@ -210,7 +212,9 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-weight: 600;
-    color: var(--text-tertiary);
+    color: var(--accent-text);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-default);
   }
 
   .contact-link {
@@ -235,11 +239,11 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
   .cta {
     margin-top: auto;
     background: var(--accent-primary);
-    color: var(--bg-primary);
+    color: var(--accent-foreground);
     border: none;
     border-radius: var(--radius-sm);
     padding: var(--space-3) var(--space-4);
-    font-weight: 600;
+    font-weight: 700;
     font-size: var(--text-sm);
     display: flex;
     align-items: center;
@@ -258,6 +262,11 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
     opacity: var(--opacity-hover);
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
+  }
+
+  .cta:focus-visible {
+    outline: 3px solid var(--accent-text);
+    outline-offset: -3px;
   }
 
   .cta svg {

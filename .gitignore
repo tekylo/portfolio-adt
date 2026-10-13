@@ -28,6 +28,7 @@ pnpm-debug.log*
 # Local Pi runtime state
 .atl/
 .pi/
+.codegraph/
 
 # OpenSpec project artifacts stay versioned.
 # Ignore only local/accidental nested copies if they appear.

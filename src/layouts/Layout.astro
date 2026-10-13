@@ -78,6 +78,15 @@ const structuredData = {
         );
       }
 
+      function updateUjaenLogo() {
+        const logo = document.documentElement.classList.contains("dark")
+          ? "/logos/ujaen.jpg"
+          : "/logos/ujaen-dark.jpg";
+        document
+          .querySelectorAll('img[src="/logos/ujaen.jpg"], img[src="/logos/ujaen-dark.jpg"]')
+          .forEach((image) => image.setAttribute("src", logo));
+      }
+
       function applyTheme() {
         const theme = (() => {
           if (
@@ -99,7 +108,8 @@ const structuredData = {
         }
 
         window.localStorage.setItem("theme", theme);
-        
+        updateUjaenLogo();
+
         // Actualizar botón si existe
         const button = document.getElementById("themeToggle");
         if (button) {
@@ -121,6 +131,7 @@ const structuredData = {
             const theme = isDark ? "dark" : "light";
             localStorage.setItem("theme", theme);
             updateThemeToggleButton(theme);
+            updateUjaenLogo();
           };
           button.addEventListener("click", handleToggleClick);
         }

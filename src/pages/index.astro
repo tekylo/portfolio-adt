@@ -8,7 +8,7 @@ import FrontPageArticle from "../components/FrontPageArticle.astro";
 import articles from "../data/articles.json";
 import publications from "../data/publications.json";
 import ContactSkyscraperAd from "../components/ads/ContactSkyscraperAd.astro";
-import TechStackSkinAd from "../components/ads/TechStackSkinAd.astro";
+import SkyscraperConcept from "../components/ads/proposals/SkyscraperConcept.astro";
 
 const getArticle = (slug: string) =>
   articles.find((article) => article.slug === slug)!;
@@ -36,14 +36,6 @@ const featuredPublication = homepagePublication && {
   <div class="billboard-wrapper">
     <BillboardAd />
   </div>
-  <aside
-    class="skin skin-left"
-    aria-labelledby="stack-skin-title"
-    role="complementary"
-  >
-    <h2 id="stack-skin-title" class="sr-only">Stack Tecnológico</h2>
-    <TechStackSkinAd />
-  </aside>
   <aside
     id="contacto"
     class="skin skin-right"
@@ -182,6 +174,10 @@ const featuredPublication = homepagePublication && {
           </div>
         </div>
 
+        <aside class="stack-ad-inline" aria-label="Anuncio de conocimientos">
+          <SkyscraperConcept theme="auto" variant="icons-expanded" />
+        </aside>
+
         <!-- Featured Publication -->
         {
           featuredPublication && (
@@ -279,10 +275,6 @@ const featuredPublication = homepagePublication && {
       /* display: none; */
     }
 
-    .skin-left {
-      left: max(1.5rem, calc((100vw - 1200px) / 2 - 320px));
-    }
-
     .skin-right {
       right: max(1.5rem, calc((100vw - 1200px) / 2 - 320px));
     }
@@ -300,6 +292,13 @@ const featuredPublication = homepagePublication && {
     .billboard-wrapper {
       display: flex;
       justify-content: center;
+    }
+
+    .stack-ad-inline {
+      display: flex;
+      justify-content: center;
+      margin: 1.5rem 0 2rem;
+      min-width: 0;
     }
 
     /* Portada editorial asimétrica */
@@ -540,11 +539,6 @@ const featuredPublication = homepagePublication && {
 
       .main-column {
         grid-column: 2;
-      }
-
-      .skin-left {
-        grid-column: 1;
-        justify-self: end;
       }
 
       .skin-right {

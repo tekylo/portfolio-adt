@@ -10,7 +10,7 @@ export interface Props {
 
 const {
   headline = "José Antonio López Molina",
-  description = "AdTech Expert con experiencia en publicidad digital",
+  description = "Diseño e integro soluciones publicitarias para medios digitales.",
   ctaText = "Descargar CV",
   ctaLink = "/José Antonio López Molina · CV.pdf",
   badges = ["8+ años", "Google Ad Manager", "Header Bidding", "Xandr", "Programática"],
@@ -25,7 +25,7 @@ const {
 
   <div class="billboard-content">
     <div class="billboard-text">
-      <span class="eyebrow">AdTech consultant · Portfolio creative</span>
+      <span class="eyebrow">AdTech · Arquitectura publicitaria</span>
       <h2 class="headline">{headline}</h2>
       <p class="description">{description}</p>
 
@@ -38,11 +38,11 @@ const {
 
     <div class="billboard-side">
       <div class="side-panel">
-        <span class="side-kicker">Available now</span>
+        <span class="side-kicker">Especialización</span>
         <div class="side-metrics" aria-hidden="true">
           <span>GAM</span>
           <span>HB</span>
-          <span>CTV</span>
+          <span>OpenRTB</span>
         </div>
         <a href={ctaLink} class="cta-btn" download>
           <span>{ctaText}</span>
@@ -312,6 +312,10 @@ const {
     .description {
       font-size: 0.92rem;
     }
+  }
+
+  @media (min-width: 601px) and (max-width: 980px) {
+    .side-metrics span:last-child { font-size: 0.7rem; }
   }
 
   /* Responsive - Mobile */

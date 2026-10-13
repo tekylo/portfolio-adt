@@ -36,23 +36,23 @@ const featuredPublication = homepagePublication && {
   <div class="billboard-wrapper">
     <BillboardAd />
   </div>
-  <aside
-    id="contacto"
-    class="skin skin-right"
-    aria-labelledby="contacto-title"
-    role="complementary"
-  >
-    <h2 id="contacto-title" class="sr-only">Contacto</h2>
-    <ContactSkyscraperAd highlightFirst />
-  </aside>
 
   <div class="page-frame">
-    <aside class="skin-left" aria-labelledby="stack-skin-title">
-      <h2 id="stack-skin-title" class="sr-only">Stack Tecnológico</h2>
-      <SkyscraperConcept theme="auto" variant="icons-expanded" look="site" clean noEdition />
-    </aside>
     <div class="main-column">
       <NewspaperHeader homepage />
+      <aside
+        id="contacto"
+        class="skin skin-right"
+        aria-labelledby="contacto-title"
+        role="complementary"
+      >
+        <h2 id="contacto-title" class="sr-only">Contacto</h2>
+        <ContactSkyscraperAd highlightFirst />
+      </aside>
+      <aside class="skin skin-left" aria-labelledby="stack-skin-title">
+        <h2 id="stack-skin-title" class="sr-only">Stack Tecnológico</h2>
+        <SkyscraperConcept theme="auto" variant="icons-expanded" look="site" clean noEdition />
+      </aside>
       <NavMenu />
 
       <div class="container">
@@ -270,10 +270,9 @@ const featuredPublication = homepagePublication && {
 
     .skin {
       position: fixed;
-      /* top: clamp(6rem, 7vw, 8.5rem); */
+      top: clamp(0px, calc((100vh - 600px) / 2), 8.5rem);
       width: 300px;
       z-index: 5;
-      /* display: none; */
     }
 
     .skin-right {
@@ -281,11 +280,7 @@ const featuredPublication = homepagePublication && {
     }
 
     .skin-left {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: -296px;
-      width: 300px;
+      left: max(1.5rem, calc((100vw - 1200px) / 2 - 320px));
     }
 
     .skin {

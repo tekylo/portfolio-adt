@@ -2,6 +2,7 @@
 const {
   title = "¿Hablamos de tu proyecto?",
   highlight = "Consultoría AdTech a medida",
+  highlightFirst = false,
   perks = [
     "Implementaciones de Google Ad Manager y Header Bidding",
     "Optimización de revenue para medios premium",
@@ -23,8 +24,9 @@ const sanitizedPhone = phone.replace(/\s+/g, "");
 
   <div class="inner">
     <div class="headline">
+      {highlightFirst && <p class="highlight">{highlight}</p>}
       <h3>{title}</h3>
-      <p class="highlight">{highlight}</p>
+      {!highlightFirst && <p class="highlight">{highlight}</p>}
     </div>
 
     <ul class="perks">

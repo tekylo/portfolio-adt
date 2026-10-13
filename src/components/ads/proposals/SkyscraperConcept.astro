@@ -25,9 +25,10 @@ interface Props {
   variant?: 'icons' | 'expanded' | 'icons-expanded';
   look?: 'current' | 'site';
   clean?: boolean;
+  noEdition?: boolean;
 }
 
-const { theme, variant = 'icons', look = 'current', clean = false } = Astro.props;
+const { theme, variant = 'icons', look = 'current', clean = false, noEdition = false } = Astro.props;
 const groups = [
   { label: 'Advertising & Data', items: [
     { name: 'Google Ad Manager', icon: LucideLayoutDashboard },
@@ -50,7 +51,7 @@ const groups = [
 ];
 ---
 
-<section class:list={['skyscraper', theme, variant, look, { clean }]} aria-label="Anuncio de conocimientos del portfolio de José Antonio López Molina">
+<section class:list={['skyscraper', theme, variant, look, { clean, 'no-edition': clean && noEdition }]} aria-label="Anuncio de conocimientos del portfolio de José Antonio López Molina">
   <div class="topline">
     {!clean && <span class="advertiser">CONOCIMIENTOS · PORTFOLIO</span>}
     <div class="controls">
@@ -60,7 +61,7 @@ const groups = [
   </div>
 
   <header class="intro">
-    <span class="eyebrow">EDICIÓN / CONOCIMIENTOS</span>
+    {!(clean && noEdition) && <span class="eyebrow">EDICIÓN / CONOCIMIENTOS</span>}
     <h2>Stack Tecnológico<br />AdTech<span>.</span></h2>
     <p>Tecnologías que utilizo para conectar publicidad digital y desarrollo.</p>
   </header>
@@ -212,6 +213,8 @@ const groups = [
   }
   .clean .intro .eyebrow { display: inline-block; max-width: calc(100% - 100px); }
   .clean .intro h2 { margin-top: 15px; }
+  .clean.no-edition.icons-expanded .intro { padding-top: 42px; }
+  .clean.no-edition .intro h2 { margin-top: 7px; }
   .groups { display: flex; flex-direction: column; gap: 7px; padding: 0 13px; }
   .group { padding: 8px 10px 9px; background: var(--panel); border: 1px solid var(--rule); }
   .group-heading { display: flex; align-items: baseline; gap: 7px; border-bottom: 1px solid var(--rule); padding-bottom: 5px; }

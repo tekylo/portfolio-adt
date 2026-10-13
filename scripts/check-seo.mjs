@@ -30,7 +30,12 @@ const descriptions = new Set();
 for (const route of routes) {
   const file = join('dist', route, 'index.html');
   const html = readFileSync(file, 'utf8');
-  assert.equal([...html.matchAll(/<h1\b[^>]*>/gi)].length, 1, `${file}: expected one H1`);
+  const headingLevels = [...html.matchAll(/<h([1-6])\b[^>]*>/gi)].map(([, level]) => Number(level));
+  assert.equal(headingLevels.filter((level) => level === 1).length, 1, `${file}: expected one H1`);
+  assert.equal(headingLevels[0], 1, `${file}: first heading must be H1`);
+  for (let i = 1; i < headingLevels.length; i++) {
+    assert.ok(headingLevels[i] <= headingLevels[i - 1] + 1, `${file}: H${headingLevels[i]} skips a heading level after H${headingLevels[i - 1]}`);
+  }
   const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1];
   assert.ok(head, `${file}: head missing`);
   const tags = [...head.matchAll(/<(?:meta|link)\b[^>]*>/gi)].map(([tag]) => tag);

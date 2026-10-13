@@ -24,9 +24,10 @@ interface Props {
   theme: 'light' | 'dark' | 'auto';
   variant?: 'icons' | 'expanded' | 'icons-expanded';
   look?: 'current' | 'site';
+  clean?: boolean;
 }
 
-const { theme, variant = 'icons', look = 'current' } = Astro.props;
+const { theme, variant = 'icons', look = 'current', clean = false } = Astro.props;
 const groups = [
   { label: 'Advertising & Data', items: [
     { name: 'Google Ad Manager', icon: LucideLayoutDashboard },
@@ -49,9 +50,9 @@ const groups = [
 ];
 ---
 
-<section class:list={['skyscraper', theme, variant, look]} aria-label="Anuncio de conocimientos del portfolio de José Antonio López Molina">
+<section class:list={['skyscraper', theme, variant, look, { clean }]} aria-label="Anuncio de conocimientos del portfolio de José Antonio López Molina">
   <div class="topline">
-    <span class="advertiser">CONOCIMIENTOS · PORTFOLIO</span>
+    {!clean && <span class="advertiser">CONOCIMIENTOS · PORTFOLIO</span>}
     <div class="controls">
       <span class="ad-label">ANUNCIO</span>
       <button class="close" type="button" aria-label="Cerrar anuncio de conocimientos">×</button>
@@ -68,7 +69,7 @@ const groups = [
     {groups.map((group, index) => (
       <section class="group" aria-label={group.label}>
         <div class="group-heading">
-          <span class="number">0{index + 1}</span>
+          {!clean && <span class="number">0{index + 1}</span>}
           <h3>{group.label}</h3>
         </div>
         <ul>
@@ -97,7 +98,7 @@ const groups = [
   </div>
 
   <footer>
-    <span class="footer-note">HERRAMIENTAS / PRÁCTICA</span>
+    {!clean && <span class="footer-note">HERRAMIENTAS / PRÁCTICA</span>}
     <a class="cta" href="/articulo-conocimientos">Ver conocimientos <span aria-hidden="true">↗</span></a>
   </footer>
 </section>
@@ -164,6 +165,15 @@ const groups = [
     letter-spacing: .04em;
   }
   .advertiser { color: var(--muted); }
+  .clean .topline {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 35px;
+    padding-left: 0;
+    border-bottom: 0;
+    z-index: 2;
+  }
   .controls { display: flex; align-self: stretch; flex: none; }
   .ad-label {
     display: flex;
@@ -200,6 +210,8 @@ const groups = [
     font-size: 12px;
     line-height: 1.35;
   }
+  .clean .intro .eyebrow { display: inline-block; max-width: calc(100% - 100px); }
+  .clean .intro h2 { margin-top: 15px; }
   .groups { display: flex; flex-direction: column; gap: 7px; padding: 0 13px; }
   .group { padding: 8px 10px 9px; background: var(--panel); border: 1px solid var(--rule); }
   .group-heading { display: flex; align-items: baseline; gap: 7px; border-bottom: 1px solid var(--rule); padding-bottom: 5px; }
@@ -223,6 +235,9 @@ const groups = [
   .icons-expanded .group { padding-top: 4px; padding-bottom: 4px; }
   .icons-expanded .group-heading { padding-bottom: 3px; }
   .icons-expanded ul { gap: 3px 4px; margin-top: 4px; }
+  .clean.icons-expanded .groups { gap: 8px; }
+  .clean.icons-expanded .group { padding-block: 8px; }
+  .clean.icons-expanded ul { gap: 4px; }
   .icons .groups { gap: 5px; }
   .icons .group { padding-top: 6px; padding-bottom: 6px; }
   .icons ul { gap: 5px 4px; }

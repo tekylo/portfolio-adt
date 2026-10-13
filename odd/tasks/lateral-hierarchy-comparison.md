@@ -1,0 +1,18 @@
+# Lateral hierarchy comparison
+Scope: compare an opt-in cleaner appearance of the mounted 15-icon AdTech lateral in local page context; do not replace homepage choice.
+
+## Specs
+- S1: «del anucio de Stack Tecnológico
+AdTech. creo que quitaría el titulo CONOCIMIENTOS · PORTFOLIO HERRAMIENTAS / PRÁCTICA haría un cambio de 01 a otra cosa no me gustan los numeros, como lo ves?»
+- S2: User selected «Compararlo antes de activarlo (recomendado)».
+- S3: Earlier preservation request: «Pues me gustan, lo aplicamos pero guardar los anuncios actuales para no perderlos».
+
+## Tasks
+- [ ] CLEAN-1 (S1–S3) — Add a separate opt-in clean hierarchy to the 15-icon lateral without changing current homepage rendering: remove only redundant top/footer copy and section numerals in alternative; keep ANUNCIO + accessible ×, single editorial eyebrow, all 15 icon/technology names, group headings and knowledge CTA. Compare original and alternative beside site context in light/dark, inspect narrow layout/geometry and close isolation, save screenshots, remove temporary preview route, build original eight routes. Route: inline; one local reviewable work-unit commit, pending.
+
+## Log
+- L1: del anucio de Stack Tecnológico
+AdTech. creo que quitaría el titulo CONOCIMIENTOS · PORTFOLIO HERRAMIENTAS / PRÁCTICA haría un cambio de 01 a otra cosa no me gustan los numeros, como lo ves?
+- L2: User chose comparison first, not activation. Suggested not substituting another ornament for 01/02/03 because group labels and rules already provide hierarchy; retain `EDICIÓN / CONOCIMIENTOS` as one editorial cue. Temporary comparison route is local-only and must be removed before final build; retain prior screenshots and preferred live `look="site"` exactly. Brand-rights review still blocks public deployment. Existing uncommitted five-file CSS normalization of × from previous small request must remain untouched outside the relevant component; do not stage the other four files or excluded untracked `false`/`.codegraph/.gitignore`.
+- L3: Visual preference has no deterministic subjective RED; public DOM RED before opt-in showed both cards identical (advertiser/footer/01–03). GREEN: only `clean` option removes those exact texts/markers; existing card remains unchanged with all three, while both keep one `EDICIÓN / CONOCIMIENTOS`, 15 named icon technologies, three group labels, ANUNCIO + × and knowledge CTA. At 280/320/390/768/1440 in light and dark: no page overflow, clipped ad descendants or eyebrow/title/button overlap; clean card 300×600 at ≥390, 273×600 at 320, 233×615 at 280 versus current 233×617. CTA bottom remains 585/600 at standard widths and group/footer gap 14px at ≥390; recovered label space became more generous technology group padding. Mouse closes only clean, Enter closes only existing card; contact remains. Side-by-side site-context screenshots: `odd/previews/skyscraper-v8-clean-context-{light,dark}.png`. Temporary route removed, final build generated eight original pages, and generated homepage retains sole `skyscraper auto icons-expanded site` with no `clean` class. No push, PR or deployment; brand rights remain unresolved.
+- L4: Prior uncommitted close-control normalization touches this same component plus four other ads; stage only new clean-option component hunks for work-unit commit, leaving the old .close hunk and four other files in working tree. Do not conflate the comparison with previous pending fix.

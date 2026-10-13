@@ -47,6 +47,10 @@ const featuredPublication = homepagePublication && {
   </aside>
 
   <div class="page-frame">
+    <aside class="skin-left" aria-labelledby="stack-skin-title">
+      <h2 id="stack-skin-title" class="sr-only">Stack Tecnológico</h2>
+      <SkyscraperConcept theme="auto" variant="icons-expanded" />
+    </aside>
     <div class="main-column">
       <NewspaperHeader homepage />
       <NavMenu />
@@ -174,10 +178,6 @@ const featuredPublication = homepagePublication && {
           </div>
         </div>
 
-        <aside class="stack-ad-inline" aria-label="Anuncio de conocimientos">
-          <SkyscraperConcept theme="auto" variant="icons-expanded" />
-        </aside>
-
         <!-- Featured Publication -->
         {
           featuredPublication && (
@@ -249,6 +249,7 @@ const featuredPublication = homepagePublication && {
 
   <style>
     .page-frame {
+      position: relative;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 1rem 2rem;
@@ -279,12 +280,20 @@ const featuredPublication = homepagePublication && {
       right: max(1.5rem, calc((100vw - 1200px) / 2 - 320px));
     }
 
+    .skin-left {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: -296px;
+      width: 300px;
+    }
+
     .skin {
       display: none;
     }
 
     @media (min-width: 1900px) {
-      .skin {
+      .skin, .skin-left {
         display: block;
       }
     }
@@ -292,13 +301,6 @@ const featuredPublication = homepagePublication && {
     .billboard-wrapper {
       display: flex;
       justify-content: center;
-    }
-
-    .stack-ad-inline {
-      display: flex;
-      justify-content: center;
-      margin: 1.5rem 0 2rem;
-      min-width: 0;
     }
 
     /* Portada editorial asimétrica */
